@@ -4,9 +4,8 @@ const customTheme = extendTheme({
   ...theme,
   fonts: {
     ...theme.fonts,
-    /** Example */
-    // body: "Work Sans, sans-serif",
-    // heading: "Markazi Text, serif",
+    body: "Inter, sans-serif",
+    heading: "Inter, sans-serif",
   },
   colors: {
     ...theme.colors,

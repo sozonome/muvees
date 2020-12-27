@@ -1,14 +1,20 @@
-import { Box } from "@chakra-ui/react";
+import { Box, useColorMode } from "@chakra-ui/react";
 
 import Header from "./Header";
 import Footer from "./Footer";
 import Meta from "./Meta";
 
 const Layout = ({ children }) => {
+  const { colorMode } = useColorMode();
+
   return (
-    <Box margin="0 auto" maxWidth={800} transition="0.5s ease-out">
+    <Box
+      backgroundColor={colorMode === "light" ? "white" : "gray.900"}
+      transition="0.5s ease-out"
+      minHeight="100vh"
+    >
       <Meta />
-      <Box margin="8">
+      <Box margin="0 auto" maxWidth={800} padding="8">
         <Header />
         <Box as="main" marginY={22}>
           {children}
