@@ -15,12 +15,7 @@ type MovieListRes = SWRHookResp & {
   data: RawEntries;
 };
 
-export type ListType =
-  | "now_playing"
-  | "latest"
-  | "popular"
-  | "top_rated"
-  | "upcoming";
+export type ListType = "now_playing" | "popular" | "top_rated" | "upcoming";
 
 type MovieListReq = {
   section?: ListType;
