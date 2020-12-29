@@ -32,8 +32,8 @@ export const useMovieList = ({
   query,
   shouldFetch,
 }: MovieListReq): MovieListRes => {
-  const endpoint = `${API_URL}${query ? "/search" : ""}/movie/${
-    query ? "" : section
+  const endpoint = `${API_URL}${query ? "/search" : ""}/movie${
+    query ? "" : `/${section}`
   }?api_key=${API_KEY}${language ? `&language=${language}` : ""}${
     query ? `&query=${query}` : ""
   }&page=${page}`;
