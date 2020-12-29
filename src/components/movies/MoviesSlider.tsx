@@ -1,43 +1,67 @@
-import { Box, Flex, Heading, Skeleton } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Skeleton,
+  useMediaQuery,
+} from "@chakra-ui/react";
 
 import MovieItem from "./MovieItem";
 
-import { MovieType } from "../../models/movies";
+import { MovieListItemType } from "../../models/movies";
+import { useRouter } from "next/router";
 
 type MoviesSliderProps = {
-  movies?: Array<MovieType>;
+  movies?: Array<MovieListItemType>;
   sectionTitle?: string;
 };
 
 const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
+  const [mobile] = useMediaQuery("(max-width: 30em)");
+  const router = useRouter();
+  const listType = sectionTitle.toLowerCase().replace(" ", "_");
+
   return (
-    <Box marginY={4}>
+    <Box>
       {sectionTitle && (
-        <Heading
-          paddingX={8}
-          textTransform="uppercase"
-          letterSpacing={2}
-          fontSize="lg"
-          fontWeight="semibold"
-        >
-          {sectionTitle}
-        </Heading>
+        <Flex marginX={8} alignItems="center">
+          <Heading
+            textTransform="uppercase"
+            letterSpacing={2}
+            fontSize={["lg", "xl"]}
+            fontWeight="extrabold"
+          >
+            {sectionTitle}
+          </Heading>
+
+          <Button
+            marginLeft="auto"
+            size={mobile ? "xs" : "sm"}
+            onClick={() => router.push(`/movies/${listType}?page=1`)}
+          >
+            see more
+          </Button>
+        </Flex>
       )}
       <Skeleton isLoaded={movies && movies.length > 0}>
-        <Flex
-          flexWrap="nowrap"
-          alignItems="center"
-          minHeight="240px"
-          overflowX="scroll"
-          gridColumnGap={6}
-        >
-          {movies &&
-            movies
-              .slice(0, 10)
-              .map((movie, index) => (
-                <MovieItem movie={movie} key={index} layout="flex" />
-              ))}
-        </Flex>
+        <Box paddingX={[8, 0]} overflowX="scroll">
+          <Flex
+            flexWrap="nowrap"
+            alignItems="center"
+            minHeight="220px"
+            overflowX="scroll"
+            overflow="visible"
+            gridColumnGap={6}
+          >
+            {movies &&
+              movies
+                .slice(0, 10)
+                .map((movie, index) => (
+                  <MovieItem movie={movie} key={index} layout="flex" />
+                ))}
+          </Flex>
+        </Box>
       </Skeleton>
     </Box>
   );

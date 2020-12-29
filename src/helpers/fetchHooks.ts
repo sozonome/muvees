@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { RawEntries } from "../models/movies";
+import { MovieDetailType, RawEntries } from "../models/movies";
 
 import { fetcher } from "./fetcher";
 
@@ -21,17 +21,25 @@ type MovieListReq = {
   section?: ListType;
   language?: string;
   page?: number;
+  query?: string;
+  shouldFetch?: boolean;
 };
 
 export const useMovieList = ({
   section = "popular",
   language,
   page = 1,
+  query,
+  shouldFetch,
 }: MovieListReq): MovieListRes => {
+  const endpoint = `${API_URL}${query ? "/search" : ""}/movie/${
+    query ? "" : section
+  }?api_key=${API_KEY}${language ? `&language=${language}` : ""}${
+    query ? `&query=${query}` : ""
+  }&page=${page}`;
+
   const { data, error } = useSWR(
-    `${API_URL}/movie/${section}?api_key=${API_KEY}${
-      language ? `&language=${language}` : ""
-    }&page=${page}`,
+    shouldFetch ? (shouldFetch === true ? endpoint : null) : endpoint,
     fetcher
   );
 
@@ -42,6 +50,23 @@ export const useMovieList = ({
   };
 };
 
-export const useMovieData = () => {};
+type MovieDetailReq = {
+  id: number;
+  language?: string;
+};
+
+type MovieDetailRes = SWRHookResp & {
+  data: MovieDetailType;
+};
+
+export const useMovieData = ({ id }: MovieDetailReq): MovieDetailRes => {
+  const { data, error } = useSWR(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
+
+  return {
+    data,
+    isLoading: !data && !error,
+    isError: error,
+  };
+};
 
 export const usePersonData = () => {};

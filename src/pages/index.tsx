@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Grid } from "@chakra-ui/react";
 import { useState } from "react";
 import MoviesSlider from "../components/movies/MoviesSlider";
 import { useMovieList, ListType } from "../helpers/fetchHooks";
@@ -10,7 +10,7 @@ const Home = () => {
   const { data: upcomingData } = useMovieList({ section: "upcoming" });
 
   return (
-    <Box mb={8} w="full" padding={[0, 8]}>
+    <Grid rowGap={8} mb={8} w="full" padding={[0, 8]}>
       <MoviesSlider
         sectionTitle="Popular"
         movies={popularData && popularData.results}
@@ -27,7 +27,7 @@ const Home = () => {
         sectionTitle="Upcoming"
         movies={upcomingData && upcomingData.results}
       />
-    </Box>
+    </Grid>
   );
 };
 
