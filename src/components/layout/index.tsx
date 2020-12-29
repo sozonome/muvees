@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
       minHeight="100vh"
     >
       <Meta />
-      <Box margin="0 auto" maxWidth={800} padding="8">
+      <Box margin="0 auto" maxWidth={800}>
         <Header />
         <Box as="main" marginY={22}>
           {children}
