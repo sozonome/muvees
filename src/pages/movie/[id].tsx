@@ -112,6 +112,22 @@ const Movie = () => {
       </Skeleton>
 
       <Skeleton isLoaded={!isLoading}>
+        {data && data.genres && (
+          <Flex wrap="wrap" gridGap={2}>
+            {data.genres.map((genre, index) => (
+              <Badge
+                variant={colorMode === "light" ? "solid" : "outline"}
+                colorScheme="gray"
+                key={index}
+              >
+                {genre.name}
+              </Badge>
+            ))}
+          </Flex>
+        )}
+      </Skeleton>
+
+      <Skeleton isLoaded={!isLoading}>
         <Text fontSize="sm" textAlign="justify">
           {data && data.overview}
         </Text>
