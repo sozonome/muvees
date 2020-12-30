@@ -28,9 +28,7 @@ const MovieItem = ({ movie, layout }: MovieItemProps) => {
             ratio={3.6 / 5}
             _groupHover={{ backgroundColor: "black" }}
           >
-            <chakra.button>
-              <PosterImage src={movie.poster_path} layout={layout} />
-            </chakra.button>
+            <PosterImage src={movie.poster_path} layout={layout} />
           </AspectRatio>
         ) : (
           <Box borderRadius={24} _groupHover={{ backgroundColor: "black" }}>
