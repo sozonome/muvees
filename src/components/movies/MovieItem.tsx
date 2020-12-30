@@ -1,7 +1,7 @@
-import { AspectRatio, Box, useColorMode } from "@chakra-ui/react";
+import { AspectRatio, Box, chakra, useColorMode } from "@chakra-ui/react";
 
 import MotionBox from "../MotionBox";
-import PosterImage, { IMAGE_URL } from "./PosterImage";
+import PosterImage from "./PosterImage";
 import PosterLabel from "./PosterLabel";
 
 import { MovieListItemType } from "../../models/movies";
@@ -13,8 +13,6 @@ type MovieItemProps = {
 };
 
 const MovieItem = ({ movie, layout }: MovieItemProps) => {
-  const { colorMode } = useColorMode();
-
   return (
     <Link href={`/movie/${movie.id}`} passHref>
       <MotionBox
@@ -30,11 +28,15 @@ const MovieItem = ({ movie, layout }: MovieItemProps) => {
             ratio={3.6 / 5}
             _groupHover={{ backgroundColor: "black" }}
           >
-            <PosterImage src={movie.poster_path} layout={layout} />
+            <chakra.button>
+              <PosterImage src={movie.poster_path} layout={layout} />
+            </chakra.button>
           </AspectRatio>
         ) : (
           <Box borderRadius={24} _groupHover={{ backgroundColor: "black" }}>
-            <PosterImage src={movie.poster_path} layout={layout} />
+            <chakra.button>
+              <PosterImage src={movie.poster_path} layout={layout} />
+            </chakra.button>
           </Box>
         )}
         <PosterLabel label={movie.title} />

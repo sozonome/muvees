@@ -37,6 +37,7 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
 
           <Button
             marginLeft="auto"
+            borderRadius={16}
             size={mobile ? "xs" : "sm"}
             onClick={() => router.push(`/movies/${listType}?page=1`)}
           >

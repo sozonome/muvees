@@ -98,6 +98,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
             }
             placeholder="Movie Title"
             borderRadius={24}
+            fontSize="sm"
           />
         </FormControl>
       )}
@@ -150,10 +151,17 @@ const PageNavButtons = ({
   return (
     <Skeleton marginY={4} isLoaded={!isLoading}>
       {results?.length ? (
-        <>
-          <Text textAlign="center" marginY={2}>
+        <Grid rowGap={4}>
+          <Text
+            letterSpacing={2}
+            textTransform="uppercase"
+            textAlign="center"
+            marginY={2}
+            fontSize="sm"
+          >
             Page: <b>{page}</b> / {totalPages}
           </Text>
+
           <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>
             <Button
               borderRadius={24}
@@ -170,7 +178,7 @@ const PageNavButtons = ({
               next
             </Button>
           </Grid>
-        </>
+        </Grid>
       ) : null}
     </Skeleton>
   );

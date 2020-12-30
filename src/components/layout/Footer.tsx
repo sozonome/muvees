@@ -4,7 +4,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <Flex as="footer" width="full" align="center" padding="8">
-      <Text>
+      <Text fontSize="sm">
         2020 -{" "}
         <Link fontWeight="bold" href="https://sznm.dev" isExternal>
           sznm.dev

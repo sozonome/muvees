@@ -1,13 +1,17 @@
 import {
   AspectRatio,
-  Box,
+  Badge,
   Button,
+  Flex,
   Grid,
   Heading,
   Skeleton,
   Text,
+  useColorMode,
+  useToast,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import Error from "../../components/layout/Error";
 
 import PosterImage from "../../components/movies/PosterImage";
 import { useMovieData } from "../../helpers/fetchHooks";
@@ -18,14 +22,42 @@ const Movie = () => {
     query: { id },
   } = router;
 
-  const { data, isLoading } = useMovieData({ id: Number(id) });
+  const { data, isLoading, isError } = useMovieData({ id: Number(id) });
+
+  const { colorMode } = useColorMode();
+  const toast = useToast();
+
+  const statusColorScheme = () => {
+    if (data) {
+      switch (data.status) {
+        case "Rumored":
+          return "orange";
+        case "Planned":
+          return "teal";
+        case "In Production":
+          return "blue";
+        case "Post Production":
+          return "purple";
+        case "Released":
+          return "green";
+        case "Canceled":
+          return "red";
+        default:
+          return null;
+      }
+    }
+  };
+
+  if (isError) {
+    return <Error />;
+  }
 
   return (
     <Grid paddingX={8} rowGap={8}>
       <Button onClick={() => router.back()}>back</Button>
 
       <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : null}>
-        <Text
+        <Heading
           textAlign="center"
           fontSize="md"
           letterSpacing={2}
@@ -34,7 +66,7 @@ const Movie = () => {
           marginX={[8, 0]}
         >
           {data && data.title}
-        </Text>
+        </Heading>
       </Skeleton>
 
       <Skeleton isLoaded={!isLoading} maxHeight={["auto", 400]}>
@@ -46,6 +78,37 @@ const Movie = () => {
         >
           <PosterImage src={data && data.poster_path} />
         </AspectRatio>
+        {data && data.tagline && (
+          <Text
+            textAlign="center"
+            fontSize="0.7rem"
+            fontWeight="500"
+            letterSpacing={2}
+            textTransform="uppercase"
+            marginTop={4}
+            marginX={[8, 0]}
+          >
+            {data.tagline}
+          </Text>
+        )}
+      </Skeleton>
+
+      <Skeleton isLoaded={!isLoading}>
+        {data && (
+          <Flex gridColumnGap={2} alignItems="center">
+            <Badge
+              variant={colorMode === "light" ? "solid" : "outline"}
+              colorScheme={statusColorScheme()}
+            >
+              {data.status}
+            </Badge>
+
+            <Text textTransform="uppercase" letterSpacing={1} fontSize="xs">
+              {data.runtime ? `${data.runtime} min. / ` : null}{" "}
+              {new Date(data.release_date).getFullYear()}
+            </Text>
+          </Flex>
+        )}
       </Skeleton>
 
       <Skeleton isLoaded={!isLoading}>
