@@ -60,7 +60,10 @@ type MovieDetailRes = SWRHookResp & {
 };
 
 export const useMovieData = ({ id }: MovieDetailReq): MovieDetailRes => {
-  const { data, error } = useSWR(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
+  const { data, error } = useSWR(
+    `${API_URL}/movie/${id}?api_key=${API_KEY}`,
+    fetcher
+  );
 
   return {
     data,

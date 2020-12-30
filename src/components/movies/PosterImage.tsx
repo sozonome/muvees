@@ -1,12 +1,14 @@
-import { Image, ImageProps } from "@chakra-ui/react";
+import { Image, ImageProps, useColorMode } from "@chakra-ui/react";
 
-const IMAGE_URL = `https://image.tmdb.org/t/p/w500`;
+export const IMAGE_URL = `https://image.tmdb.org/t/p/w500`;
 
 type PosterImageProps = ImageProps & {
   layout?: "grid" | "flex";
 };
 
 const PosterImage = ({ src, layout, ...props }: PosterImageProps) => {
+  const { colorMode } = useColorMode();
+
   const flexSize: ImageProps = {
     height: "12.5rem",
     width: "9rem",
@@ -14,10 +16,16 @@ const PosterImage = ({ src, layout, ...props }: PosterImageProps) => {
 
   return (
     <Image
-      {...(layout === "flex" && flexSize)}
       _groupHover={{ opacity: 0.5 }}
       borderRadius={24}
-      src={`${IMAGE_URL}${src}`}
+      src={src ? `${IMAGE_URL}${src}` : `/Movie Night-bro.svg`}
+      style={{
+        filter: `drop-shadow(0 0 0.75rem ${
+          colorMode === "light" ? "gray" : "black"
+        })`,
+        ...props.style,
+      }}
+      {...(layout === "flex" && flexSize)}
       {...props}
     />
   );

@@ -11,7 +11,7 @@ type MoviesContainerProps = {
 
 const MoviesContainer = ({ movies, isLoading }: MoviesContainerProps) => {
   return (
-    <Skeleton minHeight={"100vh"} isLoaded={!isLoading}>
+    <Skeleton minHeight={"100vh"} marginY={8} isLoaded={!isLoading}>
       {movies?.length ? (
         <Grid
           templateColumns={[

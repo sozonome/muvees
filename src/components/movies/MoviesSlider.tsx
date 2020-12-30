@@ -25,18 +25,19 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
   return (
     <Box>
       {sectionTitle && (
-        <Flex marginX={8} alignItems="center">
+        <Flex marginX={[8, 0]} alignItems="center">
           <Heading
             textTransform="uppercase"
             letterSpacing={2}
-            fontSize={["lg", "xl"]}
-            fontWeight="extrabold"
+            fontSize={["md", "lg"]}
+            fontWeight="400"
           >
             {sectionTitle}
           </Heading>
 
           <Button
             marginLeft="auto"
+            borderRadius={16}
             size={mobile ? "xs" : "sm"}
             onClick={() => router.push(`/movies/${listType}?page=1`)}
           >
@@ -45,11 +46,11 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
         </Flex>
       )}
       <Skeleton isLoaded={movies && movies.length > 0}>
-        <Box paddingX={[8, 0]} overflowX="scroll">
+        <Flex paddingX={[8, 6]} overflowX="scroll">
           <Flex
             flexWrap="nowrap"
             alignItems="center"
-            minHeight="220px"
+            minHeight="250px"
             overflowX="scroll"
             overflow="visible"
             gridColumnGap={6}
@@ -61,7 +62,7 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
                   <MovieItem movie={movie} key={index} layout="flex" />
                 ))}
           </Flex>
-        </Box>
+        </Flex>
       </Skeleton>
     </Box>
   );

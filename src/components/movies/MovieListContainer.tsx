@@ -80,8 +80,8 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
 
   return (
     <Box mb={8} w="full" paddingX={8}>
-      <Button isFullWidth onClick={() => router.push("/")}>
-        Back
+      <Button borderRadius={24} isFullWidth onClick={() => router.push("/")}>
+        back
       </Button>
 
       {listMode === "search" && (
@@ -97,6 +97,8 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
               )
             }
             placeholder="Movie Title"
+            borderRadius={24}
+            fontSize="sm"
           />
         </FormControl>
       )}
@@ -149,22 +151,34 @@ const PageNavButtons = ({
   return (
     <Skeleton marginY={4} isLoaded={!isLoading}>
       {results?.length ? (
-        <>
-          <Text textAlign="center" marginY={2}>
+        <Grid rowGap={4}>
+          <Text
+            letterSpacing={2}
+            textTransform="uppercase"
+            textAlign="center"
+            marginY={2}
+            fontSize="sm"
+          >
             Page: <b>{page}</b> / {totalPages}
           </Text>
+
           <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>
-            <Button disabled={page === 1} onClick={handleChangePage("prev")}>
-              Prev
+            <Button
+              borderRadius={24}
+              disabled={page === 1}
+              onClick={handleChangePage("prev")}
+            >
+              prev
             </Button>
             <Button
+              borderRadius={24}
               disabled={page === totalPages}
               onClick={handleChangePage("next")}
             >
-              Next
+              next
             </Button>
           </Grid>
-        </>
+        </Grid>
       ) : null}
     </Skeleton>
   );
