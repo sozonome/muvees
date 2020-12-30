@@ -1,4 +1,5 @@
-import { Flex, Link, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Link, Text } from "@chakra-ui/react";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -9,6 +10,15 @@ const Footer = () => {
           sznm.dev
         </Link>
       </Text>
+
+      <Grid gap={1} marginLeft="auto" textAlign="right">
+        <Text textTransform="lowercase" fontSize="0.6rem">
+          Powered by
+        </Text>
+        <Link href="https://themoviedb.org" isExternal>
+          <Image src="/tmdb.svg" width="50" height="20" />
+        </Link>
+      </Grid>
     </Flex>
   );
 };

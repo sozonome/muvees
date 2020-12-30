@@ -29,8 +29,8 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
           <Heading
             textTransform="uppercase"
             letterSpacing={2}
-            fontSize={["lg", "xl"]}
-            fontWeight="extrabold"
+            fontSize={["md", "lg"]}
+            fontWeight="400"
           >
             {sectionTitle}
           </Heading>

@@ -20,6 +20,7 @@ const Header = () => {
         <IconButton
           aria-label="search"
           icon={<GoSearch />}
+          background="none"
           onClick={() => router.push(`/movies/search`)}
         />
         <ThemeToggle />

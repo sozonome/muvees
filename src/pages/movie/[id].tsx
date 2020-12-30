@@ -23,21 +23,35 @@ const Movie = () => {
   return (
     <Grid paddingX={8} rowGap={8}>
       <Button onClick={() => router.back()}>back</Button>
+
       <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : null}>
-        <Heading fontSize="lg">{data && data.title}</Heading>
+        <Text
+          textAlign="center"
+          fontSize="md"
+          letterSpacing={2}
+          textTransform="uppercase"
+          fontWeight="300"
+          marginX={[8, 0]}
+        >
+          {data && data.title}
+        </Text>
       </Skeleton>
+
       <Skeleton isLoaded={!isLoading} maxHeight={["auto", 400]}>
         <AspectRatio
           ratio={3.6 / 5}
           maxHeight={["100%", 400]}
           maxWidth={["100%", 288]}
-          margin={[8, 0]}
+          marginX={[8, 0]}
         >
           <PosterImage src={data && data.poster_path} />
         </AspectRatio>
       </Skeleton>
+
       <Skeleton isLoaded={!isLoading}>
-        <Text>{data && data.overview}</Text>
+        <Text fontSize="sm" textAlign="justify">
+          {data && data.overview}
+        </Text>
       </Skeleton>
     </Grid>
   );

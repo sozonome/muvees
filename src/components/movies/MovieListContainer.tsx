@@ -81,7 +81,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   return (
     <Box mb={8} w="full" paddingX={8}>
       <Button borderRadius={24} isFullWidth onClick={() => router.push("/")}>
-        Back
+        back
       </Button>
 
       {listMode === "search" && (
@@ -160,14 +160,14 @@ const PageNavButtons = ({
               disabled={page === 1}
               onClick={handleChangePage("prev")}
             >
-              Prev
+              prev
             </Button>
             <Button
               borderRadius={24}
               disabled={page === totalPages}
               onClick={handleChangePage("next")}
             >
-              Next
+              next
             </Button>
           </Grid>
         </>
