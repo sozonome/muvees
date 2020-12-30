@@ -80,7 +80,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
 
   return (
     <Box mb={8} w="full" paddingX={8}>
-      <Button isFullWidth onClick={() => router.push("/")}>
+      <Button borderRadius={24} isFullWidth onClick={() => router.push("/")}>
         Back
       </Button>
 
@@ -97,6 +97,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
               )
             }
             placeholder="Movie Title"
+            borderRadius={24}
           />
         </FormControl>
       )}
@@ -154,10 +155,15 @@ const PageNavButtons = ({
             Page: <b>{page}</b> / {totalPages}
           </Text>
           <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>
-            <Button disabled={page === 1} onClick={handleChangePage("prev")}>
+            <Button
+              borderRadius={24}
+              disabled={page === 1}
+              onClick={handleChangePage("prev")}
+            >
               Prev
             </Button>
             <Button
+              borderRadius={24}
               disabled={page === totalPages}
               onClick={handleChangePage("next")}
             >

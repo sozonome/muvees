@@ -11,7 +11,9 @@ const Header = () => {
   return (
     <Flex as="header" width="full" align="center" padding="8">
       <AccessibleLink href="/">
-        <Heading as="h1">muvees</Heading>
+        <Heading as="h1" fontSize={["md", "xl"]}>
+          muvees
+        </Heading>
       </AccessibleLink>
 
       <Grid templateColumns="repeat(2, 1fr)" gap={2} marginLeft="auto">
