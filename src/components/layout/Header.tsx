@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { GoSearch } from "react-icons/go";
 
 import AccessibleLink from "../AccessibleLink";
+import AppMenu from "./AppMenu";
 import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
@@ -16,7 +17,7 @@ const Header = () => {
         </Heading>
       </AccessibleLink>
 
-      <Grid templateColumns="repeat(2, 1fr)" gap={2} marginLeft="auto">
+      <Grid templateColumns="repeat(3, 1fr)" gap={1} marginLeft="auto">
         <IconButton
           aria-label="search"
           icon={<GoSearch />}
@@ -24,6 +25,7 @@ const Header = () => {
           onClick={() => router.push(`/movies/search`)}
         />
         <ThemeToggle />
+        <AppMenu />
       </Grid>
     </Flex>
   );

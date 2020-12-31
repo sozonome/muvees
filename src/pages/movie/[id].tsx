@@ -1,21 +1,34 @@
 import {
   AspectRatio,
+  Avatar,
   Badge,
   Button,
   Flex,
+  FormControl,
   Grid,
   Heading,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Skeleton,
   Text,
   useColorMode,
-  useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import { ChangeEvent, useState } from "react";
 import Error from "../../components/layout/Error";
 
-import PosterImage from "../../components/movies/PosterImage";
+import PosterImage, { IMAGE_URL } from "../../components/movies/PosterImage";
 import { convertToPrice } from "../../helpers/convertToPrice";
-import { useMovieData } from "../../helpers/fetchHooks";
+import { useMovieCreditsData, useMovieData } from "../../helpers/fetchHooks";
+import { MovieCreditsType } from "../../models/movies";
 
 const Movie = () => {
   const router = useRouter();
@@ -24,10 +37,13 @@ const Movie = () => {
   } = router;
 
   const { data, isLoading, isError } = useMovieData({ id: Number(id) });
-  // const { data: credits, isLoading: isLoadingCredits } = useMovieData({
-  //   id: Number(id),
-  //   credits: true,
-  // });
+  const {
+    data: credits,
+    isLoading: isLoadingCredits,
+    isError: isErrorCredits,
+  } = useMovieCreditsData({
+    id: Number(id),
+  });
 
   const { colorMode } = useColorMode();
 
@@ -58,12 +74,17 @@ const Movie = () => {
 
   return (
     <Grid
-      templateColumns={["repeat(1)", "repeat(1)", "repeat(2, 1fr)"]}
+      templateColumns={["repeat(1)", "repeat(1)", "repeat(2, minmax(0,1fr))"]}
+      wrap="wrap"
       paddingX={8}
       gridGap={[8, 16]}
     >
-      <Grid rowGap={8}>
-        <Button onClick={() => router.back()} width={["full", "full", 100]}>
+      <Grid rowGap={8} flexBasis={["100%"]}>
+        <Button
+          borderRadius={24}
+          onClick={() => router.back()}
+          width={["full", "full", 100]}
+        >
           back
         </Button>
 
@@ -139,7 +160,12 @@ const Movie = () => {
         </Skeleton>
       </Grid>
 
-      <Grid rowGap={8}>
+      <Grid
+        rowGap={8}
+        alignItems="center"
+        templateColumns="minmax(0,1fr)"
+        flexBasis={["100%"]}
+      >
         <Skeleton isLoaded={!isLoading}>
           <Text textAlign="justify">{data && data.overview}</Text>
         </Skeleton>
@@ -170,8 +196,103 @@ const Movie = () => {
             </Grid>
           )}
         </Skeleton>
+
+        <CastsWrapper isLoadingCredits={isLoadingCredits} credits={credits} />
       </Grid>
     </Grid>
+  );
+};
+
+type CastsWrapperProps = {
+  isLoadingCredits: boolean;
+  credits: MovieCreditsType;
+};
+
+const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [keyword, setKeyword] = useState<string>("");
+
+  const handleChangeKeyword = (event: ChangeEvent<HTMLInputElement>) =>
+    setKeyword(event.target.value);
+
+  return (
+    <Skeleton isLoaded={!isLoadingCredits}>
+      {credits && (
+        <Flex alignItems="center" gridGap={3} minHeight={24} overflowX="scroll">
+          <Button padding={8} borderRadius="50%" onClick={onOpen}>
+            all
+          </Button>
+          {credits.cast.slice(0, 20).map((movieCast) => (
+            <Link href={`/person/${movieCast.id}`}>
+              <Avatar
+                cursor="pointer"
+                size="lg"
+                src={`${IMAGE_URL}${movieCast.profile_path}`}
+                name={movieCast.name}
+              />
+            </Link>
+          ))}
+          <Button padding={8} borderRadius="50%" onClick={onOpen}>
+            more
+          </Button>
+
+          <Modal
+            isCentered
+            isOpen={isOpen}
+            onClose={onClose}
+            scrollBehavior="inside"
+          >
+            <ModalOverlay />
+
+            <ModalContent>
+              <ModalHeader>
+                <Heading>Casts</Heading>
+                <FormControl marginY={2}>
+                  <Input
+                    type="text"
+                    placeholder="search"
+                    value={keyword}
+                    onChange={handleChangeKeyword}
+                  />
+                </FormControl>
+              </ModalHeader>
+              <ModalCloseButton />
+
+              <ModalBody>
+                <Grid gap={4} templateColumns={["repeat(1, 1fr)"]}>
+                  {credits.cast
+                    .filter(
+                      (unfilteredCast) =>
+                        unfilteredCast.name
+                          .toLowerCase()
+                          .indexOf(keyword.toLowerCase()) > -1
+                    )
+                    .map((movieCast) => (
+                      <Link href={`/person/${movieCast.id}`}>
+                        <Flex
+                          cursor="pointer"
+                          alignItems="center"
+                          gridColumnGap={2}
+                        >
+                          <Avatar
+                            size="lg"
+                            name={movieCast.name}
+                            src={`${IMAGE_URL}${movieCast.profile_path}`}
+                          />
+                          <Text>{movieCast.name}</Text>
+                        </Flex>
+                      </Link>
+                    ))}
+                </Grid>
+              </ModalBody>
+
+              <ModalFooter></ModalFooter>
+            </ModalContent>
+          </Modal>
+        </Flex>
+      )}
+    </Skeleton>
   );
 };
 
