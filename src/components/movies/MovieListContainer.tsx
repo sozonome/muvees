@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 
 import MoviesContainer from "./MoviesContainer";
 import { ListType, useMovieList } from "../../helpers/fetchHooks";
-import { RawEntries } from "../../models/movies";
+import { RawMovieListEntries } from "../../models/movies";
 
 type MovieListContainerProps = {
   listMode: "section" | "search";
@@ -137,7 +137,7 @@ type PageNavButtonProps = {
   isLoading: boolean;
   page: number;
   totalPages: number;
-  results?: RawEntries["results"];
+  results?: RawMovieListEntries["results"];
   handleChangePage: (type: "next" | "prev") => () => void;
 };
 
