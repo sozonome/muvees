@@ -1,5 +1,11 @@
 import useSWR from "swr";
-import { MovieDetailType, RawEntries } from "../models/movies";
+import {
+  MovieCreditsType,
+  MovieDetailType,
+  MovieImagesType,
+  PersonDetailType,
+  RawMovieListEntries,
+} from "../models/movies";
 
 import { fetcher } from "./fetcher";
 
@@ -12,7 +18,7 @@ export type SWRHookResp = {
 };
 
 type MovieListRes = SWRHookResp & {
-  data: RawEntries;
+  data: RawMovieListEntries;
 };
 
 export type ListType = "now_playing" | "popular" | "top_rated" | "upcoming";
@@ -72,4 +78,81 @@ export const useMovieData = ({ id }: MovieDetailReq): MovieDetailRes => {
   };
 };
 
-export const usePersonData = () => {};
+type MovieCreditsReq = MovieDetailReq;
+
+type MovieCreditsRes = SWRHookResp & {
+  data: MovieCreditsType;
+};
+
+export const useMovieCreditsData = ({
+  id,
+}: MovieCreditsReq): MovieCreditsRes => {
+  const { data, error } = useSWR(
+    `${API_URL}/movie/${id}/credits?api_key=${API_KEY}`,
+    fetcher
+  );
+
+  return {
+    data,
+    isLoading: !data && !error,
+    isError: error,
+  };
+};
+
+type MovieImagesReq = MovieDetailReq;
+
+type MovieImagesRes = SWRHookResp & {
+  data: MovieImagesType;
+};
+
+export const getMovieImages = ({ id }: MovieImagesReq): MovieImagesRes => {
+  const { data, error } = useSWR(
+    `${API_URL}/movie/${id}/images?api_key=${API_KEY}`,
+    fetcher
+  );
+
+  return {
+    data,
+    isLoading: !data && !error,
+    isError: error,
+  };
+};
+
+type MovieRecommendationsReq = MovieDetailReq;
+
+type MovieRecommendationsRes = SWRHookResp & {
+  data: RawMovieListEntries;
+};
+
+export const getMovieRecommendations = ({
+  id,
+}: MovieRecommendationsReq): MovieRecommendationsRes => {
+  const { data, error } = useSWR(
+    `${API_URL}/movie/${id}/recommendations?api_key=${API_KEY}`,
+    fetcher
+  );
+
+  return {
+    data,
+    isLoading: !data && !error,
+    isError: error,
+  };
+};
+
+type PersonDataReq = {
+  id: number;
+};
+
+type PersonDataRes = SWRHookResp & {
+  data: PersonDetailType;
+};
+
+export const usePersonData = ({ id }: PersonDataReq): PersonDataRes => {
+  const { data, error } = useSWR(`${API_URL}/person/${id}?api_key=${API_KEY}`);
+
+  return {
+    data,
+    isLoading: !data && !error,
+    isError: error,
+  };
+};

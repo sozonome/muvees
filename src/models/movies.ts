@@ -1,4 +1,4 @@
-export type RawEntries = {
+export type RawMovieListEntries = {
   page: number;
   results: Array<MovieListItemType>;
   dates: DatesType;
@@ -71,4 +71,59 @@ type ProductionCountryType = {
 type LanguageType = {
   iso_639_1: string;
   name: string;
+};
+
+export type MovieCreditsType = {
+  id: number;
+  cast: Array<CreditCastType>;
+  crew: Array<CreditCrewType>;
+};
+
+type PersonType = {
+  adult: boolean;
+  gender?: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path?: string;
+  credit_id: string;
+};
+
+type CreditCastType = PersonType & {
+  cast_id: number;
+  character: string;
+  order: number;
+};
+
+type CreditCrewType = PersonType & {
+  department: string;
+  job: string;
+};
+
+export type PersonDetailType = PersonType & {
+  birthday?: string;
+  deathday?: string;
+  also_known_as: Array<string>;
+  biography: string;
+  place_of_birth?: string;
+  imdb_id: string;
+  homepage?: string;
+};
+
+export type MovieImagesType = {
+  id: number;
+  backdrops: Array<ImageType>;
+  posters: Array<ImageType>;
+};
+
+type ImageType = {
+  aspect_ratio: number;
+  file_path: string;
+  height: number;
+  iso_639_1?: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
 };
