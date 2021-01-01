@@ -49,6 +49,12 @@ const apps: AppsType[] = [
     icon: "https://sznm.dev/app_icons/instadld.svg",
     url: "https://instadld.sznm.dev",
   },
+  {
+    name: "GaaS",
+    description: "Greeting as a Service",
+    icon: "https://sznm.dev/app_icons/greet-gaas.svg",
+    url: "https://gaas.sznm.dev",
+  },
 ];
 
 const AppMenu = () => {
