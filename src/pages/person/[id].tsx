@@ -1,5 +1,6 @@
 import {
   AspectRatio,
+  Box,
   Button,
   Grid,
   Heading,
@@ -8,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import PosterImage from "../../components/movies/PosterImage";
+import { countAge } from "../../helpers/countAge";
 
 import { usePersonData } from "../../helpers/fetchHooks";
 
@@ -40,7 +42,7 @@ const Person = () => {
         )}
       </Skeleton>
 
-      <Skeleton isLoaded={!isLoading} maxHeight={["auto"]}>
+      <Skeleton isLoaded={!isLoading} marginX={[0, 0, 32]} maxHeight={["auto"]}>
         {data && (
           <AspectRatio
             maxHeight={["100%"]}
@@ -48,13 +50,32 @@ const Person = () => {
             marginX={[8, "25%", 0]}
             ratio={3.6 / 5}
           >
-            <PosterImage src={data.profile_path} />
+            <PosterImage
+              style={{ filter: data.deathday && "grayscale(100%)" }}
+              src={data.profile_path}
+            />
           </AspectRatio>
         )}
       </Skeleton>
 
       <Skeleton isLoaded={!isLoading}>
-        {data && <Text textAlign="justify">{data.biography}</Text>}
+        {data && (
+          <Box>
+            <Box textTransform="uppercase" letterSpacing={2} marginY={2}>
+              {data.deathday ? (
+                <Text>
+                  {data.deathday} ({countAge(data.birthday, data.deathday)}{" "}
+                  years)
+                </Text>
+              ) : (
+                data.birthday && (
+                  <Text>Age : {countAge(data.birthday)} years</Text>
+                )
+              )}
+            </Box>
+            <Text textAlign="justify">{data.biography}</Text>
+          </Box>
+        )}
       </Skeleton>
     </Grid>
   );

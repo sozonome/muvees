@@ -20,7 +20,6 @@ import {
   useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
-import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
@@ -28,21 +27,8 @@ import Error from "../../components/layout/Error";
 
 import PosterImage, { IMAGE_URL } from "../../components/movies/PosterImage";
 import { convertToPrice } from "../../helpers/convertToPrice";
-import { fetcher } from "../../helpers/fetcher";
-import {
-  movieDataEndpointURL,
-  useMovieCreditsData,
-  useMovieData,
-} from "../../helpers/fetchHooks";
+import { useMovieCreditsData, useMovieData } from "../../helpers/fetchHooks";
 import { MovieCreditsType } from "../../models/movies";
-
-// export const getStaticProps: GetStaticProps = async ({ params }) => {
-//   const movieDetails = fetcher(movieDataEndpointURL(params.id), )
-
-//   return {
-//     props: {},
-//   };
-// };
 
 const Movie = () => {
   const router = useRouter();
