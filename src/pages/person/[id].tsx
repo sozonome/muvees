@@ -3,7 +3,6 @@ import {
   Button,
   Grid,
   Heading,
-  Image,
   Skeleton,
   Text,
 } from "@chakra-ui/react";
@@ -18,7 +17,7 @@ const Person = () => {
     query: { id },
   } = router;
 
-  const { data, isLoading, isError } = usePersonData({ id: Number(id) });
+  const { data, isLoading } = usePersonData({ id: Number(id) });
 
   return (
     <Grid marginX={8} gap={8}>

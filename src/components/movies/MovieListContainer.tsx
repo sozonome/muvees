@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import MoviesContainer from "./MoviesContainer";
-import { ListType, useMovieList } from "../../helpers/fetchHooks";
+import { ListType, useMovieList, MovieListReq } from "../../helpers/fetchHooks";
 import { RawMovieListEntries } from "../../models/movies";
 
 type MovieListContainerProps = {
@@ -24,17 +24,25 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const {
     query: { section, page: qPage, query },
   } = router;
-  const page = Number(qPage);
+  const page = qPage ? Number(qPage) : undefined;
 
   const [totalPages, setTotalPages] = useState<number>();
   const [shouldFetch, setShouldFetch] = useState<boolean>(false);
 
-  const { data, isLoading } = useMovieList({
-    page,
-    section: section as ListType,
-    query: query as string,
-    ...(listMode === "search" && { shouldFetch }),
-  });
+  const [queries, setQueries] = useState<MovieListReq>(undefined);
+
+  useEffect(() => {
+    setQueries({
+      page: page,
+      query: query as string,
+    });
+  }, [page, query]);
+
+  const { data, isLoading } = useMovieList(
+    listMode === "section" ? (section as ListType) : null,
+    listMode === "search" ? shouldFetch : undefined,
+    queries
+  );
 
   useEffect(() => {
     try {
@@ -57,6 +65,8 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   useEffect(() => {
     if (listMode === "search" && query) {
       setShouldFetch(true);
+    } else {
+      setShouldFetch(false);
     }
   }, [listMode, query]);
 
@@ -135,7 +145,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
 
 type PageNavButtonProps = {
   isLoading: boolean;
-  page: number;
+  page?: number;
   totalPages: number;
   results?: RawMovieListEntries["results"];
   handleChangePage: (type: "next" | "prev") => () => void;
@@ -159,7 +169,7 @@ const PageNavButtons = ({
             marginY={2}
             fontSize="sm"
           >
-            Page: <b>{page}</b> / {totalPages}
+            Page: {page && <b>{page}</b>} / {totalPages}
           </Text>
 
           <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>

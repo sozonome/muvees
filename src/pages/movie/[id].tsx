@@ -20,6 +20,7 @@ import {
   useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
+import { GetStaticProps } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
@@ -27,8 +28,21 @@ import Error from "../../components/layout/Error";
 
 import PosterImage, { IMAGE_URL } from "../../components/movies/PosterImage";
 import { convertToPrice } from "../../helpers/convertToPrice";
-import { useMovieCreditsData, useMovieData } from "../../helpers/fetchHooks";
+import { fetcher } from "../../helpers/fetcher";
+import {
+  movieDataEndpointURL,
+  useMovieCreditsData,
+  useMovieData,
+} from "../../helpers/fetchHooks";
 import { MovieCreditsType } from "../../models/movies";
+
+// export const getStaticProps: GetStaticProps = async ({ params }) => {
+//   const movieDetails = fetcher(movieDataEndpointURL(params.id), )
+
+//   return {
+//     props: {},
+//   };
+// };
 
 const Movie = () => {
   const router = useRouter();
@@ -223,8 +237,8 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
           <Button padding={8} borderRadius="50%" onClick={onOpen}>
             all
           </Button>
-          {credits.cast.slice(0, 20).map((movieCast) => (
-            <Link href={`/person/${movieCast.id}`}>
+          {credits.cast.slice(0, 20).map((movieCast, index) => (
+            <Link href={`/person/${movieCast.id}`} key={index}>
               <Avatar
                 cursor="pointer"
                 size="lg"
@@ -268,8 +282,8 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
                           .toLowerCase()
                           .indexOf(keyword.toLowerCase()) > -1
                     )
-                    .map((movieCast) => (
-                      <Link href={`/person/${movieCast.id}`}>
+                    .map((movieCast, index) => (
+                      <Link href={`/person/${movieCast.id}`} key={index}>
                         <Flex
                           cursor="pointer"
                           alignItems="center"

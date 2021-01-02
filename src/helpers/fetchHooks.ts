@@ -7,10 +7,9 @@ import {
   RawMovieListEntries,
 } from "../models/movies";
 
-import { fetcher } from "./fetcher";
+import { tmdbFetcher } from "./fetcher";
 
 const API_URL = `https://api.themoviedb.org/3`;
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 export type SWRHookResp = {
   isLoading: boolean;
@@ -23,30 +22,25 @@ type MovieListRes = SWRHookResp & {
 
 export type ListType = "now_playing" | "popular" | "top_rated" | "upcoming";
 
-type MovieListReq = {
-  section?: ListType;
+export type MovieListReq = {
   language?: string;
   page?: number;
   query?: string;
-  shouldFetch?: boolean;
 };
 
-export const useMovieList = ({
-  section = "popular",
-  language,
-  page = 1,
-  query,
-  shouldFetch,
-}: MovieListReq): MovieListRes => {
-  const endpoint = `${API_URL}${query ? "/search" : ""}/movie${
-    query ? "" : `/${section}`
-  }?api_key=${API_KEY}${language ? `&language=${language}` : ""}${
-    query ? `&query=${query}` : ""
-  }&page=${page}`;
+export const movieListEndpoint = (section: ListType, query?: string) =>
+  `${API_URL}${query ? "/search" : ""}/movie${query ? "" : `/${section}`}`;
+
+export const useMovieList = (
+  section: ListType = "popular",
+  shouldFetch: boolean = true,
+  qry?: MovieListReq
+): MovieListRes => {
+  const endpoint = movieListEndpoint(section, qry?.query);
 
   const { data, error } = useSWR(
-    shouldFetch ? (shouldFetch === true ? endpoint : null) : endpoint,
-    fetcher
+    shouldFetch ? [endpoint, qry] : null,
+    tmdbFetcher
   );
 
   return {
@@ -65,11 +59,11 @@ type MovieDetailRes = SWRHookResp & {
   data: MovieDetailType;
 };
 
+export const movieDataEndpointURL = (id: MovieCreditsReq["id"]) =>
+  `${API_URL}/movie/${id}`;
+
 export const useMovieData = ({ id }: MovieDetailReq): MovieDetailRes => {
-  const { data, error } = useSWR(
-    `${API_URL}/movie/${id}?api_key=${API_KEY}`,
-    fetcher
-  );
+  const { data, error } = useSWR(movieDataEndpointURL(id), tmdbFetcher);
 
   return {
     data,
@@ -84,13 +78,13 @@ type MovieCreditsRes = SWRHookResp & {
   data: MovieCreditsType;
 };
 
+export const movieCreditsEndpointURL = (id: MovieCreditsReq["id"]) =>
+  `${API_URL}/movie/${id}/credits`;
+
 export const useMovieCreditsData = ({
   id,
 }: MovieCreditsReq): MovieCreditsRes => {
-  const { data, error } = useSWR(
-    `${API_URL}/movie/${id}/credits?api_key=${API_KEY}`,
-    fetcher
-  );
+  const { data, error } = useSWR(movieCreditsEndpointURL(id), tmdbFetcher);
 
   return {
     data,
@@ -105,11 +99,11 @@ type MovieImagesRes = SWRHookResp & {
   data: MovieImagesType;
 };
 
+export const movieImagesEndpointURL = (id: MovieImagesReq["id"]) =>
+  `${API_URL}/movie/${id}/images`;
+
 export const getMovieImages = ({ id }: MovieImagesReq): MovieImagesRes => {
-  const { data, error } = useSWR(
-    `${API_URL}/movie/${id}/images?api_key=${API_KEY}`,
-    fetcher
-  );
+  const { data, error } = useSWR(movieImagesEndpointURL(id), tmdbFetcher);
 
   return {
     data,
@@ -124,12 +118,16 @@ type MovieRecommendationsRes = SWRHookResp & {
   data: RawMovieListEntries;
 };
 
+export const movieRecommendationsEndpointURL = (
+  id: MovieRecommendationsReq["id"]
+) => `${API_URL}/movie/${id}/recommendations`;
+
 export const getMovieRecommendations = ({
   id,
 }: MovieRecommendationsReq): MovieRecommendationsRes => {
   const { data, error } = useSWR(
-    `${API_URL}/movie/${id}/recommendations?api_key=${API_KEY}`,
-    fetcher
+    movieRecommendationsEndpointURL(id),
+    tmdbFetcher
   );
 
   return {
@@ -147,8 +145,11 @@ type PersonDataRes = SWRHookResp & {
   data: PersonDetailType;
 };
 
+export const personDataEndpointURL = (id: PersonDataReq["id"]) =>
+  `${API_URL}/person/${id}`;
+
 export const usePersonData = ({ id }: PersonDataReq): PersonDataRes => {
-  const { data, error } = useSWR(`${API_URL}/person/${id}?api_key=${API_KEY}`);
+  const { data, error } = useSWR(personDataEndpointURL(id), tmdbFetcher);
 
   return {
     data,

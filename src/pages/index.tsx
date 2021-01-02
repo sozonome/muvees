@@ -1,13 +1,13 @@
-import { Box, Grid } from "@chakra-ui/react";
-import { useState } from "react";
+import { Grid } from "@chakra-ui/react";
+
 import MoviesSlider from "../components/movies/MoviesSlider";
-import { useMovieList, ListType } from "../helpers/fetchHooks";
+import { useMovieList } from "../helpers/fetchHooks";
 
 const Home = () => {
-  const { data: popularData } = useMovieList({ section: "popular" });
-  const { data: nowPlayingData } = useMovieList({ section: "now_playing" });
-  const { data: topRatedData } = useMovieList({ section: "top_rated" });
-  const { data: upcomingData } = useMovieList({ section: "upcoming" });
+  const { data: popularData } = useMovieList("popular");
+  const { data: nowPlayingData } = useMovieList("now_playing");
+  const { data: topRatedData } = useMovieList("top_rated");
+  const { data: upcomingData } = useMovieList("upcoming");
 
   return (
     <Grid rowGap={8} mb={8} w="full" padding={[0, 8]}>
