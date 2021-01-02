@@ -1,6 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-const APP_NAME = "muvees";
+export const APP_NAME = "muvees";
 const APP_DESCRIPTION = "Explore movies";
 
 class MyDocument extends Document {
