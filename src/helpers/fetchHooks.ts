@@ -27,20 +27,40 @@ export type MovieListReq = {
   language?: string;
   page?: number;
   query?: string;
+  with_genres?: string | string[];
+};
+
+type TMovieListReq = Pick<MovieListReq, "query" | "with_genres"> & {
+  section: ListType;
 };
 
 /**
  * get movie lists
  */
-export const movieListEndpoint = (section: ListType, query?: string) =>
-  `${API_URL}${query ? "/search" : ""}/movie${query ? "" : `/${section}`}`;
+export const movieListEndpoint = ({
+  section,
+  query,
+  with_genres,
+}: TMovieListReq) => {
+  if (query) {
+    return `${API_URL}/search/movie`;
+  }
+  if (with_genres) {
+    return `${API_URL}/discover/movie`;
+  }
+  return `${API_URL}/movie/${section}`;
+};
 
 export const useMovieList = (
   section: ListType = "popular",
   shouldFetch: boolean = true,
   qry?: MovieListReq
 ): MovieListRes => {
-  const endpoint = movieListEndpoint(section, qry?.query);
+  const endpoint = movieListEndpoint({
+    section,
+    query: qry?.query,
+    with_genres: qry?.with_genres,
+  });
 
   const { data, error } = useSWR(
     shouldFetch ? [endpoint, qry] : null,

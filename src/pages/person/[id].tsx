@@ -51,7 +51,7 @@ const Person = () => {
             ratio={3.6 / 5}
           >
             <PosterImage
-              style={{ filter: data.deathday && "grayscale(100%)" }}
+              // style={{ filter: data.deathday && "grayscale(100%)" }}
               src={data.profile_path}
             />
           </AspectRatio>

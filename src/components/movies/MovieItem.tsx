@@ -1,4 +1,4 @@
-import { AspectRatio, Box, chakra, useColorMode } from "@chakra-ui/react";
+import { AspectRatio, Box, chakra } from "@chakra-ui/react";
 
 import MotionBox from "../MotionBox";
 import PosterImage from "./PosterImage";

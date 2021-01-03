@@ -23,6 +23,7 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
+
 import Error from "../../components/layout/Error";
 
 import PosterImage, { IMAGE_URL } from "../../components/movies/PosterImage";
@@ -147,13 +148,16 @@ const Movie = () => {
           {data && data.genres && (
             <Flex wrap="wrap" gridGap={2}>
               {data.genres.map((genre, index) => (
-                <Badge
-                  variant={colorMode === "light" ? "solid" : "outline"}
-                  colorScheme="gray"
-                  key={index}
-                >
-                  {genre.name}
-                </Badge>
+                <Link href={`/movies/genre/${genre.id}?page=1`}>
+                  <Badge
+                    cursor="pointer"
+                    variant={colorMode === "light" ? "solid" : "outline"}
+                    colorScheme="gray"
+                    key={index}
+                  >
+                    {genre.name}
+                  </Badge>
+                </Link>
               ))}
             </Flex>
           )}

@@ -16,13 +16,13 @@ import { ListType, useMovieList, MovieListReq } from "../../helpers/fetchHooks";
 import { RawMovieListEntries } from "../../models/movies";
 
 type MovieListContainerProps = {
-  listMode: "section" | "search";
+  listMode: "section" | "search" | "discover";
 };
 
 const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const router = useRouter();
   const {
-    query: { section, page: qPage, query },
+    query: { section, page: qPage, query, genre },
   } = router;
   const page = qPage ? Number(qPage) : undefined;
 
@@ -32,15 +32,31 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const [queries, setQueries] = useState<MovieListReq>(undefined);
 
   useEffect(() => {
-    setQueries({
-      page: page,
-      query: query as string,
-    });
+    switch (listMode) {
+      case "section":
+        setQueries({
+          page: page,
+        });
+        break;
+      case "search":
+        setQueries({
+          page: page,
+          query: query as string,
+        });
+      case "discover":
+        setQueries({
+          page: page,
+          with_genres: genre as string,
+        });
+        break;
+      default:
+        break;
+    }
   }, [page, query]);
 
   const { data, isLoading } = useMovieList(
     listMode === "section" ? (section as ListType) : null,
-    listMode === "search" ? shouldFetch : undefined,
+    listMode === "search" || listMode === "discover" ? shouldFetch : undefined,
     queries
   );
 
@@ -63,21 +79,33 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   }, [data]);
 
   useEffect(() => {
-    if (listMode === "search" && query) {
+    if (
+      (listMode === "search" && query) ||
+      (listMode === "discover" && genre)
+    ) {
       setShouldFetch(true);
     } else {
       setShouldFetch(false);
     }
-  }, [listMode, query]);
+  }, [listMode, query, genre]);
 
   const handleChangePage = (type: "next" | "prev") => () => {
     const changePageNum = type === "next" ? page + 1 : page - 1;
 
-    router.push(
-      listMode === "section"
-        ? `/movies/${section}?page=${changePageNum}`
-        : `/movies/search?query=${query}&page=${changePageNum}`
-    );
+    const nextRoute = () => {
+      switch (listMode) {
+        case "section":
+          return `/movies/${section}?page=${changePageNum}`;
+        case "search":
+          return `/movies/search?query=${query}&page=${changePageNum}`;
+        case "discover":
+          return `/movies/genre/${genre}?page=${changePageNum}`;
+        default:
+          return `/movies/${section}?page=${changePageNum}`;
+      }
+    };
+
+    router.push(nextRoute());
   };
 
   const pageNavButtonProps: PageNavButtonProps = {
