@@ -8,6 +8,7 @@ import {
   Grid,
   Heading,
   Input,
+  Link as ChakraLink,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -22,6 +23,8 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { BiLinkExternal } from "react-icons/bi";
+import { FaImdb } from "react-icons/fa";
 import { ChangeEvent, useState } from "react";
 
 import Error from "../../components/layout/Error";
@@ -172,6 +175,30 @@ const Movie = () => {
       >
         <Skeleton isLoaded={!isLoading}>
           <Text textAlign="justify">{data && data.overview}</Text>
+        </Skeleton>
+
+        <Skeleton isLoaded={!isLoading}>
+          {data && (
+            <Flex gridColumnGap={2}>
+              {data.homepage && (
+                <ChakraLink _hover={undefined} href={data.homepage} isExternal>
+                  <Button size="sm" leftIcon={<BiLinkExternal />}>
+                    website
+                  </Button>
+                </ChakraLink>
+              )}
+              {data.imdb_id && (
+                <ChakraLink
+                  href={`https://www.imdb.com/title/${data.imdb_id}`}
+                  isExternal
+                >
+                  <Button size="sm" leftIcon={<FaImdb />}>
+                    IMDB
+                  </Button>
+                </ChakraLink>
+              )}
+            </Flex>
+          )}
         </Skeleton>
 
         <Skeleton isLoaded={!isLoading}>
