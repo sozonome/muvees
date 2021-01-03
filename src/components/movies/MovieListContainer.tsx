@@ -8,6 +8,7 @@ import {
   Skeleton,
   Text,
 } from "@chakra-ui/react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -32,31 +33,34 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const [queries, setQueries] = useState<MovieListReq>(undefined);
 
   useEffect(() => {
-    switch (listMode) {
-      case "section":
-        setQueries({
-          page: page,
-        });
-        break;
-      case "search":
-        setQueries({
-          page: page,
-          query: query as string,
-        });
-      case "discover":
-        setQueries({
-          page: page,
-          with_genres: genre as string,
-        });
-        break;
-      default:
-        break;
+    if (page || query || genre) {
+      switch (listMode) {
+        case "section":
+          setQueries({
+            page: page,
+          });
+          break;
+        case "search":
+          setQueries({
+            page: page,
+            query: query as string,
+          });
+          break;
+        case "discover":
+          setQueries({
+            page: page,
+            with_genres: genre as string,
+          });
+          break;
+        default:
+          break;
+      }
     }
-  }, [page, query]);
+  }, [page, query, genre]);
 
   const { data, isLoading } = useMovieList(
     listMode === "section" ? (section as ListType) : null,
-    listMode === "search" || listMode === "discover" ? shouldFetch : undefined,
+    listMode === "search" ? shouldFetch : undefined,
     queries
   );
 
@@ -116,8 +120,22 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
     handleChangePage,
   };
 
+  const generatePageHeadTitle = () => {
+    switch (listMode) {
+      case "section":
+        return `${section} | muvees`;
+      case "search":
+        return `muvees | search: "${unescape(query as string)}"`;
+    }
+  };
+
   return (
     <Box mb={8} w="full" paddingX={8}>
+      {data && (
+        <Head>
+          <title>{generatePageHeadTitle()}</title>
+        </Head>
+      )}
       <Button borderRadius={24} isFullWidth onClick={() => router.push("/")}>
         back
       </Button>

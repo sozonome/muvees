@@ -22,6 +22,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { BiLinkExternal } from "react-icons/bi";
 import { FaImdb } from "react-icons/fa";
@@ -83,6 +84,11 @@ const Movie = () => {
       paddingX={8}
       gridGap={[8, 16]}
     >
+      {data && (
+        <Head>
+          <title>{data.title} | muvees</title>
+        </Head>
+      )}
       <Grid rowGap={8} flexBasis={["100%"]}>
         <Button
           borderRadius={24}
