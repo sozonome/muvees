@@ -23,9 +23,7 @@ const Person = () => {
 
   return (
     <Grid marginX={8} gap={8}>
-      <Button borderRadius={24} onClick={() => router.back()}>
-        back
-      </Button>
+      <Button onClick={() => router.back()}>back</Button>
 
       <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : null}>
         {data && (

@@ -17,6 +17,13 @@ const customTheme = extendTheme({
     //   300: "#4fb3be",
     // },
   },
+  components: {
+    Button: {
+      baseStyle: {
+        borderRadius: 24,
+      },
+    },
+  },
 });
 
 export default customTheme;

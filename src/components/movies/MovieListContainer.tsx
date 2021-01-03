@@ -219,15 +219,10 @@ const PageNavButtons = ({
           </Text>
 
           <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>
-            <Button
-              borderRadius={24}
-              disabled={page === 1}
-              onClick={handleChangePage("prev")}
-            >
+            <Button disabled={page === 1} onClick={handleChangePage("prev")}>
               prev
             </Button>
             <Button
-              borderRadius={24}
               disabled={page === totalPages}
               onClick={handleChangePage("next")}
             >

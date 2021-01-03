@@ -26,14 +26,15 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { BiLinkExternal } from "react-icons/bi";
 import { FaImdb } from "react-icons/fa";
+import { GrGallery } from "react-icons/gr";
 import { ChangeEvent, useState } from "react";
 
-import Error from "../../components/layout/Error";
+import Error from "../../../components/layout/Error";
 
-import PosterImage, { IMAGE_URL } from "../../components/movies/PosterImage";
-import { convertToPrice } from "../../helpers/convertToPrice";
-import { useMovieCreditsData, useMovieData } from "../../helpers/fetchHooks";
-import { MovieCreditsType } from "../../models/movies";
+import PosterImage, { IMAGE_URL } from "../../../components/movies/PosterImage";
+import { convertToPrice } from "../../../helpers/convertToPrice";
+import { useMovieCreditsData, useMovieData } from "../../../helpers/fetchHooks";
+import { MovieCreditsType } from "../../../models/movies";
 
 const Movie = () => {
   const router = useRouter();
@@ -80,7 +81,6 @@ const Movie = () => {
   return (
     <Grid
       templateColumns={["repeat(1)", "repeat(1)", "repeat(2, minmax(0,1fr))"]}
-      wrap="wrap"
       paddingX={8}
       gridGap={[8, 16]}
     >
@@ -90,11 +90,7 @@ const Movie = () => {
         </Head>
       )}
       <Grid rowGap={8} flexBasis={["100%"]}>
-        <Button
-          borderRadius={24}
-          onClick={() => router.back()}
-          width={["full", "full", 100]}
-        >
+        <Button onClick={() => router.back()} width={["full", "full", 100]}>
           back
         </Button>
 
@@ -157,7 +153,7 @@ const Movie = () => {
           {data && data.genres && (
             <Flex wrap="wrap" gridGap={2}>
               {data.genres.map((genre, index) => (
-                <Link href={`/movies/genre/${genre.id}?page=1`}>
+                <Link href={`/movies/genre/${genre.id}?page=1`} key={index}>
                   <Badge
                     cursor="pointer"
                     variant={colorMode === "light" ? "solid" : "outline"}
@@ -203,6 +199,11 @@ const Movie = () => {
                   </Button>
                 </ChakraLink>
               )}
+              <Link href={`/movie/${id}/images`} passHref>
+                <Button size="sm" leftIcon={<GrGallery />}>
+                  gallery
+                </Button>
+              </Link>
             </Flex>
           )}
         </Skeleton>
