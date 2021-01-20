@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { tmdbFetcher } from "./fetcher";
+import { fetcher } from "./fetcher";
 
 import {
   MovieCreditsType,
@@ -43,12 +43,12 @@ export const movieListEndpoint = ({
   with_genres,
 }: TMovieListReq) => {
   if (query) {
-    return `${API_URL}/search/movie`;
+    return `/api/movie/search`;
   }
   if (with_genres) {
-    return `${API_URL}/discover/movie`;
+    return `/api/movie/discover`;
   }
-  return `${API_URL}/movie/${section}`;
+  return `/api/movie/${section}`;
 };
 
 export const useMovieList = (
@@ -62,10 +62,7 @@ export const useMovieList = (
     with_genres: qry?.with_genres,
   });
 
-  const { data, error } = useSWR(
-    shouldFetch ? [endpoint, qry] : null,
-    tmdbFetcher
-  );
+  const { data, error } = useSWR(shouldFetch ? [endpoint, qry] : null, fetcher);
 
   return {
     data,
@@ -90,7 +87,7 @@ export const movieDataEndpointURL = (id: MovieCreditsReq["id"]) =>
  * get movie details
  */
 export const useMovieData = ({ id }: MovieDetailReq): MovieDetailRes => {
-  const { data, error } = useSWR(movieDataEndpointURL(id), tmdbFetcher);
+  const { data, error } = useSWR(movieDataEndpointURL(id), fetcher);
 
   return {
     data,
@@ -114,7 +111,7 @@ export const movieCreditsEndpointURL = (id: MovieCreditsReq["id"]) =>
 export const useMovieCreditsData = ({
   id,
 }: MovieCreditsReq): MovieCreditsRes => {
-  const { data, error } = useSWR(movieCreditsEndpointURL(id), tmdbFetcher);
+  const { data, error } = useSWR(movieCreditsEndpointURL(id), fetcher);
 
   return {
     data,
@@ -136,7 +133,7 @@ export const movieImagesEndpointURL = (id: MovieImagesReq["id"]) =>
   `${API_URL}/movie/${id}/images`;
 
 export const getMovieImages = ({ id }: MovieImagesReq): MovieImagesRes => {
-  const { data, error } = useSWR(movieImagesEndpointURL(id), tmdbFetcher);
+  const { data, error } = useSWR(movieImagesEndpointURL(id), fetcher);
 
   return {
     data,
@@ -161,10 +158,7 @@ export const movieRecommendationsEndpointURL = (
 export const getMovieRecommendations = ({
   id,
 }: MovieRecommendationsReq): MovieRecommendationsRes => {
-  const { data, error } = useSWR(
-    movieRecommendationsEndpointURL(id),
-    tmdbFetcher
-  );
+  const { data, error } = useSWR(movieRecommendationsEndpointURL(id), fetcher);
 
   return {
     data,
@@ -188,7 +182,7 @@ export const personDataEndpointURL = (id: PersonDataReq["id"]) =>
   `${API_URL}/person/${id}`;
 
 export const usePersonData = ({ id }: PersonDataReq): PersonDataRes => {
-  const { data, error } = useSWR(personDataEndpointURL(id), tmdbFetcher);
+  const { data, error } = useSWR(personDataEndpointURL(id), fetcher);
 
   return {
     data,
@@ -200,8 +194,5 @@ export const usePersonData = ({ id }: PersonDataReq): PersonDataRes => {
 type DiscoverMovieReq = {};
 
 export const useDiscoverMovie = (query?: DiscoverMovieReq) => {
-  const { data, error } = useSWR(
-    [`${API_URL}/discover/movie`, query],
-    tmdbFetcher
-  );
+  const { data, error } = useSWR([`${API_URL}/discover/movie`, query], fetcher);
 };
