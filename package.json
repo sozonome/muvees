@@ -12,26 +12,26 @@
     "push-release": "git push --follow-tags origin main"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.4.1",
+    "@chakra-ui/react": "^1.6.0",
     "@emotion/react": "^11.1.5",
-    "@emotion/styled": "^11.1.5",
-    "@fontsource/inter": "^4.2.2",
+    "@emotion/styled": "^11.3.0",
+    "@fontsource/inter": "^4.3.0",
     "axios": "^0.21.1",
     "formik": "^2.2.6",
-    "framer-motion": "^4.0.3",
-    "next": "^10.0.9",
-    "next-pwa": "^5.0.6",
+    "framer-motion": "^4.1.11",
+    "next": "^10.2.0",
+    "next-pwa": "^5.2.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "swr": "^0.5.4"
+    "swr": "^0.5.6"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^3.0.3",
-    "@types/node": "^14.14.37",
-    "@types/react": "^17.0.3",
+    "@netlify/plugin-nextjs": "^3.1.0",
+    "@types/node": "^14.14.41",
+    "@types/react": "^17.0.4",
     "prettier": "^2.2.1",
-    "standard-version": "^9.1.1",
-    "typescript": "^4.2.3"
+    "standard-version": "^9.3.0",
+    "typescript": "^4.2.4"
   }
 }
