@@ -90,7 +90,12 @@ const Movie = () => {
         </Head>
       )}
       <Grid rowGap={8} flexBasis={["100%"]}>
-        <Button onClick={() => router.back()} width={["full", "full", 100]}>
+        <Button
+          onClick={() =>
+            history.length > 2 ? router.back() : router.push("/")
+          }
+          width={["full", "full", 100]}
+        >
           back
         </Button>
 
