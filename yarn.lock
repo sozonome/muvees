@@ -816,17 +816,10 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@7.15.3":
+"@babel/runtime@7.15.3", "@babel/runtime@^7.0.0", "@babel/runtime@^7.11.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
   version "7.15.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
   integrity sha512-OvwMLqNXkCXSz1kSm58sEsNuhqOx/fKpnUnKnFB5v8uDda5bLNEHNgKPvhDN6IU0LDcnHQ90LlJ0Q6jnyBSIBA==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.11.2", "@babel/runtime@^7.13.10", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.4":
-  version "7.14.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
-  integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1390,20 +1383,10 @@
   dependencies:
     "@chakra-ui/utils" "1.8.2"
 
-"@chakra-ui/utils@1.8.2":
+"@chakra-ui/utils@1.8.2", "@chakra-ui/utils@^1.7.0":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-1.8.2.tgz#5a9f1f67c5f2232769fe7d009fcf96eebf3c2b4e"
   integrity sha512-MnE4czCQCE87Ch1DfAdmZvObgRviw9wQ9Zti372P8VD1ILEdff/C5WBWHW6mgG3YcorPAxgnrNF3MmNE95jRkA==
-  dependencies:
-    "@types/lodash.mergewith" "4.6.6"
-    css-box-model "1.2.1"
-    framesync "5.3.0"
-    lodash.mergewith "4.6.2"
-
-"@chakra-ui/utils@^1.7.0":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/utils/-/utils-1.8.1.tgz#9778e4e8776da0ed4dc0051755d79002d2f21ec2"
-  integrity sha512-v0xL9U2ozDbHCl2kQTdJNOjUGT7ZjyFwEYuMW02ZaLkmLPj2w3G592iOsJ9Z9sBemQgoOrZGyTWqdxm6rhxJug==
   dependencies:
     "@types/lodash.mergewith" "4.6.6"
     css-box-model "1.2.1"
@@ -1762,15 +1745,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimist/-/minimist-1.2.1.tgz#283f669ff76d7b8260df8ab7a4262cc83d988256"
   integrity sha512-fZQQafSREFyuZcdWFAExYjBiCL7AUCdgsk80iO0q4yihYYdcIiH28CcuPTGFgLOCC8RlW49GSQxdHwZP+I7CNg==
 
-"@types/node@*":
-  version "14.17.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.9.tgz#b97c057e6138adb7b720df2bd0264b03c9f504fd"
-  integrity sha512-CMjgRNsks27IDwI785YMY0KLt3co/c0cQ5foxHYv/shC2w8oOnVwz5Ubq1QG5KzrcW+AXk6gzdnxIkDnTvzu3g==
-
-"@types/node@^16.7.13":
-  version "16.7.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.7.13.tgz#86fae356b03b5a12f2506c6cf6cd9287b205973f"
-  integrity sha512-pLUPDn+YG3FYEt/pHI74HmnJOWzeR+tOIQzUx93pi9M7D8OE7PSLr97HboXwk5F+JS+TLtWuzCOW97AHjmOXXA==
+"@types/node@*", "@types/node@^16.9.1":
+  version "16.9.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.1.tgz#0611b37db4246c937feef529ddcc018cf8e35708"
+  integrity sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -5441,10 +5419,10 @@ supports-color@^8.0.0:
   dependencies:
     has-flag "^4.0.0"
 
-swr@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-1.0.0.tgz#d047933714d8bd16ae35af67d81149f4ae700a4d"
-  integrity sha512-v55Dr+vxIFiUyGxC5W4uN5falxHxYdbpb/R3bO+bSG+svbC9bUWmupy4NM/2pER7X8OvgwJWu0AiSoGy0ND9ew==
+swr@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.0.1.tgz#15f62846b87ee000e52fa07812bb65eb62d79483"
+  integrity sha512-EPQAxSjoD4IaM49rpRHK0q+/NzcwoT8c0/Ylu/u3/6mFj/CWnQVjNJ0MV2Iuw/U+EJSd2TX5czdAwKPYZIG0YA==
   dependencies:
     dequal "2.0.2"
 
@@ -5747,7 +5725,7 @@ util@0.10.3:
   dependencies:
     inherits "2.0.1"
 
-util@0.12.4:
+util@0.12.4, util@^0.12.0:
   version "0.12.4"
   resolved "https://registry.yarnpkg.com/util/-/util-0.12.4.tgz#66121a31420df8f01ca0c464be15dfa1d1850253"
   integrity sha512-bxZ9qtSlGUWSOy9Qa9Xgk11kSslpuZwaxCg4sNIDj6FLucDab2JxnHwyNTCpHMtK1MjoQiWQ6DiUMZYbSrO+Sw==
@@ -5765,18 +5743,6 @@ util@^0.11.0:
   integrity sha512-HShAsny+zS2TZfaXxD9tYj4HQGlBezXZMZuM/S5PKLLoZkShZiGk9o5CzukI1LVHZvjdvZ2Sj1aW/Ndn2NB/HQ==
   dependencies:
     inherits "2.0.3"
-
-util@^0.12.0:
-  version "0.12.3"
-  resolved "https://registry.yarnpkg.com/util/-/util-0.12.3.tgz#971bb0292d2cc0c892dab7c6a5d37c2bec707888"
-  integrity sha512-I8XkoQwE+fPQEhy9v012V+TSdH2kp9ts29i20TaaDUXsg7x/onePbhFJUExBfv/2ay1ZOp/Vsm3nDlmnFGSAog==
-  dependencies:
-    inherits "^2.0.3"
-    is-arguments "^1.0.4"
-    is-generator-function "^1.0.7"
-    is-typed-array "^1.1.3"
-    safe-buffer "^5.1.2"
-    which-typed-array "^1.1.2"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
