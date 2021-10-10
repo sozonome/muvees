@@ -20,7 +20,7 @@ type MoviesSliderProps = {
 const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
   const [mobile] = useMediaQuery("(max-width: 30em)");
   const router = useRouter();
-  const listType = sectionTitle.toLowerCase().replace(" ", "_");
+  const listType = sectionTitle?.toLowerCase().replace(" ", "_");
 
   return (
     <Box>

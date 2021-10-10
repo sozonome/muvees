@@ -73,12 +73,12 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const {
     query: { section, page: qPage, query, genre },
   } = router;
-  const page = qPage ? Number(qPage) : undefined;
+  const page = qPage ? Number(qPage) : 0;
 
-  const [totalPages, setTotalPages] = useState<number>();
+  const [totalPages, setTotalPages] = useState<number>(0);
   const [shouldFetch, setShouldFetch] = useState<boolean>(false);
 
-  const [queries, setQueries] = useState<MovieListReq>(undefined);
+  const [queries, setQueries] = useState<MovieListReq>();
 
   useEffect(() => {
     if (page || query || genre) {
@@ -108,7 +108,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   }, [page, query, genre]);
 
   const { data, isLoading } = useMovieList(
-    listMode === "section" ? (section as ListType) : null,
+    listMode === "section" ? (section as ListType) : undefined,
     listMode === "search" ? shouldFetch : undefined,
     queries
   );

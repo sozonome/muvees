@@ -25,7 +25,7 @@ const Person = () => {
     <Grid marginX={8} gap={8}>
       <Button onClick={() => router.back()}>back</Button>
 
-      <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : null}>
+      <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : undefined}>
         {data && (
           <Heading
             textAlign={["center", "center", "inherit"]}
@@ -62,7 +62,8 @@ const Person = () => {
             <Box textTransform="uppercase" letterSpacing={2} marginY={2}>
               {data.deathday ? (
                 <Text>
-                  {data.deathday} ({countAge(data.birthday, data.deathday)}{" "}
+                  {data.deathday} (
+                  {data.birthday ? countAge(data.birthday, data.deathday) : ""}{" "}
                   years)
                 </Text>
               ) : (

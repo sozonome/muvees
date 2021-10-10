@@ -170,11 +170,11 @@ const Movie = () => {
         case "Canceled":
           return "red";
         default:
-          return null;
+          return undefined;
       }
     }
 
-    return null;
+    return undefined;
   };
 
   if (isError) {
@@ -202,7 +202,7 @@ const Movie = () => {
           back
         </Button>
 
-        <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : null}>
+        <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : undefined}>
           <Heading
             textAlign={["center", "center", "inherit"]}
             fontSize="md"

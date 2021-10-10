@@ -6,7 +6,7 @@ import {
   MovieImagesType,
   PersonDetailType,
   RawMovieListEntries,
-} from "../models/movies";
+} from "models/movies";
 
 import { tmdbFetcher } from "./fetcher";
 
