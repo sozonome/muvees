@@ -1,11 +1,11 @@
 import { AspectRatio, Box, chakra } from "@chakra-ui/react";
+import Link from "next/link";
 
-import MotionBox from "../MotionBox";
+import MotionBox from "components/MotionBox";
+import { MovieListItemType } from "models/movies";
+
 import PosterImage from "./PosterImage";
 import PosterLabel from "./PosterLabel";
-
-import { MovieListItemType } from "../../models/movies";
-import Link from "next/link";
 
 type MovieItemProps = {
   movie: MovieListItemType;

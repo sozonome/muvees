@@ -8,10 +8,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import PosterImage from "../../components/movies/PosterImage";
-import { countAge } from "../../helpers/countAge";
 
-import { usePersonData } from "../../helpers/fetchHooks";
+import PosterImage from "components/movies/PosterImage";
+import { countAge } from "utils/countAge";
+import { usePersonData } from "utils/fetchHooks";
 
 const Person = () => {
   const router = useRouter();

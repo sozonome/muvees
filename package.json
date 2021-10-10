@@ -5,12 +5,15 @@
   "author": "sozonome",
   "scripts": {
     "dev": "next dev",
+    "lint": "next lint",
+    "lint:fix": "eslint src --fix && yarn format",
     "build": "next build",
     "start": "next start",
-    "prettify": "prettier --write src",
+    "format": "prettier --write src",
     "up-latest": "yarn upgrade-interactive --latest",
     "release": "standard-version",
-    "push-release": "git push --follow-tags origin main"
+    "push-release": "git push --follow-tags origin main",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.6.7",
@@ -28,10 +31,17 @@
     "swr": "^1.0.1"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^13.2.0",
     "@types/node": "^16.9.1",
     "@types/react": "^17.0.20",
+    "commitlint": "^13.2.1",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "11.1.2",
+    "eslint-config-sznm": "^0.1.9",
+    "lint-staged": "^11.2.2",
     "prettier": "^2.3.2",
     "standard-version": "^9.3.1",
-    "typescript": "^4.4.2"
+    "typescript": "^4.4.2",
+    "husky": "^7.0.0"
   }
 }

@@ -1,8 +1,9 @@
-import { Flex, Heading, Box, IconButton, Grid } from "@chakra-ui/react";
+import { Flex, Heading, IconButton, Grid } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { GoSearch } from "react-icons/go";
 
-import AccessibleLink from "../AccessibleLink";
+import AccessibleLink from "components/AccessibleLink";
+
 import AppMenu from "./AppMenu";
 import ThemeToggle from "./ThemeToggle";
 

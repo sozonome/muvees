@@ -6,11 +6,11 @@ import {
   Skeleton,
   useMediaQuery,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
+
+import { MovieListItemType } from "models/movies";
 
 import MovieItem from "./MovieItem";
-
-import { MovieListItemType } from "../../models/movies";
-import { useRouter } from "next/router";
 
 type MoviesSliderProps = {
   movies?: Array<MovieListItemType>;
@@ -57,8 +57,12 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
             {movies &&
               movies
                 .slice(0, 10)
-                .map((movie, index) => (
-                  <MovieItem movie={movie} key={index} layout="flex" />
+                .map((movie) => (
+                  <MovieItem
+                    movie={movie}
+                    key={`${movie.title}-${movie.id}`}
+                    layout="flex"
+                  />
                 ))}
           </Flex>
         </Flex>

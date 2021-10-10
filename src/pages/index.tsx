@@ -1,7 +1,7 @@
 import { Grid } from "@chakra-ui/react";
 
 import MoviesSlider from "../components/movies/MoviesSlider";
-import { useMovieList } from "../helpers/fetchHooks";
+import { useMovieList } from "../utils/fetchHooks";
 
 const Home = () => {
   const { data: popularData } = useMovieList("popular");

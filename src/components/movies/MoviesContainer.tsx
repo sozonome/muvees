@@ -1,8 +1,8 @@
 import { Grid, Skeleton } from "@chakra-ui/react";
 
-import MovieItem from "./MovieItem";
+import { MovieListItemType } from "models/movies";
 
-import { MovieListItemType } from "../../models/movies";
+import MovieItem from "./MovieItem";
 
 type MoviesContainerProps = {
   isLoading: boolean;
@@ -11,7 +11,7 @@ type MoviesContainerProps = {
 
 const MoviesContainer = ({ movies, isLoading }: MoviesContainerProps) => {
   return (
-    <Skeleton minHeight={"100vh"} marginY={8} isLoaded={!isLoading}>
+    <Skeleton minHeight="100vh" marginY={8} isLoaded={!isLoading}>
       {movies?.length ? (
         <Grid
           templateColumns={[
@@ -23,8 +23,12 @@ const MoviesContainer = ({ movies, isLoading }: MoviesContainerProps) => {
           rowGap={12}
         >
           {movies &&
-            movies.map((movie, index) => (
-              <MovieItem movie={movie} key={index} layout="grid" />
+            movies.map((movie) => (
+              <MovieItem
+                movie={movie}
+                key={`${movie.title}-${movie.id}`}
+                layout="grid"
+              />
             ))}
         </Grid>
       ) : null}

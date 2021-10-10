@@ -6,13 +6,13 @@ const Error = () => {
   return (
     <Grid marginX={8}>
       <Heading textAlign="center" fontSize="lg" fontWeight="400">
-        Uh-oh, something's wrong
+        Uh-oh, something&apos;s wrong
       </Heading>
 
       <Image src="/No data-bro.svg" width="300" height="300" />
 
       <Link href="/" passHref>
-        <Button>Let's Go Back</Button>
+        <Button>Let&apos;s Go Back</Button>
       </Link>
     </Grid>
   );

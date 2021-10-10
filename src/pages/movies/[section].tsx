@@ -1,4 +1,4 @@
-import MovieListContainer from "../../components/movies/MovieListContainer";
+import MovieListContainer from "components/movies/MovieListContainer";
 
 const MoviesBySection = () => {
   return <MovieListContainer listMode="section" />;

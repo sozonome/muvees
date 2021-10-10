@@ -1,7 +1,5 @@
 import useSWR from "swr";
 
-import { tmdbFetcher } from "./fetcher";
-
 import {
   MovieCreditsType,
   MovieDetailType,
@@ -10,10 +8,13 @@ import {
   RawMovieListEntries,
 } from "../models/movies";
 
+import { tmdbFetcher } from "./fetcher";
+
 const API_URL = `https://api.themoviedb.org/3`;
 
 export type SWRHookResp = {
   isLoading: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   isError: any;
 };
 
@@ -53,7 +54,7 @@ export const movieListEndpoint = ({
 
 export const useMovieList = (
   section: ListType = "popular",
-  shouldFetch: boolean = true,
+  shouldFetch = true,
   qry?: MovieListReq
 ): MovieListRes => {
   const endpoint = movieListEndpoint({
@@ -135,7 +136,7 @@ type MovieImagesRes = SWRHookResp & {
 export const movieImagesEndpointURL = (id: MovieImagesReq["id"]) =>
   `${API_URL}/movie/${id}/images`;
 
-export const getMovieImages = ({ id }: MovieImagesReq): MovieImagesRes => {
+export const useMovieImages = ({ id }: MovieImagesReq): MovieImagesRes => {
   const { data, error } = useSWR(movieImagesEndpointURL(id), tmdbFetcher);
 
   return {
@@ -158,7 +159,7 @@ export const movieRecommendationsEndpointURL = (
   id: MovieRecommendationsReq["id"]
 ) => `${API_URL}/movie/${id}/recommendations`;
 
-export const getMovieRecommendations = ({
+export const useMovieRecommendations = ({
   id,
 }: MovieRecommendationsReq): MovieRecommendationsRes => {
   const { data, error } = useSWR(
@@ -197,11 +198,11 @@ export const usePersonData = ({ id }: PersonDataReq): PersonDataRes => {
   };
 };
 
-type DiscoverMovieReq = {};
+// type DiscoverMovieReq = {};
 
-export const useDiscoverMovie = (query?: DiscoverMovieReq) => {
-  const { data, error } = useSWR(
-    [`${API_URL}/discover/movie`, query],
-    tmdbFetcher
-  );
-};
+// export const useDiscoverMovie = (query?: DiscoverMovieReq) => {
+//   const { data, error } = useSWR(
+//     [`${API_URL}/discover/movie`, query],
+//     tmdbFetcher
+//   );
+// };

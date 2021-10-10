@@ -1,11 +1,8 @@
 import { Box, Button, Flex, Grid, Heading, Skeleton } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import PosterImage, {
-  IMAGE_URL_ORIGINAL,
-} from "../../../components/movies/PosterImage";
-
-import { getMovieImages } from "../../../helpers/fetchHooks";
+import PosterImage, { IMAGE_URL_ORIGINAL } from "components/movies/PosterImage";
+import { useMovieImages } from "utils/fetchHooks";
 
 const Images = () => {
   const router = useRouter();
@@ -14,7 +11,7 @@ const Images = () => {
     query: { id },
   } = router;
 
-  const { data, isLoading } = getMovieImages({ id: Number(id) });
+  const { data, isLoading } = useMovieImages({ id: Number(id) });
 
   const handleClick = (file_path: string) => () => {
     window.open(`${IMAGE_URL_ORIGINAL}${file_path}`, "_blank");
@@ -36,10 +33,10 @@ const Images = () => {
             </Heading>
             <Flex paddingX={[8, 6]} overflowX="scroll">
               <Flex alignItems="center" gridGap={4} minHeight={360}>
-                {data.backdrops.map((backdrop, index) => (
+                {data.backdrops.map((backdrop) => (
                   <PosterImage
                     src={backdrop.file_path}
-                    key={index}
+                    key={backdrop.file_path}
                     maxHeight={300}
                     onClick={handleClick(backdrop.file_path)}
                   />
@@ -59,11 +56,11 @@ const Images = () => {
 
             <Flex paddingX={[8, 6]} overflowX="scroll">
               <Flex alignItems="center" gridGap={4} minHeight={[64, 320]}>
-                {data.posters.map((poster, index) => (
+                {data.posters.map((poster) => (
                   <PosterImage
                     src={poster.file_path}
                     maxHeight={200}
-                    key={index}
+                    key={poster.file_path}
                     onClick={handleClick(poster.file_path)}
                   />
                 ))}

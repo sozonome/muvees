@@ -29,7 +29,7 @@ export type DatesType = {
 };
 
 export type MovieDetailType = Omit<MovieListItemType, "genre_ids"> & {
-  belongs_to_collection?: object;
+  belongs_to_collection?: Record<string, unknown>;
   budget: number;
   genres: Array<GenreType>;
   homepage?: string;
