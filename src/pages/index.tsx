@@ -1,34 +1,24 @@
-import { Grid } from "@chakra-ui/react";
+import { GetStaticProps } from "next";
 
-import MoviesSlider from "components/movies/MoviesSlider";
-import { useMovieList } from "services/tmdb/movie/list";
+import Home from "components/pages/home";
+import { HomePageProps } from "components/pages/home/types";
+import { getMovieListServer } from "services/tmdb/movie/list";
 
-const Home = () => {
-  const { data: popularData } = useMovieList("popular");
-  const { data: nowPlayingData } = useMovieList("now_playing");
-  const { data: topRatedData } = useMovieList("top_rated");
-  const { data: upcomingData } = useMovieList("upcoming");
+export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
+  const popularFallbackData = await getMovieListServer("popular");
+  const nowPlayingFallbackData = await getMovieListServer("now_playing");
+  const topRatedFallbackData = await getMovieListServer("top_rated");
+  const upcomingFallbackData = await getMovieListServer("upcoming");
 
-  return (
-    <Grid rowGap={8} mb={8} w="full" padding={[0, 8]}>
-      <MoviesSlider
-        sectionTitle="Popular"
-        movies={popularData && popularData.results}
-      />
-      <MoviesSlider
-        sectionTitle="Now Playing"
-        movies={nowPlayingData && nowPlayingData.results}
-      />
-      <MoviesSlider
-        sectionTitle="Top Rated"
-        movies={topRatedData && topRatedData.results}
-      />
-      <MoviesSlider
-        sectionTitle="Upcoming"
-        movies={upcomingData && upcomingData.results}
-      />
-    </Grid>
-  );
+  return {
+    props: {
+      popularFallbackData,
+      nowPlayingFallbackData,
+      topRatedFallbackData,
+      upcomingFallbackData,
+    },
+    revalidate: 60,
+  };
 };
 
 export default Home;

@@ -4,6 +4,14 @@ import useSWR from "swr";
 import { SWRHookResponse } from "types/SWRHook";
 import { fetcher } from "utils/fetcher";
 
+import { TMDB_API_KEY, TMDB_API_URL } from "./constants";
+
+export const tmdbServerFetcher = <ResType>(path: string, params?: any) =>
+  fetcher<ResType>(`${TMDB_API_URL}${path}`, {
+    ...params,
+    api_key: TMDB_API_KEY,
+  });
+
 export const tmdbFetcher = <ResType>(path: string, params?: any) =>
   fetcher<ResType>(`/api/tmdb${path}`, params);
 
