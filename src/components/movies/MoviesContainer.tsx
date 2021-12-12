@@ -1,6 +1,6 @@
 import { Grid, Skeleton } from "@chakra-ui/react";
 
-import { MovieListItemType } from "models/movies";
+import { MovieListItemType } from "services/tmdb/movie/list/types";
 
 import MovieItem from "./MovieItem";
 

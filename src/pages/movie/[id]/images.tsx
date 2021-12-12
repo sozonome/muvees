@@ -1,17 +1,29 @@
 import { Box, Button, Flex, Grid, Heading, Skeleton } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import PosterImage, { IMAGE_URL_ORIGINAL } from "components/movies/PosterImage";
-import { useMovieImages } from "utils/fetchHooks";
+import { useMovieImages } from "services/tmdb/movie/images";
 
 const Images = () => {
   const router = useRouter();
+  const [movieId, setMovieId] = useState<number>();
 
   const {
     query: { id },
   } = router;
 
-  const { data, isLoading } = useMovieImages({ id: Number(id) });
+  useEffect(() => {
+    if (id) {
+      setMovieId(Number(id));
+    }
+  }, [id]);
+
+  const { data, isLoading } = useMovieImages(
+    movieId ?? 0,
+    undefined,
+    !!movieId
+  );
 
   const handleClick = (file_path: string) => () => {
     window.open(`${IMAGE_URL_ORIGINAL}${file_path}`, "_blank");

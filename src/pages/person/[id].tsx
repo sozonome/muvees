@@ -8,18 +8,32 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import PosterImage from "components/movies/PosterImage";
+import { usePersonDetail } from "services/tmdb/person/detail";
 import { countAge } from "utils/countAge";
-import { usePersonData } from "utils/fetchHooks";
 
 const Person = () => {
   const router = useRouter();
+
+  const [movieId, setMovieId] = useState<number>();
+
   const {
     query: { id },
   } = router;
 
-  const { data, isLoading } = usePersonData({ id: Number(id) });
+  useEffect(() => {
+    if (id) {
+      setMovieId(Number(id));
+    }
+  }, [id]);
+
+  const { data, isLoading } = usePersonDetail(
+    movieId ?? 0,
+    undefined,
+    !!movieId
+  );
 
   return (
     <Grid marginX={8} gap={8}>

@@ -24,20 +24,21 @@ import {
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { BiLinkExternal } from "react-icons/bi";
 import { FaImdb } from "react-icons/fa";
 import { GrGallery } from "react-icons/gr";
 
 import Error from "components/layout/Error";
 import PosterImage, { IMAGE_URL } from "components/movies/PosterImage";
-import { MovieCreditsType } from "models/movies";
+import { useMovieCredits } from "services/tmdb/movie/credits";
+import { MovieCreditsResponse } from "services/tmdb/movie/credits/types";
+import { useMovieDetail } from "services/tmdb/movie/detail";
 import { convertToPrice } from "utils/convertToPrice";
-import { useMovieCreditsData, useMovieData } from "utils/fetchHooks";
 
 type CastsWrapperProps = {
   isLoadingCredits: boolean;
-  credits: MovieCreditsType;
+  credits?: MovieCreditsResponse;
 };
 
 const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
@@ -136,21 +137,32 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
   );
 };
 
-// eslint-disable-next-line complexity
+// eslint-disable-next-line sonarjs/cognitive-complexity, complexity
 const Movie = () => {
   const router = useRouter();
+
+  const [movieId, setMovieId] = useState<number>();
+
   const {
     query: { id },
   } = router;
 
-  const { data, isLoading, isError } = useMovieData({ id: Number(id) });
+  useEffect(() => {
+    if (id) {
+      setMovieId(Number(id));
+    }
+  }, [id]);
+
+  const { data, isLoading, isError } = useMovieDetail(
+    movieId ?? 0,
+    undefined,
+    !!movieId
+  );
   const {
     data: credits,
     isLoading: isLoadingCredits,
     // isError: isErrorCredits,
-  } = useMovieCreditsData({
-    id: Number(id),
-  });
+  } = useMovieCredits(movieId ?? 0, !!movieId);
 
   const { colorMode } = useColorMode();
 

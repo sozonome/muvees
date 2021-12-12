@@ -12,8 +12,12 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import { RawMovieListEntries } from "models/movies";
-import { ListType, useMovieList, MovieListReq } from "utils/fetchHooks";
+import { useMovieList } from "services/tmdb/movie/list";
+import {
+  ListType,
+  MovieListParams,
+  MovieListResponse,
+} from "services/tmdb/movie/list/types";
 
 import MoviesContainer from "./MoviesContainer";
 
@@ -21,7 +25,7 @@ type PageNavButtonProps = {
   isLoading: boolean;
   page?: number;
   totalPages: number;
-  results?: RawMovieListEntries["results"];
+  results?: MovieListResponse["results"];
   handleChangePage: (type: "next" | "prev") => () => void;
 };
 
@@ -78,7 +82,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [shouldFetch, setShouldFetch] = useState<boolean>(false);
 
-  const [queries, setQueries] = useState<MovieListReq>();
+  const [queries, setQueries] = useState<MovieListParams>();
 
   useEffect(() => {
     if (page || query || genre) {
@@ -109,8 +113,9 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
 
   const { data, isLoading } = useMovieList(
     listMode === "section" ? (section as ListType) : undefined,
-    listMode === "search" ? shouldFetch : undefined,
-    queries
+    queries,
+    undefined,
+    listMode === "search" ? shouldFetch : undefined
   );
 
   useEffect(() => {

@@ -8,7 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import { MovieListItemType } from "models/movies";
+import { MovieListItemType } from "services/tmdb/movie/list/types";
 
 import MovieItem from "./MovieItem";
 
