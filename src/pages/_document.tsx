@@ -8,7 +8,6 @@ import Document, {
 } from "next/document";
 
 export const APP_NAME = "muvees";
-const APP_DESCRIPTION = "Explore movies";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -27,7 +26,6 @@ class MyDocument extends Document {
             content="default"
           />
           <meta name="apple-mobile-web-app-title" content={APP_NAME} />
-          <meta name="description" content={APP_DESCRIPTION} />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
           <meta name="theme-color" content="#FFFFFF" />
