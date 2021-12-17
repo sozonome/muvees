@@ -10,7 +10,7 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import PosterImage from "components/movies/PosterImage";
+import PosterImage from "components/movie/PosterImage";
 import { usePersonDetail } from "services/tmdb/person/detail";
 import { countAge } from "utils/countAge";
 

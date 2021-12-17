@@ -1,3 +1,1 @@
-import PersonDetailPage from "components/pages/person/detail";
-
-export default PersonDetailPage;
+export { default } from "components/pages/person/detail";

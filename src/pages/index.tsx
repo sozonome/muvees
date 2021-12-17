@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next";
 
-import Home from "components/pages/home";
 import { HomePageProps } from "components/pages/home/types";
 import { getMovieListServer } from "services/tmdb/movie/list";
 
@@ -21,4 +20,4 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
   };
 };
 
-export default Home;
+export { default } from "components/pages/home";

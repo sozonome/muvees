@@ -1,3 +1,1 @@
-import MovieDetailPage from "components/pages/movie/detail";
-
-export default MovieDetailPage;
+export { default } from "components/pages/movie/detail";

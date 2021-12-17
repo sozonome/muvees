@@ -1,3 +1,1 @@
-import MovieImagesPage from "components/pages/movie/detail/images";
-
-export default MovieImagesPage;
+export { default } from "components/pages/movie/detail/images";

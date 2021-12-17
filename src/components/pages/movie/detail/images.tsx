@@ -2,7 +2,7 @@ import { Box, Button, Flex, Grid, Heading, Skeleton } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import PosterImage, { IMAGE_URL_ORIGINAL } from "components/movies/PosterImage";
+import PosterImage, { IMAGE_URL_ORIGINAL } from "components/movie/PosterImage";
 import { useMovieImages } from "services/tmdb/movie/images";
 
 const MovieImagesPage = () => {

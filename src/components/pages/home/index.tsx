@@ -1,6 +1,6 @@
 import { Grid } from "@chakra-ui/react";
 
-import MoviesSlider from "components/movies/MoviesSlider";
+import MoviesSlider from "components/movie/MoviesSlider";
 import { useMovieList } from "services/tmdb/movie/list";
 
 import { HomePageProps } from "./types";
