@@ -1,11 +1,18 @@
-import { useTmdbSWR } from "services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from "services/tmdb/utils";
 
 import { MovieCreditsResponse } from "./types";
 
-export const useMovieCredits = (id: number, isReady?: boolean) =>
+export const getMovieCreditsServer = (id: number) =>
+  tmdbServerFetcher<MovieCreditsResponse>(`/movie/${id}/credits`);
+
+export const useMovieCredits = (
+  id: number,
+  fallbackData?: MovieCreditsResponse,
+  isReady?: boolean
+) =>
   useTmdbSWR<MovieCreditsResponse>(
     `/movie/${id}/credits`,
     undefined,
-    undefined,
+    fallbackData,
     isReady
   );

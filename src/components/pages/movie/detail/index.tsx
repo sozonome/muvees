@@ -25,8 +25,14 @@ import { useMovieCredits } from "services/tmdb/movie/credits";
 import { useMovieDetail } from "services/tmdb/movie/detail";
 import { convertToPrice } from "utils/convertToPrice";
 
+import { MovieDetailPageProps } from "./types";
+
 // eslint-disable-next-line sonarjs/cognitive-complexity, complexity
-const MovieDetailPage = () => {
+const MovieDetailPage = ({
+  detailFallbackData,
+  creditFallbackData,
+}: // eslint-disable-next-line sonarjs/cognitive-complexity
+MovieDetailPageProps) => {
   const router = useRouter();
 
   const [movieId, setMovieId] = useState<number>();
@@ -43,14 +49,14 @@ const MovieDetailPage = () => {
 
   const { data, isLoading, isError } = useMovieDetail(
     movieId ?? 0,
-    undefined,
+    detailFallbackData,
     !!movieId
   );
   const {
     data: credits,
     isLoading: isLoadingCredits,
     // isError: isErrorCredits,
-  } = useMovieCredits(movieId ?? 0, !!movieId);
+  } = useMovieCredits(movieId ?? 0, creditFallbackData, !!movieId);
 
   const { colorMode } = useColorMode();
 
