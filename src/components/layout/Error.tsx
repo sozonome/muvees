@@ -9,7 +9,7 @@ const Error = () => {
         Uh-oh, something&apos;s wrong
       </Heading>
 
-      <Image src="/No data-bro.svg" width="300" height="300" />
+      <Image src="/No data-bro.svg" width="300" height="300" alt="No Data" />
 
       <Link href="/" passHref>
         <Button>Let&apos;s Go Back</Button>

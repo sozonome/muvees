@@ -3,5 +3,13 @@
     "sznm/react",
     "plugin:react/jsx-runtime",
     "plugin:@next/next/recommended"
-  ]
+  ],
+  "rules": {
+    "jsx-a11y/alt-text": [
+      "warn",
+      {
+        "img": ["Image"]
+      }
+    ]
+  }
 }

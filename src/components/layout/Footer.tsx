@@ -16,7 +16,7 @@ const Footer = () => {
           Powered by
         </Text>
         <Link href="https://themoviedb.org" isExternal>
-          <Image src="/tmdb.svg" width="50" height="20" />
+          <Image src="/tmdb.svg" width="50" height="20" alt="tmdb" />
         </Link>
       </Grid>
     </Flex>

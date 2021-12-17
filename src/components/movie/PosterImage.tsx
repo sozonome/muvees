@@ -28,6 +28,7 @@ const PosterImage = ({ src, layout, ...props }: PosterImageProps) => {
       }}
       {...(layout === "flex" && flexSize)}
       {...props}
+      alt={IMAGE_URL}
     />
   );
 };
