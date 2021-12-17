@@ -1,9 +1,9 @@
-import { tmdbFetcher, useTmdbSWR } from "services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from "services/tmdb/utils";
 
 import { MovieImagesResponse } from "./types";
 
-export const getMovieImages = (id: number) =>
-  tmdbFetcher<MovieImagesResponse>(`/movie/${id}/images`);
+export const getMovieImagesServer = (id: number) =>
+  tmdbServerFetcher<MovieImagesResponse>(`/movie/${id}/images`);
 
 export const useMovieImages = (
   id: number,

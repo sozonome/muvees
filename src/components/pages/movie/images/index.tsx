@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import PosterImage, { IMAGE_URL_ORIGINAL } from "components/movie/PosterImage";
 import { useMovieImages } from "services/tmdb/movie/images";
 
-const MovieImagesPage = () => {
+import { MovieImagesPageProps } from "./types";
+
+const MovieImagesPage = ({ fallbackData }: MovieImagesPageProps) => {
   const router = useRouter();
   const [movieId, setMovieId] = useState<number>();
 
@@ -21,7 +23,7 @@ const MovieImagesPage = () => {
 
   const { data, isLoading } = useMovieImages(
     movieId ?? 0,
-    undefined,
+    fallbackData,
     !!movieId
   );
 
