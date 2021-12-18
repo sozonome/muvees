@@ -22,8 +22,8 @@ export const useTmdbSWR = <ResType>(
   isReady = true
 ): SWRHookResponse<ResType> => {
   const { data, error, mutate } = useSWR<ResType>(
-    [path, params],
-    isReady ? tmdbFetcher : null,
+    isReady ? [path, params] : null,
+    tmdbFetcher,
     {
       fallbackData,
     }
