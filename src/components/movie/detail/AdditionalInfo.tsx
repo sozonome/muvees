@@ -1,0 +1,93 @@
+import {
+  Button,
+  Flex,
+  Grid,
+  Heading,
+  Link as ChakraLink,
+  Skeleton,
+  Text,
+} from "@chakra-ui/react";
+import Link from "next/link";
+import { BiLinkExternal } from "react-icons/bi";
+import { FaImdb } from "react-icons/fa";
+import { GrGallery } from "react-icons/gr";
+
+import { convertToPrice } from "utils/convertToPrice";
+
+import { MovieDetailSectionProps } from "./types";
+
+type MoveiDetailAdditionalInfoProps = MovieDetailSectionProps & {
+  id: number;
+};
+
+const MoveiDetailAdditionalInfo = ({
+  isLoading,
+  data,
+  id,
+}: MoveiDetailAdditionalInfoProps) => {
+  return (
+    <>
+      <Skeleton isLoaded={!isLoading}>
+        <Text textAlign="justify">{data && data.overview}</Text>
+      </Skeleton>
+
+      <Skeleton isLoaded={!isLoading}>
+        {data && (
+          <Flex gridColumnGap={2}>
+            {data.homepage && (
+              <ChakraLink _hover={undefined} href={data.homepage} isExternal>
+                <Button size="sm" leftIcon={<BiLinkExternal />}>
+                  website
+                </Button>
+              </ChakraLink>
+            )}
+            {data.imdb_id && (
+              <ChakraLink
+                href={`https://www.imdb.com/title/${data.imdb_id}`}
+                isExternal
+              >
+                <Button size="sm" leftIcon={<FaImdb />}>
+                  IMDB
+                </Button>
+              </ChakraLink>
+            )}
+            <Link href={`/movie/${id}/images`} passHref>
+              <Button as="a" size="sm" leftIcon={<GrGallery />}>
+                gallery
+              </Button>
+            </Link>
+          </Flex>
+        )}
+      </Skeleton>
+
+      <Skeleton isLoaded={!isLoading}>
+        <Heading fontSize="lg">Achievements</Heading>
+
+        {data && (
+          <Grid
+            gridGap={1}
+            textTransform="uppercase"
+            letterSpacing={2}
+            fontSize="sm"
+          >
+            <Text>
+              Revenue:{" "}
+              <Text as="span" fontWeight="bold" letterSpacing={0}>
+                {convertToPrice(data.revenue)}
+              </Text>
+            </Text>
+            <Text>
+              Rating : <b>{data.vote_average}</b>{" "}
+              <Text as="span" fontSize="xs">
+                {" "}
+                ({data.vote_count} voted)
+              </Text>
+            </Text>
+          </Grid>
+        )}
+      </Skeleton>
+    </>
+  );
+};
+
+export default MoveiDetailAdditionalInfo;

@@ -1,15 +1,10 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 
 import { getMovieImagesServer } from "services/tmdb/movie/images";
 
 import { MovieImagesPageParams, MovieImagesPageProps } from "./types";
 
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
-};
+export { getStaticPaths } from "utils/defaultGetStaticPaths";
 
 export const getStaticProps: GetStaticProps<
   MovieImagesPageProps,

@@ -14,7 +14,9 @@ import PosterImage from "components/movie/PosterImage";
 import { usePersonDetail } from "services/tmdb/person/detail";
 import { countAge } from "utils/countAge";
 
-const PersonDetailPage = () => {
+import { PersonDetailPageProps } from "./types";
+
+const PersonDetailPage = ({ fallbackData }: PersonDetailPageProps) => {
   const router = useRouter();
 
   const [movieId, setMovieId] = useState<number>();
@@ -31,7 +33,7 @@ const PersonDetailPage = () => {
 
   const { data, isLoading } = usePersonDetail(
     movieId ?? 0,
-    undefined,
+    fallbackData,
     !!movieId
   );
 

@@ -1,9 +1,9 @@
-import { tmdbFetcher, useTmdbSWR } from "services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from "services/tmdb/utils";
 
 import { PersonDetailResponse } from "./types";
 
-export const getPersonDetail = (id: string) =>
-  tmdbFetcher<PersonDetailResponse>(`/person/${id}`);
+export const getPersonDetailServer = (id: number) =>
+  tmdbServerFetcher<PersonDetailResponse>(`/person/${id}`);
 
 export const usePersonDetail = (
   id: number,

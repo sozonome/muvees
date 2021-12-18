@@ -16,6 +16,7 @@ const MovieItem = ({ movie, layout }: MovieItemProps) => {
   return (
     <Link href={`/movie/${movie.id}`} passHref>
       <MotionBox
+        as="a"
         position="relative"
         textAlign="center"
         whileHover={{ scale: 1.05 }}

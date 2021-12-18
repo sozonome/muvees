@@ -12,7 +12,7 @@ const Error = () => {
       <Image src="/No data-bro.svg" width="300" height="300" alt="No Data" />
 
       <Link href="/" passHref>
-        <Button>Let&apos;s Go Back</Button>
+        <Button as="a">Let&apos;s Go Back</Button>
       </Link>
     </Grid>
   );

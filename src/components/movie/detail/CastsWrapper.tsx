@@ -18,7 +18,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useMemo } from "react";
 
 import { IMAGE_URL } from "components/movie/PosterImage";
 import { MovieCreditsResponse } from "services/tmdb/movie/credits/types";
@@ -36,6 +36,35 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
   const handleChangeKeyword = (event: ChangeEvent<HTMLInputElement>) =>
     setKeyword(event.target.value);
 
+  const casts = useMemo(() => {
+    if (credits) {
+      return credits.cast
+        .filter(
+          (unfilteredCast) =>
+            unfilteredCast.name.toLowerCase().indexOf(keyword.toLowerCase()) >
+            -1
+        )
+        .map((movieCast) => (
+          <Link
+            href={`/person/${movieCast.id}`}
+            key={`${movieCast.name}-${movieCast.id}`}
+            passHref
+          >
+            <Flex as="a" cursor="pointer" alignItems="center" gridColumnGap={2}>
+              <Avatar
+                size="lg"
+                name={movieCast.name}
+                src={`${IMAGE_URL}${movieCast.profile_path}`}
+              />
+              <Text>{movieCast.name}</Text>
+            </Flex>
+          </Link>
+        ));
+    }
+
+    return [];
+  }, [credits, keyword]);
+
   return (
     <Skeleton isLoaded={!isLoadingCredits}>
       {credits && (
@@ -50,6 +79,7 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
               passHref
             >
               <Avatar
+                as="a"
                 cursor="pointer"
                 size="lg"
                 src={`${IMAGE_URL}${movieCast.profile_path}`}
@@ -85,33 +115,7 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
 
               <ModalBody>
                 <Grid gap={4} templateColumns={["repeat(1, 1fr)"]}>
-                  {credits.cast
-                    .filter(
-                      (unfilteredCast) =>
-                        unfilteredCast.name
-                          .toLowerCase()
-                          .indexOf(keyword.toLowerCase()) > -1
-                    )
-                    .map((movieCast) => (
-                      <Link
-                        href={`/person/${movieCast.id}`}
-                        key={`${movieCast.name}-${movieCast.id}`}
-                        passHref
-                      >
-                        <Flex
-                          cursor="pointer"
-                          alignItems="center"
-                          gridColumnGap={2}
-                        >
-                          <Avatar
-                            size="lg"
-                            name={movieCast.name}
-                            src={`${IMAGE_URL}${movieCast.profile_path}`}
-                          />
-                          <Text>{movieCast.name}</Text>
-                        </Flex>
-                      </Link>
-                    ))}
+                  {casts}
                 </Grid>
               </ModalBody>
 

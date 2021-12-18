@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 
 import {
   MovieDetailPageParams,
@@ -7,12 +7,7 @@ import {
 import { getMovieCreditsServer } from "services/tmdb/movie/credits";
 import { getMovieDetailServer } from "services/tmdb/movie/detail";
 
-export const getStaticPaths: GetStaticPaths = () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
-};
+export { getStaticPaths } from "utils/defaultGetStaticPaths";
 
 export const getStaticProps: GetStaticProps<
   MovieDetailPageProps,
@@ -26,16 +21,21 @@ export const getStaticProps: GetStaticProps<
     };
   }
 
-  const id = Number(params.id);
+  try {
+    const id = Number(params.id);
+    const detailFallbackData = await getMovieDetailServer(id);
+    const creditFallbackData = await getMovieCreditsServer(id);
 
-  const detailFallbackData = await getMovieDetailServer(id);
-  const creditFallbackData = await getMovieCreditsServer(id);
-
-  return {
-    props: {
-      detailFallbackData,
-      creditFallbackData,
-    },
-    revalidate: 60,
-  };
+    return {
+      props: {
+        detailFallbackData,
+        creditFallbackData,
+      },
+      revalidate: 60,
+    };
+  } catch {
+    return {
+      notFound: true,
+    };
+  }
 };
