@@ -7,6 +7,8 @@ import Document, {
   DocumentContext,
 } from "next/document";
 
+import { UMAMI_SRC, UMAMI_WEBSITE_ID } from "constants/umami";
+
 export const APP_NAME = "muvees";
 
 class MyDocument extends Document {
@@ -38,6 +40,15 @@ class MyDocument extends Document {
           /> */}
           <link rel="shortcut icon" href="/popcorn.png" />
           <link rel="manifest" href="/manifest.json" />
+
+          {/* umami self-hosted analytics */}
+          <script
+            async
+            defer
+            data-website-id={UMAMI_WEBSITE_ID}
+            src={UMAMI_SRC}
+            data-domains="muvees.sznm.dev"
+          />
         </Head>
         <body>
           <Main />

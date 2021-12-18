@@ -1,8 +1,10 @@
 import { AspectRatio, Box, chakra } from "@chakra-ui/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import MotionBox from "components/MotionBox";
 import { MovieListItemType } from "services/tmdb/movie/list/types";
+import { trackEvent } from "utils/trackEvent";
 
 import PosterImage from "./PosterImage";
 import PosterLabel from "./PosterLabel";
@@ -13,10 +15,20 @@ type MovieItemProps = {
 };
 
 const MovieItem = ({ movie, layout }: MovieItemProps) => {
+  const { pathname } = useRouter();
+
+  const handleClickMovie = () => {
+    trackEvent(
+      `Movie: ${movie.title} - ${movie.id} | from ${pathname}`,
+      "navigate"
+    );
+  };
+
   return (
     <Link href={`/movie/${movie.id}`} passHref>
       <MotionBox
         as="a"
+        onClick={handleClickMovie}
         position="relative"
         textAlign="center"
         whileHover={{ scale: 1.05 }}
