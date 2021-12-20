@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@chakra-ui/react": "^1.7.3",
-    "@emotion/react": "^11.7.0",
+    "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@fontsource/inter": "^4.5.1",
     "axios": "^0.24.0",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^15.0.0",
-    "@types/node": "^16.11.12",
+    "@types/node": "^16.11.14",
     "@types/react": "^17.0.37",
     "@types/umami": "^0.1.0",
     "commitlint": "^15.0.0",
@@ -49,6 +49,6 @@
     "next-sitemap": "^1.6.203",
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2",
-    "typescript": "^4.5.3"
+    "typescript": "^4.5.4"
   }
 }
