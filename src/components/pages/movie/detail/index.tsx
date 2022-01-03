@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import Error from "components/layout/Error";
-import MoveiDetailAdditionalInfo from "components/movie/detail/AdditionalInfo";
+import MovieDetailAdditionalInfo from "components/movie/detail/AdditionalInfo";
 import CastsWrapper from "components/movie/detail/CastsWrapper";
 import MovieDetailMeta from "components/movie/detail/Meta";
 import { useMovieCredits } from "services/tmdb/movie/credits";
@@ -69,7 +69,7 @@ const MovieDetailPage = ({
         templateColumns="minmax(0,1fr)"
         flexBasis={["100%"]}
       >
-        <MoveiDetailAdditionalInfo
+        <MovieDetailAdditionalInfo
           isLoading={isLoading}
           data={data}
           id={movieId ?? 0}

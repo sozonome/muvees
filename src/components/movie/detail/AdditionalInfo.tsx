@@ -16,15 +16,15 @@ import { convertToPrice } from "utils/convertToPrice";
 
 import { MovieDetailSectionProps } from "./types";
 
-type MoveiDetailAdditionalInfoProps = MovieDetailSectionProps & {
+type MovieDetailAdditionalInfoProps = MovieDetailSectionProps & {
   id: number;
 };
 
-const MoveiDetailAdditionalInfo = ({
+const MovieDetailAdditionalInfo = ({
   isLoading,
   data,
   id,
-}: MoveiDetailAdditionalInfoProps) => {
+}: MovieDetailAdditionalInfoProps) => {
   return (
     <>
       <Skeleton isLoaded={!isLoading}>
@@ -90,4 +90,4 @@ const MoveiDetailAdditionalInfo = ({
   );
 };
 
-export default MoveiDetailAdditionalInfo;
+export default MovieDetailAdditionalInfo;
