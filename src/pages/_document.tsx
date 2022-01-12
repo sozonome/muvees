@@ -1,4 +1,3 @@
-// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document, {
   Html,
   Head,
@@ -38,7 +37,7 @@ class MyDocument extends Document {
             sizes="180x180"
             href="/icons/apple-touch-icon.png"
           /> */}
-          <link rel="shortcut icon" href="/popcorn.png" />
+          <link rel="icon" href="/popcorn.png" />
           <link rel="manifest" href="/manifest.json" />
 
           {/* umami self-hosted analytics */}

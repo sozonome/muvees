@@ -18,7 +18,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.7.3",
+    "@chakra-ui/react": "^1.7.4",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@fontsource/inter": "^4.5.1",
@@ -33,19 +33,19 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
-    "swr": "^1.1.1"
+    "swr": "^1.1.2"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^15.0.0",
-    "@types/node": "^16.11.14",
-    "@types/react": "^17.0.37",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/node": "^17.0.8",
+    "@types/react": "^17.0.38",
     "@types/umami": "^0.1.0",
-    "commitlint": "^15.0.0",
-    "eslint": "^7.32.0",
+    "commitlint": "^16.0.1",
+    "eslint": "^8.6.0",
     "eslint-config-next": "12.0.7",
-    "eslint-config-sznm": "^0.1.13",
+    "eslint-config-sznm": "^0.2.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.1.5",
     "next-sitemap": "^1.6.203",
     "prettier": "^2.5.1",
     "standard-version": "^9.3.2",
