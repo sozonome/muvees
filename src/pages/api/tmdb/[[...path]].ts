@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { TMDB_API_KEY, TMDB_API_URL } from "services/tmdb/constants";
-import { fetcher } from "utils/fetcher";
+import { TMDB_API_KEY, TMDB_API_URL } from "lib/services/tmdb/constants";
+import { fetcher } from "lib/utils/fetcher";
 
 const tmdbAPI = async (req: NextApiRequest, res: NextApiResponse) => {
   const {

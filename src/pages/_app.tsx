@@ -6,9 +6,9 @@ import NextNprogress from "nextjs-progressbar";
 import "@fontsource/inter/latin.css";
 
 import defaultSEOConfig from "../../next-seo.config";
-import Layout from "components/layout";
-import customTheme from "styles/customTheme";
-import "styles/globals.css";
+import Layout from "lib/components/layout";
+import customTheme from "lib/styles/customTheme";
+import "lib/styles/globals.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

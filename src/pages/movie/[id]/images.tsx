@@ -1,7 +1,4 @@
-import MovieImagesPage from "components/pages/movie/images";
+import MovieImagesPage from "lib/pages/movie/images";
 
-export {
-  getStaticPaths,
-  getStaticProps,
-} from "components/pages/movie/images/loader";
+export { getStaticPaths, getStaticProps } from "lib/pages/movie/images/loader";
 export default MovieImagesPage;
