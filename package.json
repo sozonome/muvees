@@ -12,7 +12,8 @@
     "start": "next start",
     "format": "prettier --write src",
     "type-check": "tsc --noEmit",
-    "up-latest": "yarn upgrade-interactive --latest",
+    "up": "yarn upgrade-interactive",
+    "up-latest": "yarn up --latest",
     "release": "standard-version",
     "push-release": "git push --follow-tags origin main",
     "prepare": "husky install"

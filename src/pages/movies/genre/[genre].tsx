@@ -1,4 +1,4 @@
-import MovieListContainer from "components/movie/list";
+import MovieListContainer from "lib/components/movie/list";
 
 const Genre = () => {
   return <MovieListContainer listMode="discover" />;

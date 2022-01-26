@@ -1,7 +1,4 @@
-import MovieDetailPage from "components/pages/movie/detail";
+import MovieDetailPage from "lib/pages/movie/detail";
 
-export {
-  getStaticPaths,
-  getStaticProps,
-} from "components/pages/movie/detail/loader";
+export { getStaticPaths, getStaticProps } from "lib/pages/movie/detail/loader";
 export default MovieDetailPage;
