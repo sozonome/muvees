@@ -1,9 +1,9 @@
 import { Skeleton, Grid, Button, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
-import { MovieListResponse } from "lib/services/tmdb/movie/list/types";
+import type { MovieListResponse } from "lib/services/tmdb/movie/list/types";
 
-import { MovieListModeKey } from "./types";
+import type { MovieListModeKey } from "./types";
 
 export type PageNavButtonProps = {
   isLoading: boolean;

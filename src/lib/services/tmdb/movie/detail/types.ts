@@ -1,4 +1,4 @@
-import { MovieListItemType } from "lib/services/tmdb/movie/list/types";
+import type { MovieListItemType } from "lib/services/tmdb/movie/list/types";
 
 type GenreType = {
   id: number;

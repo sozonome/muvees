@@ -1,6 +1,6 @@
-import { GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 
-import {
+import type {
   MovieDetailPageParams,
   MovieDetailPageProps,
 } from "lib/pages/movie/detail/types";

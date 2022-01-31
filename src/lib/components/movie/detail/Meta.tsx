@@ -11,7 +11,7 @@ import {
 
 import PosterImage from "lib/components/movie/PosterImage";
 
-import { MovieDetailSectionProps } from "./types";
+import type { MovieDetailSectionProps } from "./types";
 
 type MovieDetailMetaProps = MovieDetailSectionProps;
 

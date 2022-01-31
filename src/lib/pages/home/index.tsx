@@ -3,7 +3,7 @@ import { Grid } from "@chakra-ui/react";
 import MoviesSlider from "lib/components/movie/MoviesSlider";
 import { useMovieList } from "lib/services/tmdb/movie/list";
 
-import { HomePageProps } from "./types";
+import type { HomePageProps } from "./types";
 
 const Home = ({
   popularFallbackData,

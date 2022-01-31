@@ -6,10 +6,14 @@ import { useEffect, useState } from "react";
 import MoviesContainer from "lib/components/movie/MoviesContainer";
 import SearchBox from "lib/components/movie/SearchBox";
 import { useMovieList } from "lib/services/tmdb/movie/list";
-import { ListType, MovieListParams } from "lib/services/tmdb/movie/list/types";
+import type {
+  ListType,
+  MovieListParams,
+} from "lib/services/tmdb/movie/list/types";
 
-import PageNavButtons, { PageNavButtonProps } from "./PageNavButtons";
-import { MovieListModeKey } from "./types";
+import type { PageNavButtonProps } from "./PageNavButtons";
+import PageNavButtons from "./PageNavButtons";
+import type { MovieListModeKey } from "./types";
 
 type MovieListContainerProps = {
   listMode: MovieListModeKey;

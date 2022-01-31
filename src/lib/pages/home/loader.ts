@@ -1,6 +1,6 @@
-import { GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 
-import { HomePageProps } from "lib/pages/home/types";
+import type { HomePageProps } from "lib/pages/home/types";
 import { getMovieListServer } from "lib/services/tmdb/movie/list";
 
 // eslint-disable-next-line import/prefer-default-export

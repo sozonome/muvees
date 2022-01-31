@@ -1,4 +1,4 @@
-import { MovieListResponse } from "lib/services/tmdb/movie/list/types";
+import type { MovieListResponse } from "lib/services/tmdb/movie/list/types";
 
 export type HomePageProps = {
   popularFallbackData: MovieListResponse;

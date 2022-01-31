@@ -4,7 +4,7 @@ import {
   useTmdbSWR,
 } from "lib/services/tmdb/utils";
 
-import {
+import type {
   ListType,
   MovieListParams,
   MovieListResponse,

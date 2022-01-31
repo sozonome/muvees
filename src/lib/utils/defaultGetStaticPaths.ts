@@ -1,4 +1,4 @@
-import { GetStaticPaths } from "next";
+import type { GetStaticPaths } from "next";
 
 export const getStaticPaths: GetStaticPaths = () => {
   return {
