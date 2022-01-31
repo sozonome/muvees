@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ImageSection from "lib/components/movie/image/ImageSection";
 import { useMovieImages } from "lib/services/tmdb/movie/images";
 
-import { MovieImagesPageProps } from "./types";
+import type { MovieImagesPageProps } from "./types";
 
 const MovieImagesPage = ({ fallbackData }: MovieImagesPageProps) => {
   const router = useRouter();

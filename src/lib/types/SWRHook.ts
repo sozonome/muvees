@@ -1,5 +1,5 @@
-import { SWRResponse } from "swr";
-import { SWRInfiniteResponse } from "swr/infinite";
+import type { SWRResponse } from "swr";
+import type { SWRInfiniteResponse } from "swr/infinite";
 
 export type SWRHookResponse<DataType, ErrorType = boolean> = {
   isLoading: boolean;

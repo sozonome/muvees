@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 import { TMDB_API_KEY, TMDB_API_URL } from "lib/services/tmdb/constants";
 import { fetcher } from "lib/utils/fetcher";

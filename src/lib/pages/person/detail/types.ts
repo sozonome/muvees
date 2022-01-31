@@ -1,4 +1,4 @@
-import { PersonDetailResponse } from "lib/services/tmdb/person/detail/types";
+import type { PersonDetailResponse } from "lib/services/tmdb/person/detail/types";
 
 export type PersonDetailPageParams = {
   id: string;

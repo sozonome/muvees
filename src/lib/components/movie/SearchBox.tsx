@@ -1,7 +1,8 @@
 import { FormControl, Input } from "@chakra-ui/react";
 import debounce from "lodash/debounce";
 import { useRouter } from "next/router";
-import { ChangeEvent, useCallback } from "react";
+import type { ChangeEvent } from "react";
+import { useCallback } from "react";
 
 const SearchBox = () => {
   const router = useRouter();

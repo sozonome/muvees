@@ -18,10 +18,11 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useState, ChangeEvent, useMemo } from "react";
+import type { ChangeEvent } from "react";
+import { useState, useMemo } from "react";
 
 import { IMAGE_URL } from "lib/components/movie/PosterImage";
-import { MovieCreditsResponse } from "lib/services/tmdb/movie/credits/types";
+import type { MovieCreditsResponse } from "lib/services/tmdb/movie/credits/types";
 
 type CastsWrapperProps = {
   isLoadingCredits: boolean;

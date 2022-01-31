@@ -14,7 +14,7 @@ import { GrGallery } from "react-icons/gr";
 
 import { convertToPrice } from "lib/utils/convertToPrice";
 
-import { MovieDetailSectionProps } from "./types";
+import type { MovieDetailSectionProps } from "./types";
 
 type MovieDetailAdditionalInfoProps = MovieDetailSectionProps & {
   id: number;

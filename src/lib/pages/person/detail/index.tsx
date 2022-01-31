@@ -14,7 +14,7 @@ import PosterImage from "lib/components/movie/PosterImage";
 import { usePersonDetail } from "lib/services/tmdb/person/detail";
 import { countAge } from "lib/utils/countAge";
 
-import { PersonDetailPageProps } from "./types";
+import type { PersonDetailPageProps } from "./types";
 
 const PersonDetailPage = ({ fallbackData }: PersonDetailPageProps) => {
   const router = useRouter();

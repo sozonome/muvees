@@ -11,7 +11,7 @@ import { useMovieCredits } from "lib/services/tmdb/movie/credits";
 import { useMovieDetail } from "lib/services/tmdb/movie/detail";
 import { handleRouteBack } from "lib/utils/handleRouteBack";
 
-import { MovieDetailPageProps } from "./types";
+import type { MovieDetailPageProps } from "./types";
 
 const MovieDetailPage = ({
   detailFallbackData,

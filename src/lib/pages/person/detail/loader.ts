@@ -1,8 +1,8 @@
-import { GetStaticProps } from "next";
+import type { GetStaticProps } from "next";
 
 import { getPersonDetailServer } from "lib/services/tmdb/person/detail";
 
-import { PersonDetailPageParams, PersonDetailPageProps } from "./types";
+import type { PersonDetailPageParams, PersonDetailPageProps } from "./types";
 
 export { getStaticPaths } from "lib/utils/defaultGetStaticPaths";
 
