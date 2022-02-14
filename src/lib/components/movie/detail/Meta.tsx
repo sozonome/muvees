@@ -3,11 +3,11 @@ import {
   Badge,
   Flex,
   Heading,
-  Link,
   Skeleton,
   Text,
   useColorMode,
 } from "@chakra-ui/react";
+import Link from "next/link";
 
 import PosterImage from "lib/components/movie/PosterImage";
 
