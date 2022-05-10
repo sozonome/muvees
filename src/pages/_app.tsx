@@ -6,7 +6,7 @@ import NextNprogress from "nextjs-progressbar";
 import "@fontsource/inter/latin.css";
 
 import defaultSEOConfig from "../../next-seo.config";
-import Layout from "lib/components/layout";
+import Layout from "lib/layout";
 import customTheme from "lib/styles/customTheme";
 import "lib/styles/globals.css";
 

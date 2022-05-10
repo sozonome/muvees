@@ -3,7 +3,7 @@ import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import Error from "lib/components/layout/Error";
+import Error from "lib/layout/Error";
 import MovieDetailAdditionalInfo from "lib/components/movie/detail/AdditionalInfo";
 import CastsWrapper from "lib/components/movie/detail/CastsWrapper";
 import MovieDetailMeta from "lib/components/movie/detail/Meta";
