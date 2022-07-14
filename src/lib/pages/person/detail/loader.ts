@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps<
       props: {
         fallbackData,
       },
-      revalidate: 60,
+      revalidate: 86400,
     };
   } catch {
     return {

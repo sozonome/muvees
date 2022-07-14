@@ -31,7 +31,7 @@ export const getStaticProps: GetStaticProps<
         detailFallbackData,
         creditFallbackData,
       },
-      revalidate: 60,
+      revalidate: 86400,
     };
   } catch {
     return {

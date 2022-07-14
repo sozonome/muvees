@@ -17,6 +17,6 @@ export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
       topRatedFallbackData,
       upcomingFallbackData,
     },
-    revalidate: 60,
+    revalidate: 43200,
   };
 };
