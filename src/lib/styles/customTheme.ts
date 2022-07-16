@@ -1,20 +1,9 @@
-import { theme, extendTheme } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
 const customTheme = extendTheme({
   fonts: {
-    ...theme.fonts,
     body: "Inter, sans-serif",
     heading: "Inter, sans-serif",
-  },
-  colors: {
-    ...theme.colors,
-    /** Example */
-    // teal: {
-    //   ...theme.colors.teal,
-    //   700: "#005661",
-    //   500: "#00838e",
-    //   300: "#4fb3be",
-    // },
   },
   components: {
     Button: {
@@ -22,6 +11,9 @@ const customTheme = extendTheme({
         borderRadius: 24,
       },
     },
+  },
+  config: {
+    initialColorMode: "light",
   },
 });
 
