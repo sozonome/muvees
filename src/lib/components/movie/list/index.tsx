@@ -105,11 +105,11 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const generatePageHeadTitle = () => {
     switch (listMode) {
       case "section":
-        return `${section} | muvees`;
+        return section as string;
       case "search":
-        return `muvees | search: "${decodeURI(query as string)}"`;
+        return `search: "${decodeURI(query as string)}"`;
       default:
-        return `muvees`;
+        return "";
     }
   };
 

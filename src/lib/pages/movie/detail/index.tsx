@@ -3,10 +3,10 @@ import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import Error from "lib/layout/Error";
 import MovieDetailAdditionalInfo from "lib/components/movie/detail/AdditionalInfo";
 import CastsWrapper from "lib/components/movie/detail/CastsWrapper";
 import MovieDetailMeta from "lib/components/movie/detail/Meta";
+import Error from "lib/layout/Error";
 import { useMovieCredits } from "lib/services/tmdb/movie/credits";
 import { useMovieDetail } from "lib/services/tmdb/movie/detail";
 import { handleRouteBack } from "lib/utils/handleRouteBack";
@@ -18,7 +18,6 @@ const MovieDetailPage = ({
   creditFallbackData,
 }: MovieDetailPageProps) => {
   const router = useRouter();
-
   const [movieId, setMovieId] = useState<number>();
 
   const {
@@ -43,17 +42,13 @@ const MovieDetailPage = ({
     !!movieId
   );
 
-  if (isError) {
+  if (isError || !data) {
     return <Error />;
   }
 
   return (
-    <Grid
-      templateColumns={["repeat(1)", "repeat(1)", "repeat(2, minmax(0,1fr))"]}
-      paddingX={8}
-      gridGap={[8, 16]}
-    >
-      <NextSeo title={`${data?.title} | muvees`} />
+    <Grid paddingX={8} gridGap={[8, 16]}>
+      <NextSeo title={data.title} />
 
       <Grid rowGap={8} flexBasis={["100%"]}>
         <Button onClick={handleRouteBack(router)} width={["full", "full", 100]}>
@@ -64,9 +59,9 @@ const MovieDetailPage = ({
       </Grid>
 
       <Grid
-        rowGap={8}
+        gap={8}
         alignItems="center"
-        templateColumns="minmax(0,1fr)"
+        templateColumns={{ base: "minmax(0, 1fr)", md: "1fr minmax(0, 2fr)" }}
         flexBasis={["100%"]}
       >
         <MovieDetailAdditionalInfo

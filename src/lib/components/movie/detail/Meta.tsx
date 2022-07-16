@@ -1,7 +1,9 @@
 import {
   AspectRatio,
   Badge,
+  Box,
   Flex,
+  Grid,
   Heading,
   Skeleton,
   Text,
@@ -42,36 +44,40 @@ const MovieDetailMeta = ({ isLoading, data }: MovieDetailMetaProps) => {
   };
 
   return (
-    <>
-      <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : undefined}>
-        {data?.title && (
-          <Heading
-            textAlign={["center", "center", "inherit"]}
-            fontSize="md"
-            letterSpacing={2}
-            textTransform="uppercase"
-            fontWeight="300"
-            marginX={[8, 8, 0]}
-          >
-            {data.title}
-          </Heading>
-        )}
-      </Skeleton>
-
+    <Box
+      display={{ base: "grid", md: "flex" }}
+      alignItems="center"
+      gap={{ base: 8, md: 16 }}
+    >
       <Skeleton isLoaded={!isLoading} maxHeight={["auto"]}>
         <AspectRatio
           ratio={3.6 / 5}
+          minWidth={{ base: undefined, md: 300 }}
           maxHeight={["100%"]}
           maxWidth={["100%"]}
           marginX={[8, "25%", 0]}
         >
-          <PosterImage src={data && data.poster_path} />
+          <PosterImage src={data.poster_path} />
         </AspectRatio>
-        {data?.tagline && (
+      </Skeleton>
+
+      <Grid gap={4}>
+        <Skeleton isLoaded={!isLoading} minHeight={isLoading ? 16 : undefined}>
+          <Heading
+            textAlign={["center", "center", "inherit"]}
+            size="lg"
+            letterSpacing={2}
+            textTransform="uppercase"
+            fontWeight="bold"
+            marginX={[8, 8, 0]}
+          >
+            {data.title}
+          </Heading>
+
           <Text
             textAlign={["center", "center", "inherit"]}
             fontSize="0.7rem"
-            fontWeight="500"
+            fontWeight="light"
             letterSpacing={2}
             textTransform="uppercase"
             marginTop={4}
@@ -79,11 +85,9 @@ const MovieDetailMeta = ({ isLoading, data }: MovieDetailMetaProps) => {
           >
             {data.tagline}
           </Text>
-        )}
-      </Skeleton>
+        </Skeleton>
 
-      <Skeleton isLoaded={!isLoading}>
-        {data && (
+        <Skeleton isLoaded={!isLoading}>
           <Flex gridColumnGap={2} alignItems="center">
             <Badge
               variant={colorMode === "light" ? "solid" : "outline"}
@@ -97,11 +101,9 @@ const MovieDetailMeta = ({ isLoading, data }: MovieDetailMetaProps) => {
               {new Date(data.release_date).getFullYear()}
             </Text>
           </Flex>
-        )}
-      </Skeleton>
+        </Skeleton>
 
-      <Skeleton isLoaded={!isLoading}>
-        {data && data.genres && (
+        <Skeleton isLoaded={!isLoading}>
           <Flex wrap="wrap" gridGap={2}>
             {data.genres.map((genre) => (
               <Link
@@ -121,9 +123,13 @@ const MovieDetailMeta = ({ isLoading, data }: MovieDetailMetaProps) => {
               </Link>
             ))}
           </Flex>
-        )}
-      </Skeleton>
-    </>
+        </Skeleton>
+
+        <Skeleton isLoaded={!isLoading}>
+          <Text textAlign="justify">{data && data.overview}</Text>
+        </Skeleton>
+      </Grid>
+    </Box>
   );
 };
 

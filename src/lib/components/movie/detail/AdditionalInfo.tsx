@@ -26,11 +26,7 @@ const MovieDetailAdditionalInfo = ({
   id,
 }: MovieDetailAdditionalInfoProps) => {
   return (
-    <>
-      <Skeleton isLoaded={!isLoading}>
-        <Text textAlign="justify">{data && data.overview}</Text>
-      </Skeleton>
-
+    <Grid gap={8}>
       <Skeleton isLoaded={!isLoading}>
         {data && (
           <Flex gridColumnGap={2}>
@@ -60,33 +56,31 @@ const MovieDetailAdditionalInfo = ({
         )}
       </Skeleton>
 
-      <Skeleton isLoaded={!isLoading}>
+      <Skeleton display="grid" gap={4} isLoaded={!isLoading}>
         <Heading fontSize="lg">Achievements</Heading>
 
-        {data && (
-          <Grid
-            gridGap={1}
-            textTransform="uppercase"
-            letterSpacing={2}
-            fontSize="sm"
-          >
-            <Text>
-              Revenue:{" "}
-              <Text as="span" fontWeight="bold" letterSpacing={0}>
-                {convertToPrice(data.revenue)}
-              </Text>
+        <Grid
+          gridGap={1}
+          textTransform="uppercase"
+          letterSpacing={2}
+          fontSize="sm"
+        >
+          <Text>
+            Revenue:{" "}
+            <Text as="span" fontWeight="bold" letterSpacing={0}>
+              {convertToPrice(data.revenue)}
             </Text>
-            <Text>
-              Rating : <b>{data.vote_average}</b>{" "}
-              <Text as="span" fontSize="xs">
-                {" "}
-                ({data.vote_count} voted)
-              </Text>
+          </Text>
+          <Text>
+            Rating: <b>{data.vote_average}</b>{" "}
+            <Text as="span" fontSize="xs">
+              {" "}
+              ({data.vote_count} voted)
             </Text>
-          </Grid>
-        )}
+          </Text>
+        </Grid>
       </Skeleton>
-    </>
+    </Grid>
   );
 };
 
