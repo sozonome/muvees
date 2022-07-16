@@ -135,7 +135,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   return (
     <Box mb={8} w="full" paddingX={8}>
       {data && <NextSeo title={generatePageHeadTitle()} />}
-      <Button borderRadius={24} isFullWidth onClick={() => router.push("/")}>
+      <Button borderRadius={24} width="full" onClick={() => router.push("/")}>
         back
       </Button>
 
