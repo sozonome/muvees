@@ -12,9 +12,10 @@ import PosterLabel from "./PosterLabel";
 type MovieItemProps = {
   movie: MovieListItemType;
   layout: "flex" | "grid";
+  isLastItem?: boolean;
 };
 
-const MovieItem = ({ movie, layout }: MovieItemProps) => {
+const MovieItem = ({ movie, layout, isLastItem }: MovieItemProps) => {
   const { pathname } = useRouter();
 
   const handleClickMovie = () => {
@@ -33,6 +34,7 @@ const MovieItem = ({ movie, layout }: MovieItemProps) => {
         textAlign="center"
         whileHover={{ scale: 1.05 }}
         role="group"
+        paddingRight={isLastItem ? [8, 6] : undefined}
         {...(layout === "flex" && { flex: "0 0 auto" })}
       >
         {layout === "grid" ? (

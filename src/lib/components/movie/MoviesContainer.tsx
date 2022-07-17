@@ -22,14 +22,13 @@ const MoviesContainer = ({ movies, isLoading }: MoviesContainerProps) => {
           columnGap={8}
           rowGap={12}
         >
-          {movies &&
-            movies.map((movie) => (
-              <MovieItem
-                movie={movie}
-                key={`${movie.title}-${movie.id}`}
-                layout="grid"
-              />
-            ))}
+          {movies.map((movie) => (
+            <MovieItem
+              movie={movie}
+              key={`${movie.title}-${movie.id}`}
+              layout="grid"
+            />
+          ))}
         </Grid>
       ) : null}
     </Skeleton>
