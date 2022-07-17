@@ -22,6 +22,8 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
   const router = useRouter();
   const listType = sectionTitle?.toLowerCase().replace(" ", "_");
 
+  const slicedMovies = movies?.slice(0, 10);
+
   return (
     <Box>
       {sectionTitle && (
@@ -44,7 +46,7 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
           </Button>
         </Flex>
       )}
-      <Skeleton isLoaded={movies && movies.length > 0}>
+      <Skeleton isLoaded={slicedMovies && slicedMovies.length > 0}>
         <Flex paddingX={[8, 6]} overflowX="scroll">
           <Flex
             flexWrap="nowrap"
@@ -54,16 +56,14 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
             overflow="visible"
             gridColumnGap={6}
           >
-            {movies &&
-              movies
-                .slice(0, 10)
-                .map((movie) => (
-                  <MovieItem
-                    movie={movie}
-                    key={`${movie.title}-${movie.id}`}
-                    layout="flex"
-                  />
-                ))}
+            {slicedMovies?.map((movie, idx) => (
+              <MovieItem
+                movie={movie}
+                key={`${movie.title}-${movie.id}`}
+                layout="flex"
+                isLastItem={idx === slicedMovies.length - 1}
+              />
+            ))}
           </Flex>
         </Flex>
       </Skeleton>
