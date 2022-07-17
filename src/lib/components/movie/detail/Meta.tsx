@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "next/link";
 
+import { BionifiedParagraph } from "lib/components/BionifiedParagraph";
 import PosterImage from "lib/components/movie/PosterImage";
 
 import type { MovieDetailSectionProps } from "./types";
@@ -126,7 +127,11 @@ const MovieDetailMeta = ({ isLoading, data }: MovieDetailMetaProps) => {
         </Skeleton>
 
         <Skeleton isLoaded={!isLoading}>
-          <Text textAlign="justify">{data && data.overview}</Text>
+          {data.overview && (
+            <BionifiedParagraph textAlign="justify">
+              {data.overview}
+            </BionifiedParagraph>
+          )}
         </Skeleton>
       </Grid>
     </Box>
