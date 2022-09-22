@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Skeleton,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Skeleton } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
 import type { MovieListItemType } from "lib/services/tmdb/movie/list/types";
@@ -18,7 +11,6 @@ type MoviesSliderProps = {
 };
 
 const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
-  const [mobile] = useMediaQuery("(max-width: 30em)");
   const router = useRouter();
   const listType = sectionTitle?.toLowerCase().replace(" ", "_");
 
@@ -27,11 +19,11 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
   return (
     <Box>
       {sectionTitle && (
-        <Flex marginX={[8, 0]} alignItems="center">
+        <Flex marginX={{ base: 8, sm: 0 }} alignItems="center">
           <Heading
             textTransform="uppercase"
             letterSpacing={2}
-            fontSize={["md", "lg"]}
+            fontSize={{ base: "md", sm: "lg" }}
             fontWeight="400"
           >
             {sectionTitle}
@@ -39,7 +31,7 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
 
           <Button
             marginLeft="auto"
-            size={mobile ? "xs" : "sm"}
+            size={{ base: "xs", sm: "sm" }}
             onClick={() => router.push(`/movies/${listType}?page=1`)}
           >
             see more

@@ -34,22 +34,13 @@ const Home = ({
 
   return (
     <Grid rowGap={8} mb={8} w="full" padding={[0, 8]}>
-      <MoviesSlider
-        sectionTitle="Popular"
-        movies={popularData && popularData.results}
-      />
+      <MoviesSlider sectionTitle="Popular" movies={popularData?.results} />
       <MoviesSlider
         sectionTitle="Now Playing"
-        movies={nowPlayingData && nowPlayingData.results}
+        movies={nowPlayingData?.results}
       />
-      <MoviesSlider
-        sectionTitle="Top Rated"
-        movies={topRatedData && topRatedData.results}
-      />
-      <MoviesSlider
-        sectionTitle="Upcoming"
-        movies={upcomingData && upcomingData.results}
-      />
+      <MoviesSlider sectionTitle="Top Rated" movies={topRatedData?.results} />
+      <MoviesSlider sectionTitle="Upcoming" movies={upcomingData?.results} />
     </Grid>
   );
 };
