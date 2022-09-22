@@ -1,3 +1,5 @@
+import type { TmdbAPIListResponse } from "lib/services/tmdb/types";
+
 export type ListType = "now_playing" | "popular" | "top_rated" | "upcoming";
 
 export type MovieListParams = {
@@ -36,10 +38,6 @@ export type DatesType = {
   minimum: string;
 };
 
-export type MovieListResponse = {
-  page: number;
-  results: Array<MovieListItemType>;
+export type MovieListResponse = TmdbAPIListResponse<MovieListItemType> & {
   dates: DatesType;
-  total_pages: number;
-  total_results: number;
 };
