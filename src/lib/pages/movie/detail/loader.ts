@@ -1,11 +1,9 @@
 import type { GetStaticProps } from "next";
 
-import type {
-  MovieDetailPageParams,
-  MovieDetailPageProps,
-} from "lib/pages/movie/detail/types";
 import { getMovieCreditsServer } from "lib/services/tmdb/movie/credits";
 import { getMovieDetailServer } from "lib/services/tmdb/movie/detail";
+
+import type { MovieDetailPageParams, MovieDetailPageProps } from "./types";
 
 export { getStaticPaths } from "lib/utils/defaultGetStaticPaths";
 

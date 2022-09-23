@@ -1,19 +1,24 @@
-import { Grid } from "@chakra-ui/react";
+import { Grid, Heading, Text } from "@chakra-ui/react";
 
+import TvShowListContainer from "lib/components/tv/TvShowListContainer";
 import { useTVShowByList } from "lib/services/tmdb/tv/list";
 
-const TVShowList = () => {
-  const { data } = useTVShowByList({ listType: "popular" });
+import type { TVShowListPageProps } from "./types";
+
+const TVShowList = ({ listType, data: fallbackData }: TVShowListPageProps) => {
+  const { data, isLoading } = useTVShowByList({ listType, fallbackData });
 
   if (!data) {
     return null;
   }
 
   return (
-    <Grid paddingX={8}>
-      {data.results.map((show) => (
-        <p>{show.name}</p>
-      ))}
+    <Grid gap={4} paddingX={8}>
+      <Grid gap={2}>
+        <Heading>TV Shows</Heading>
+        <Text textTransform="capitalize">{listType.replaceAll("_", " ")}</Text>
+      </Grid>
+      <TvShowListContainer shows={data.results} isLoading={isLoading} />
     </Grid>
   );
 };

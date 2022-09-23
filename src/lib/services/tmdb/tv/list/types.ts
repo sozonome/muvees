@@ -1,10 +1,10 @@
 import type { TmdbAPIListResponse } from "lib/services/tmdb/types";
 
-enum TVShowList {
-  airing_today,
-  on_the_air,
-  popular,
-  top_rated,
+export enum TVShowList {
+  airing_today = "airing_today",
+  on_the_air = "on_the_air",
+  popular = "popular",
+  top_rated = "top_rated",
 }
 
 export type TVShowListType = keyof typeof TVShowList;
@@ -21,7 +21,7 @@ export type SearchTVShowParams = TVShowListParams & {
 };
 
 export type TVShowItem = Partial<{
-  poster_path: string | null;
+  poster_path: string;
   popularity: number;
   id: number;
   backdrop_path: string | null;

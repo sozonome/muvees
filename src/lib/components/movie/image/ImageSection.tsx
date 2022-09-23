@@ -2,7 +2,7 @@ import { Box, Flex, Heading, Link } from "@chakra-ui/react";
 
 import PosterImage, {
   IMAGE_URL_ORIGINAL,
-} from "lib/components/movie/PosterImage";
+} from "lib/components/shared/PosterImage";
 import type { ImageType } from "lib/services/tmdb/movie/images/types";
 
 type ImageSectionProps = {

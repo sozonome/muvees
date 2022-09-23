@@ -3,11 +3,10 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import MotionBox from "lib/components/MotionBox";
+import PosterImage from "lib/components/shared/PosterImage";
+import PosterLabel from "lib/components/shared/PosterLabel";
 import type { MovieListItemType } from "lib/services/tmdb/movie/list/types";
 import { trackEvent } from "lib/utils/trackEvent";
-
-import PosterImage from "./PosterImage";
-import PosterLabel from "./PosterLabel";
 
 type MovieItemProps = {
   movie: MovieListItemType;

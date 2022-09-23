@@ -21,7 +21,7 @@ import Link from "next/link";
 import type { ChangeEvent } from "react";
 import { useState, useMemo } from "react";
 
-import { IMAGE_URL } from "lib/components/movie/PosterImage";
+import { IMAGE_URL } from "lib/components/shared/PosterImage";
 import type { MovieCreditsResponse } from "lib/services/tmdb/movie/credits/types";
 
 type CastsWrapperProps = {
