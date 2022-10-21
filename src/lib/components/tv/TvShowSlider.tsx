@@ -10,20 +10,20 @@ import {
 import { useRouter } from "next/router";
 
 import type {
-  ListType,
-  MovieListItemType,
-} from "lib/services/tmdb/movie/list/types";
+  TVShowItem,
+  TVShowListType,
+} from "lib/services/tmdb/tv/list/types";
 
-import MovieItem from "./MovieItem";
+import TvShowItem from "./TvShowItem";
 
-type MovieListTypeButtonProps = {
-  listType: ListType;
+type TvShowListTypeButtonProps = {
+  listType: TVShowListType;
 };
 
-const MovieListTypeButton = ({ listType }: MovieListTypeButtonProps) => {
+const TvShowListTypeButton = ({ listType }: TvShowListTypeButtonProps) => {
   const router = useRouter();
 
-  const onClick = () => router.push(`/movies/${listType}?page=1`);
+  const onClick = () => router.push(`/tv/${listType}?page=1`);
 
   return (
     <Button
@@ -36,21 +36,21 @@ const MovieListTypeButton = ({ listType }: MovieListTypeButtonProps) => {
   );
 };
 
-const movieListTypes: Array<ListType> = [
-  "now_playing",
+const tvShowListTypes: Array<TVShowListType> = [
+  "on_the_air",
+  "airing_today",
   "top_rated",
-  "upcoming",
 ];
 
-type MoviesSliderProps = {
-  movies?: Array<MovieListItemType>;
+type TvShowSliderProps = {
+  shows?: Array<TVShowItem>;
   sectionTitle?: string;
 };
 
-const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
+const TvShowSlider = ({ sectionTitle, shows }: TvShowSliderProps) => {
   const router = useRouter();
 
-  const slicedMovies = movies?.slice(0, 10);
+  const slicedShows = shows?.slice(0, 10);
 
   return (
     <Box>
@@ -68,13 +68,13 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
           <Button
             marginLeft="auto"
             size={{ base: "xs", sm: "sm" }}
-            onClick={() => router.push(`/movies/popular?page=1`)}
+            onClick={() => router.push(`/tv/popular?page=1`)}
           >
             see more
           </Button>
         </Flex>
       )}
-      <Skeleton isLoaded={slicedMovies && slicedMovies.length > 0}>
+      <Skeleton isLoaded={slicedShows && slicedShows.length > 0}>
         <Flex paddingX={[8, 6]} overflowX="scroll">
           <Flex
             flexWrap="nowrap"
@@ -84,12 +84,12 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
             overflow="visible"
             gridColumnGap={6}
           >
-            {slicedMovies?.map((movie, idx) => (
-              <MovieItem
-                movie={movie}
-                key={`${movie.title}-${movie.id}`}
+            {slicedShows?.map((show, idx) => (
+              <TvShowItem
+                show={show}
+                key={`${show.name}-${show.id}`}
                 layout="flex"
-                isLastItem={idx === slicedMovies.length - 1}
+                isLastItem={idx === slicedShows.length - 1}
               />
             ))}
           </Flex>
@@ -99,12 +99,12 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
       <Spacer height={4} />
 
       <HStack paddingX={{ base: 8, sm: 0 }} spacing={4}>
-        {movieListTypes.map((type) => (
-          <MovieListTypeButton listType={type} />
+        {tvShowListTypes.map((type) => (
+          <TvShowListTypeButton listType={type} />
         ))}
       </HStack>
     </Box>
   );
 };
 
-export default MoviesSlider;
+export default TvShowSlider;
