@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/sozonome/muvees/compare/v1.1.1...v1.2.0) (2022-10-21)
+
+
+### Features
+
+* **tv-shows:** add tv shows pages ([#45](https://github.com/sozonome/muvees/issues/45)) ([c4db15c](https://github.com/sozonome/muvees/commit/c4db15cc44f713be3e1d41b2b52509e475b53d52))
+
 ### [1.1.1](https://github.com/sozonome/muvees/compare/v1.1.0...v1.1.1) (2022-09-01)
 
 
