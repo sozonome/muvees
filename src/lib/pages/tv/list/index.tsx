@@ -8,11 +8,12 @@ import { useTVShowByList } from "lib/services/tmdb/tv/list";
 
 import type { TVShowListPageProps } from "./types";
 
-const TVShowList = ({ listType }: TVShowListPageProps) => {
+const TVShowList = ({ data: fallbackData, listType }: TVShowListPageProps) => {
   const [page, setPage] = React.useState<number>(1);
   const { data, isLoading } = useTVShowByList({
     listType,
     params: { page },
+    fallbackData,
   });
 
   const handleClickNext = () =>

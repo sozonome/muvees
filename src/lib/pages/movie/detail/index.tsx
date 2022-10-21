@@ -48,7 +48,7 @@ const MovieDetailPage = ({
 
   return (
     <Grid paddingX={8} gridGap={[8, 16]}>
-      <NextSeo title={data.title} />
+      <NextSeo title={data.title} description={data.tagline} />
 
       <Grid rowGap={8} flexBasis={["100%"]}>
         <Button onClick={handleRouteBack(router)} width={["full", "full", 100]}>
