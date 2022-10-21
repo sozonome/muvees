@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { BionifiedParagraph } from "lib/components/BionifiedParagraph";
-import PosterImage from "lib/components/movie/PosterImage";
+import PosterImage from "lib/components/shared/PosterImage";
 import { usePersonDetail } from "lib/services/tmdb/person/detail";
 import { countAge } from "lib/utils/countAge";
 

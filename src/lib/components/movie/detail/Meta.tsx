@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 
 import { BionifiedParagraph } from "lib/components/BionifiedParagraph";
-import PosterImage from "lib/components/movie/PosterImage";
+import PosterImage from "lib/components/shared/PosterImage";
 
 import type { MovieDetailSectionProps } from "./types";
 

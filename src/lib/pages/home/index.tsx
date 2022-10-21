@@ -1,54 +1,23 @@
 import { Grid } from "@chakra-ui/react";
 
 import MoviesSlider from "lib/components/movie/MoviesSlider";
-import { useMovieList } from "lib/services/tmdb/movie/list";
+import TvShowSlider from "lib/components/tv/TvShowSlider";
 
 import type { HomePageProps } from "./types";
 
 const Home = ({
-  popularFallbackData,
-  nowPlayingFallbackData,
-  topRatedFallbackData,
-  upcomingFallbackData,
+  popularMovieFallbackData,
+  popularTvShowFallbackData,
 }: HomePageProps) => {
-  const { data: popularData } = useMovieList(
-    "popular",
-    undefined,
-    popularFallbackData
-  );
-  const { data: nowPlayingData } = useMovieList(
-    "now_playing",
-    undefined,
-    nowPlayingFallbackData
-  );
-  const { data: topRatedData } = useMovieList(
-    "top_rated",
-    undefined,
-    topRatedFallbackData
-  );
-  const { data: upcomingData } = useMovieList(
-    "upcoming",
-    undefined,
-    upcomingFallbackData
-  );
-
   return (
     <Grid rowGap={8} mb={8} w="full" padding={[0, 8]}>
       <MoviesSlider
-        sectionTitle="Popular"
-        movies={popularData && popularData.results}
+        sectionTitle="Popular Movies"
+        movies={popularMovieFallbackData?.results}
       />
-      <MoviesSlider
-        sectionTitle="Now Playing"
-        movies={nowPlayingData && nowPlayingData.results}
-      />
-      <MoviesSlider
-        sectionTitle="Top Rated"
-        movies={topRatedData && topRatedData.results}
-      />
-      <MoviesSlider
-        sectionTitle="Upcoming"
-        movies={upcomingData && upcomingData.results}
+      <TvShowSlider
+        sectionTitle="Popular TV Shows"
+        shows={popularTvShowFallbackData.results}
       />
     </Grid>
   );

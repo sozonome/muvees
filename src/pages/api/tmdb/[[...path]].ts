@@ -8,6 +8,10 @@ const tmdbAPI = async (req: NextApiRequest, res: NextApiResponse) => {
     query: { path, ...params },
   } = req;
 
+  res.setHeader(
+    "Cache-Control",
+    "s-maxage=600, stale-while-revalidate=2678400"
+  );
   res.json(
     await fetcher(`${TMDB_API_URL}/${(path as string[]).join("/")}`, {
       ...params,
