@@ -14,7 +14,7 @@ const TVShowList = ({ data: fallbackData, listType }: TVShowListPageProps) => {
     push,
     query: { page: qPage },
   } = useRouter();
-  const page = qPage ? Number(qPage) : 0;
+  const page = qPage && Number(qPage) > 0 ? Number(qPage) : 1;
   const { data, isLoading } = useTVShowByList({
     listType,
     params: { page },
