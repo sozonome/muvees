@@ -1,5 +1,5 @@
 import { Grid, Heading, Text } from "@chakra-ui/react";
-import * as React from "react";
+import { useRouter } from "next/router";
 
 import type { PageNavButtonProps } from "lib/components/shared/list/PageNavButtons";
 import PageNavButtons from "lib/components/shared/list/PageNavButtons";
@@ -9,19 +9,30 @@ import { useTVShowByList } from "lib/services/tmdb/tv/list";
 import type { TVShowListPageProps } from "./types";
 
 const TVShowList = ({ data: fallbackData, listType }: TVShowListPageProps) => {
-  const [page, setPage] = React.useState<number>(1);
+  const {
+    asPath,
+    push,
+    query: { page: qPage },
+  } = useRouter();
+  const page = qPage ? Number(qPage) : 0;
   const { data, isLoading } = useTVShowByList({
     listType,
     params: { page },
     fallbackData,
   });
 
-  const handleClickNext = () =>
-    setPage((prevPage) =>
-      prevPage === data?.total_pages ? prevPage : prevPage + 1
-    );
-  const handleClickPrev = () =>
-    setPage((prevPage) => (prevPage === 0 ? prevPage : prevPage - 1));
+  const handleChangePage = (updatedPage: number) => {
+    push(`${asPath.split("?")[0]}?page=${updatedPage}`);
+  };
+
+  const handleClickNext = () => {
+    const updatedPage = page === data?.total_pages ? page : page + 1;
+    handleChangePage(updatedPage);
+  };
+  const handleClickPrev = () => {
+    const updatedPage = page === 0 ? page : page - 1;
+    handleChangePage(updatedPage);
+  };
 
   const pageNavButtonProps: PageNavButtonProps = {
     isLoading,

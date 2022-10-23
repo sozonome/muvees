@@ -100,7 +100,7 @@ const TvShowSlider = ({ sectionTitle, shows }: TvShowSliderProps) => {
 
       <HStack paddingX={{ base: 8, sm: 0 }} spacing={4}>
         {tvShowListTypes.map((type) => (
-          <TvShowListTypeButton listType={type} />
+          <TvShowListTypeButton key={type} listType={type} />
         ))}
       </HStack>
     </Box>

@@ -100,7 +100,7 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
 
       <HStack paddingX={{ base: 8, sm: 0 }} spacing={4}>
         {movieListTypes.map((type) => (
-          <MovieListTypeButton listType={type} />
+          <MovieListTypeButton key={type} listType={type} />
         ))}
       </HStack>
     </Box>
