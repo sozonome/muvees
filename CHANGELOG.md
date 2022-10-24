@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/sozonome/muvees/compare/v1.2.0...v1.3.0) (2022-10-24)
+
+
+### Features
+
+* **search:** implement multi search ([#48](https://github.com/sozonome/muvees/issues/48)) ([2757421](https://github.com/sozonome/muvees/commit/2757421ac6ec299c521f15361629b2c178237f40))
+
 ## [1.2.0](https://github.com/sozonome/muvees/compare/v1.1.1...v1.2.0) (2022-10-21)
 
 
