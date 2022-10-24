@@ -1,8 +1,8 @@
 import { Grid, Skeleton } from "@chakra-ui/react";
 
+import PosterCard from "lib/components/shared/PosterCard";
+import { MediaType } from "lib/services/tmdb/search/multi/types";
 import type { TVShowItem } from "lib/services/tmdb/tv/list/types";
-
-import TvShowItem from "./TvShowItem";
 
 type MoviesContainerProps = {
   isLoading: boolean;
@@ -23,8 +23,11 @@ const TvShowListContainer = ({ shows, isLoading }: MoviesContainerProps) => {
           rowGap={12}
         >
           {shows.map((show) => (
-            <TvShowItem
-              show={show}
+            <PosterCard
+              name={show.name}
+              id={show.id ?? 0}
+              imageUrl={show.poster_path}
+              mediaType={MediaType.Tv}
               key={`${show.name}-${show.id}`}
               layout="grid"
             />

@@ -4,25 +4,41 @@ import Link from "next/link";
 import MotionBox from "lib/components/MotionBox";
 import PosterImage from "lib/components/shared/PosterImage";
 import PosterLabel from "lib/components/shared/PosterLabel";
-import type { TVShowItem } from "lib/services/tmdb/tv/list/types";
+import type { MediaType } from "lib/services/tmdb/search/multi/types";
 import { trackEvent } from "lib/utils/trackEvent";
 
-type TvShowItemProps = {
-  show: TVShowItem;
+const pathMap: Record<MediaType, string> = {
+  movie: "/movie",
+  tv: "/tv/show",
+  person: "/person",
+};
+
+type PosterCardProps = {
+  id: number;
+  name?: string;
+  imageUrl?: string;
+  mediaType: MediaType;
   layout: "flex" | "grid";
   isLastItem?: boolean;
 };
 
-const TvShowItem = ({ show, layout, isLastItem }: TvShowItemProps) => {
-  const handleClickTvShow = () => {
-    trackEvent(`TV Show: ${show.name} - ${show.id}`, "navigate");
+const PosterCard = ({
+  id,
+  name,
+  imageUrl,
+  mediaType,
+  layout,
+  isLastItem,
+}: PosterCardProps) => {
+  const handleClick = () => {
+    trackEvent(`${mediaType}: ${name} - ${id}`, "navigate");
   };
 
   return (
-    <Link href={`/tv/show/${show.id}`} passHref>
+    <Link href={`${pathMap[mediaType]}/${id}`} passHref>
       <MotionBox
         as="a"
-        onClick={handleClickTvShow}
+        onClick={handleClick}
         position="relative"
         textAlign="center"
         whileHover={{ scale: 1.05 }}
@@ -36,7 +52,7 @@ const TvShowItem = ({ show, layout, isLastItem }: TvShowItemProps) => {
             ratio={3.6 / 5}
             _groupHover={{ backgroundColor: "black" }}
           >
-            <PosterImage src={show.poster_path} layout={layout} />
+            <PosterImage src={imageUrl} layout={layout} />
           </AspectRatio>
         ) : (
           <Box
@@ -44,13 +60,13 @@ const TvShowItem = ({ show, layout, isLastItem }: TvShowItemProps) => {
             borderRadius={24}
             _groupHover={{ backgroundColor: "black" }}
           >
-            <PosterImage src={show.poster_path} layout={layout} />
+            <PosterImage src={imageUrl} layout={layout} />
           </Box>
         )}
-        <PosterLabel label={show.name ?? ""} />
+        <PosterLabel label={name ?? ""} />
       </MotionBox>
     </Link>
   );
 };
 
-export default TvShowItem;
+export default PosterCard;

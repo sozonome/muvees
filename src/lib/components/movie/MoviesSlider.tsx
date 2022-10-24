@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
+import PosterCard from "lib/components/shared/PosterCard";
 import type {
   ListType,
   MovieListItemType,
 } from "lib/services/tmdb/movie/list/types";
-
-import MovieItem from "./MovieItem";
+import { MediaType } from "lib/services/tmdb/search/multi/types";
 
 type MovieListTypeButtonProps = {
   listType: ListType;
@@ -85,8 +85,11 @@ const MoviesSlider = ({ sectionTitle, movies }: MoviesSliderProps) => {
             gridColumnGap={6}
           >
             {slicedMovies?.map((movie, idx) => (
-              <MovieItem
-                movie={movie}
+              <PosterCard
+                name={movie.title}
+                id={movie.id}
+                imageUrl={movie.poster_path}
+                mediaType={MediaType.Movie}
                 key={`${movie.title}-${movie.id}`}
                 layout="flex"
                 isLastItem={idx === slicedMovies.length - 1}

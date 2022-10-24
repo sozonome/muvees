@@ -1,8 +1,8 @@
 import { Grid, Skeleton } from "@chakra-ui/react";
 
+import PosterCard from "lib/components/shared/PosterCard";
 import type { MovieListItemType } from "lib/services/tmdb/movie/list/types";
-
-import MovieItem from "./MovieItem";
+import { MediaType } from "lib/services/tmdb/search/multi/types";
 
 type MoviesContainerProps = {
   isLoading: boolean;
@@ -23,8 +23,11 @@ const MoviesContainer = ({ movies, isLoading }: MoviesContainerProps) => {
           rowGap={12}
         >
           {movies.map((movie) => (
-            <MovieItem
-              movie={movie}
+            <PosterCard
+              name={movie.title}
+              id={movie.id}
+              mediaType={MediaType.Movie}
+              imageUrl={movie.poster_path}
               key={`${movie.title}-${movie.id}`}
               layout="grid"
             />
