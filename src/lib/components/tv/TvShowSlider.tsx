@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
+import PosterCard from "lib/components/shared/PosterCard";
+import { MediaType } from "lib/services/tmdb/search/multi/types";
 import type {
   TVShowItem,
   TVShowListType,
 } from "lib/services/tmdb/tv/list/types";
-
-import TvShowItem from "./TvShowItem";
 
 type TvShowListTypeButtonProps = {
   listType: TVShowListType;
@@ -85,8 +85,11 @@ const TvShowSlider = ({ sectionTitle, shows }: TvShowSliderProps) => {
             gridColumnGap={6}
           >
             {slicedShows?.map((show, idx) => (
-              <TvShowItem
-                show={show}
+              <PosterCard
+                name={show.name}
+                id={show.id ?? 0}
+                imageUrl={show.poster_path}
+                mediaType={MediaType.Tv}
                 key={`${show.name}-${show.id}`}
                 layout="flex"
                 isLastItem={idx === slicedShows.length - 1}
@@ -100,7 +103,7 @@ const TvShowSlider = ({ sectionTitle, shows }: TvShowSliderProps) => {
 
       <HStack paddingX={{ base: 8, sm: 0 }} spacing={4}>
         {tvShowListTypes.map((type) => (
-          <TvShowListTypeButton listType={type} />
+          <TvShowListTypeButton key={type} listType={type} />
         ))}
       </HStack>
     </Box>

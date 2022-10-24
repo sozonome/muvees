@@ -30,7 +30,7 @@ export const useTmdbSWR = <ResType, ErrorType = any>(
 
   return {
     data,
-    isLoading: !error && !data,
+    isLoading: !error && !data && isReady,
     isError: error,
     mutate,
   };

@@ -1,7 +1,5 @@
 import type { GetStaticProps } from "next";
 
-// import { getTVShowByListType } from "lib/services/tmdb/tv/list";
-import { getTVShowByListType } from "lib/services/tmdb/tv/list";
 import type { TVShowListType } from "lib/services/tmdb/tv/list/types";
 import { TVShowList } from "lib/services/tmdb/tv/list/types";
 
@@ -22,11 +20,10 @@ export const getStaticProps: GetStaticProps<
   }
 
   const listType = params.listType as TVShowListType;
-  const data = await getTVShowByListType(listType);
 
   return {
     props: {
-      data,
+      // data,
       listType,
     },
     revalidate: 86400,

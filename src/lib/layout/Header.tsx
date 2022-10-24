@@ -22,7 +22,7 @@ const Header = () => {
       </AccessibleLink>
 
       <Grid templateColumns="repeat(3, 1fr)" gap={1} marginLeft="auto">
-        <Link href="/movies/search" passHref>
+        <Link href="/search" passHref>
           <IconButton
             as="a"
             aria-label="search"

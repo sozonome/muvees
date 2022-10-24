@@ -24,7 +24,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   const {
     query: { section, page: qPage, query, genre },
   } = router;
-  const page = qPage ? Number(qPage) : 0;
+  const page = qPage ? Number(qPage) : 1;
 
   const [totalPages, setTotalPages] = useState<number>(0);
   const [shouldFetch, setShouldFetch] = useState<boolean>(false);
