@@ -31,7 +31,10 @@ const PosterCard = ({
   isLastItem,
 }: PosterCardProps) => {
   const handleClick = () => {
-    trackEvent(`${mediaType}: ${name} - ${id}`, "navigate");
+    trackEvent({
+      eventName: `${mediaType}: ${name} - ${id}`,
+      eventData: { type: "navigate" },
+    });
   };
 
   return (
