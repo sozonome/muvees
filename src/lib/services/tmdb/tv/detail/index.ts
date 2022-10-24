@@ -6,4 +6,4 @@ export const getTvShowDetail = (id: string) =>
   tmdbServerFetcher<TvShowDetail>(`/tv/${id}`);
 
 export const useTvShowDetail = (id: string, fallbackData?: TvShowDetail) =>
-  useTmdbSWR<TvShowDetail>(`/tv/${id}`, undefined, fallbackData);
+  useTmdbSWR<TvShowDetail>({ path: `/tv/${id}`, fallbackData });

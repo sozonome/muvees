@@ -10,7 +10,10 @@ import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const handleClickSearch = () => {
-    trackEvent(`Nav Link: Search`, "navigate");
+    trackEvent({
+      eventName: `Nav Link: Search`,
+      eventData: { type: "navigate" },
+    });
   };
 
   return (
