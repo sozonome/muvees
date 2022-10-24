@@ -26,7 +26,7 @@ const PageNavButtons = ({
             marginY={2}
             fontSize="sm"
           >
-            Page: {page && <b>{page}</b>} / {totalPages}
+            Page: <b>{page ?? 0}</b> / {totalPages}
           </Text>
 
           <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>
