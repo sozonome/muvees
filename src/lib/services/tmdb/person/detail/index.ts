@@ -10,9 +10,8 @@ export const usePersonDetail = (
   fallbackData?: PersonDetailResponse,
   isReady?: boolean
 ) =>
-  useTmdbSWR<PersonDetailResponse>(
-    `/person/${id}`,
-    undefined,
+  useTmdbSWR<PersonDetailResponse>({
+    path: `/person/${id}`,
     fallbackData,
-    isReady
-  );
+    isReady,
+  });

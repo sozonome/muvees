@@ -14,12 +14,19 @@ export const tmdbServerFetcher = <ResType>(path: string, params?: any) =>
 export const tmdbFetcher = <ResType>(path: string, params?: any) =>
   fetcher<ResType>(`/api/tmdb${path}`, params);
 
-export const useTmdbSWR = <ResType, ErrorType = any>(
-  path: string,
-  params?: any,
-  fallbackData?: ResType,
-  isReady = true
-) => {
+export type UseTmdbSWRArgs<ResType> = {
+  path: string;
+  params?: any;
+  fallbackData?: ResType;
+  isReady?: boolean;
+};
+
+export const useTmdbSWR = <ResType, ErrorType = any>({
+  path,
+  params,
+  fallbackData,
+  isReady = true,
+}: UseTmdbSWRArgs<ResType>) => {
   const { data, error, mutate } = useSWR<ResType, ErrorType>(
     isReady ? [path, params] : null,
     tmdbFetcher,
