@@ -1,8 +1,16 @@
-import { Button, Grid, Heading, Spinner } from "@chakra-ui/react";
+import {
+  Badge,
+  Button,
+  Flex,
+  Grid,
+  Heading,
+  Spinner,
+  useColorMode,
+} from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
-import TvShowDetailMeta from "lib/components/tv/detail/TvDetailMeta";
+import DetailMeta from "lib/components/shared/DetailMeta";
 import { useTvShowDetail } from "lib/services/tmdb/tv/detail";
 import { handleRouteBack } from "lib/utils/handleRouteBack";
 
@@ -13,6 +21,7 @@ const TvShowDetailPage = ({
   id,
 }: TvShowDetailPageProps) => {
   const router = useRouter();
+  const { colorMode } = useColorMode();
   const { data, isLoading } = useTvShowDetail(id, fallbackData);
 
   if (isLoading) {
@@ -32,7 +41,30 @@ const TvShowDetailPage = ({
           back
         </Button>
 
-        <TvShowDetailMeta data={data} />
+        <DetailMeta
+          data={{
+            name: data.name,
+            posterPath: data.poster_path,
+            status: data.status,
+            releasedDate: data.first_air_date,
+            tagline: data.tagline,
+            overview: data.overview,
+          }}
+          extras={
+            <Flex wrap="wrap" gridGap={2}>
+              {data.genres.map((genre) => (
+                <Badge
+                  cursor="pointer"
+                  variant={colorMode === "light" ? "solid" : "outline"}
+                  colorScheme="gray"
+                  key={`${genre.name}-${genre.id}`}
+                >
+                  {genre.name}
+                </Badge>
+              ))}
+            </Flex>
+          }
+        />
       </Grid>
     </Grid>
   );
