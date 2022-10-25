@@ -17,7 +17,7 @@ const PageNavButtons = ({
 }: PageNavButtonProps) => {
   return (
     <Skeleton marginY={4} isLoaded={!isLoading}>
-      {totalPages > 0 ? (
+      {totalPages > 1 ? (
         <Grid rowGap={4}>
           <Text
             letterSpacing={2}
