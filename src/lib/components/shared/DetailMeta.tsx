@@ -8,17 +8,25 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import Link from "next/link";
 
 import { BionifiedParagraph } from "lib/components/BionifiedParagraph";
 import PosterImage from "lib/components/shared/PosterImage";
-import type { TvShowDetail } from "lib/services/tmdb/tv/detail/types";
 
-type TvShowDetailMetaProps = {
-  data: TvShowDetail;
+type DetailData = {
+  name: string;
+  overview?: string;
+  status: string;
+  tagline: string;
+  releasedDate: Date | string;
+  posterPath?: string;
 };
 
-const TvShowDetailMeta = ({ data }: TvShowDetailMetaProps) => {
+type DetailMetaProps = {
+  data: DetailData;
+  extras?: React.ReactNode;
+};
+
+const DetailMeta = ({ data, extras }: DetailMetaProps) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -34,7 +42,7 @@ const TvShowDetailMeta = ({ data }: TvShowDetailMetaProps) => {
         maxWidth={["100%"]}
         marginX={[8, "25%", 0]}
       >
-        <PosterImage src={data.poster_path} />
+        <PosterImage src={data.posterPath} />
       </AspectRatio>
 
       <Grid gap={4}>
@@ -67,29 +75,15 @@ const TvShowDetailMeta = ({ data }: TvShowDetailMetaProps) => {
           </Badge>
 
           <Text textTransform="uppercase" letterSpacing={1} fontSize="xs">
-            {new Date(data.first_air_date).getFullYear()}
+            {new Date(data.releasedDate).getFullYear()}
           </Text>
         </Flex>
 
-        <Flex wrap="wrap" gridGap={2}>
-          {data.genres.map((genre) => (
-            <Link
-              href={`/movies/genre/${genre.id}?page=1`}
-              key={`${genre.name}-${genre.id}`}
-              passHref
-            >
-              <Badge
-                cursor="pointer"
-                variant={colorMode === "light" ? "solid" : "outline"}
-                colorScheme="gray"
-                key={`${genre.name}-${genre.id}`}
-                as="a"
-              >
-                {genre.name}
-              </Badge>
-            </Link>
-          ))}
-        </Flex>
+        {extras ? (
+          <Flex wrap="wrap" gridGap={2}>
+            {extras}
+          </Flex>
+        ) : null}
 
         {data.overview && (
           <BionifiedParagraph textAlign="justify">
@@ -101,4 +95,4 @@ const TvShowDetailMeta = ({ data }: TvShowDetailMetaProps) => {
   );
 };
 
-export default TvShowDetailMeta;
+export default DetailMeta;

@@ -2,7 +2,7 @@ import { Button, Grid, Heading, Spinner } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
-import TvShowDetailMeta from "lib/components/tv/detail/TvDetailMeta";
+import DetailMeta from "lib/components/shared/DetailMeta";
 import { useTvShowDetail } from "lib/services/tmdb/tv/detail";
 import { handleRouteBack } from "lib/utils/handleRouteBack";
 
@@ -32,7 +32,15 @@ const TvShowDetailPage = ({
           back
         </Button>
 
-        <TvShowDetailMeta data={data} />
+        <DetailMeta
+          data={{
+            name: data.name,
+            posterPath: data.poster_path,
+            status: data.status,
+            releasedDate: data.first_air_date,
+            tagline: data.tagline,
+          }}
+        />
       </Grid>
     </Grid>
   );

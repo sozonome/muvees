@@ -1,15 +1,8 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  HStack,
-  Skeleton,
-  Spacer,
-} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 
+import { ChipButton } from "lib/components/shared/ChipButton";
 import PosterCard from "lib/components/shared/PosterCard";
+import SliderContainer from "lib/components/shared/SliderContainer";
 import { MediaType } from "lib/services/tmdb/search/multi/types";
 import type {
   TVShowItem,
@@ -26,13 +19,7 @@ const TvShowListTypeButton = ({ listType }: TvShowListTypeButtonProps) => {
   const onClick = () => router.push(`/tv/${listType}?page=1`);
 
   return (
-    <Button
-      size={{ base: "xs", sm: "sm" }}
-      onClick={onClick}
-      textTransform="capitalize"
-    >
-      {listType.replaceAll("_", " ")}
-    </Button>
+    <ChipButton onClick={onClick}>{listType.replaceAll("_", " ")}</ChipButton>
   );
 };
 
@@ -52,61 +39,28 @@ const TvShowSlider = ({ sectionTitle, shows }: TvShowSliderProps) => {
 
   const slicedShows = shows?.slice(0, 10);
 
+  const handleClickSeeMore = () => router.push(`/tv/popular?page=1`);
+
   return (
-    <Box>
-      {sectionTitle && (
-        <Flex marginX={{ base: 8, sm: 0 }} alignItems="center">
-          <Heading
-            textTransform="uppercase"
-            letterSpacing={2}
-            fontSize={{ base: "md", sm: "lg" }}
-            fontWeight="400"
-          >
-            {sectionTitle}
-          </Heading>
-
-          <Button
-            marginLeft="auto"
-            size={{ base: "xs", sm: "sm" }}
-            onClick={() => router.push(`/tv/popular?page=1`)}
-          >
-            see more
-          </Button>
-        </Flex>
-      )}
-      <Skeleton isLoaded={slicedShows && slicedShows.length > 0}>
-        <Flex paddingX={[8, 6]} overflowX="scroll">
-          <Flex
-            flexWrap="nowrap"
-            alignItems="center"
-            minHeight="250px"
-            overflowX="scroll"
-            overflow="visible"
-            gridColumnGap={6}
-          >
-            {slicedShows?.map((show, idx) => (
-              <PosterCard
-                name={show.name}
-                id={show.id ?? 0}
-                imageUrl={show.poster_path}
-                mediaType={MediaType.Tv}
-                key={`${show.name}-${show.id}`}
-                layout="flex"
-                isLastItem={idx === slicedShows.length - 1}
-              />
-            ))}
-          </Flex>
-        </Flex>
-      </Skeleton>
-
-      <Spacer height={4} />
-
-      <HStack paddingX={{ base: 8, sm: 0 }} spacing={4}>
-        {tvShowListTypes.map((type) => (
-          <TvShowListTypeButton key={type} listType={type} />
-        ))}
-      </HStack>
-    </Box>
+    <SliderContainer
+      sectionTitle={sectionTitle}
+      onClickSeeMore={handleClickSeeMore}
+      footer={tvShowListTypes.map((type) => (
+        <TvShowListTypeButton key={type} listType={type} />
+      ))}
+    >
+      {slicedShows?.map((show, idx) => (
+        <PosterCard
+          name={show.name}
+          id={show.id ?? 0}
+          imageUrl={show.poster_path}
+          mediaType={MediaType.Tv}
+          key={`${show.name}-${show.id}`}
+          layout="flex"
+          isLastItem={idx === slicedShows.length - 1}
+        />
+      ))}
+    </SliderContainer>
   );
 };
 
