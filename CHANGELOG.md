@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.1](https://github.com/sozonome/muvees/compare/v1.3.0...v1.3.1) (2022-10-25)
+
+
+### Bug Fixes
+
+* adjust grid container and page nav button ([#53](https://github.com/sozonome/muvees/issues/53)) ([b5e171c](https://github.com/sozonome/muvees/commit/b5e171c5b1877f669195e8f2e7dbbf7b2c08c838))
+* adjust page number checking ([#50](https://github.com/sozonome/muvees/issues/50)) ([91745c8](https://github.com/sozonome/muvees/commit/91745c8fbd8ec53e01989a866ec4244b37f86753))
+
+
+### Improvements
+
+* make into reusable components ([#51](https://github.com/sozonome/muvees/issues/51)) ([07d47ee](https://github.com/sozonome/muvees/commit/07d47ee6401eeddac14ea82ec2c84e787a514dac))
+* use object as arguments ([#49](https://github.com/sozonome/muvees/issues/49)) ([5dae9f7](https://github.com/sozonome/muvees/commit/5dae9f7c95e3ed1811bb1fce83a2075df6518b0c))
+
 ## [1.3.0](https://github.com/sozonome/muvees/compare/v1.2.0...v1.3.0) (2022-10-24)
 
 
