@@ -16,7 +16,7 @@ type DetailData = {
   name: string;
   overview?: string;
   status: string;
-  tagline: string;
+  tagline?: string;
   releasedDate: Date | string;
   posterPath?: string;
 };

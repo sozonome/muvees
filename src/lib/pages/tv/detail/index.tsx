@@ -1,4 +1,12 @@
-import { Button, Grid, Heading, Spinner } from "@chakra-ui/react";
+import {
+  Badge,
+  Button,
+  Flex,
+  Grid,
+  Heading,
+  Spinner,
+  useColorMode,
+} from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
@@ -13,6 +21,7 @@ const TvShowDetailPage = ({
   id,
 }: TvShowDetailPageProps) => {
   const router = useRouter();
+  const { colorMode } = useColorMode();
   const { data, isLoading } = useTvShowDetail(id, fallbackData);
 
   if (isLoading) {
@@ -39,7 +48,22 @@ const TvShowDetailPage = ({
             status: data.status,
             releasedDate: data.first_air_date,
             tagline: data.tagline,
+            overview: data.overview,
           }}
+          extras={
+            <Flex wrap="wrap" gridGap={2}>
+              {data.genres.map((genre) => (
+                <Badge
+                  cursor="pointer"
+                  variant={colorMode === "light" ? "solid" : "outline"}
+                  colorScheme="gray"
+                  key={`${genre.name}-${genre.id}`}
+                >
+                  {genre.name}
+                </Badge>
+              ))}
+            </Flex>
+          }
         />
       </Grid>
     </Grid>
