@@ -46,20 +46,21 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
             -1
         )
         .map((movieCast) => (
-          <Link
+          <Flex
+            as={Link}
             href={`/person/${movieCast.id}`}
             key={`${movieCast.name}-${movieCast.id}`}
-            passHref
+            cursor="pointer"
+            alignItems="center"
+            gridColumnGap={2}
           >
-            <Flex as="a" cursor="pointer" alignItems="center" gridColumnGap={2}>
-              <Avatar
-                size="lg"
-                name={movieCast.name}
-                src={`${IMAGE_URL}${movieCast.profile_path}`}
-              />
-              <Text>{movieCast.name}</Text>
-            </Flex>
-          </Link>
+            <Avatar
+              size="lg"
+              name={movieCast.name}
+              src={`${IMAGE_URL}${movieCast.profile_path}`}
+            />
+            <Text>{movieCast.name}</Text>
+          </Flex>
         ));
     }
 
@@ -74,19 +75,15 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
             all
           </Button>
           {credits.cast.slice(0, 20).map((movieCast) => (
-            <Link
+            <Avatar
+              as={Link}
               href={`/person/${movieCast.id}`}
               key={`${movieCast.name}-${movieCast.id}`}
-              passHref
-            >
-              <Avatar
-                as="a"
-                cursor="pointer"
-                size="lg"
-                src={`${IMAGE_URL}${movieCast.profile_path}`}
-                name={movieCast.name}
-              />
-            </Link>
+              cursor="pointer"
+              size="lg"
+              src={`${IMAGE_URL}${movieCast.profile_path}`}
+              name={movieCast.name}
+            />
           ))}
           <Button padding={8} borderRadius="50%" onClick={onOpen}>
             more

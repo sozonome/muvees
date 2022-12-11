@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { ChipButton } from "lib/components/shared/ChipButton";
@@ -14,12 +15,10 @@ type TvShowListTypeButtonProps = {
 };
 
 const TvShowListTypeButton = ({ listType }: TvShowListTypeButtonProps) => {
-  const router = useRouter();
-
-  const onClick = () => router.push(`/tv/${listType}?page=1`);
-
   return (
-    <ChipButton onClick={onClick}>{listType.replaceAll("_", " ")}</ChipButton>
+    <ChipButton as={Link} href={`/tv/${listType}?page=1`}>
+      {listType.replaceAll("_", " ")}
+    </ChipButton>
   );
 };
 
