@@ -1,5 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
 
+import { config } from "./config";
+
 const customTheme = extendTheme({
   fonts: {
     body: "Outfit, sans-serif",
@@ -12,9 +14,7 @@ const customTheme = extendTheme({
       },
     },
   },
-  config: {
-    initialColorMode: "light",
-  },
+  config,
 });
 
 export default customTheme;
