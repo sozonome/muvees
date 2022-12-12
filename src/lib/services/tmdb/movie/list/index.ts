@@ -1,8 +1,4 @@
-import {
-  tmdbFetcher,
-  tmdbServerFetcher,
-  useTmdbSWR,
-} from "lib/services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from "lib/services/tmdb/utils";
 
 import type {
   ListType,
@@ -27,19 +23,6 @@ const movieListEndpoint = ({
   }
   return `/movie/${section}`;
 };
-
-export const getMovieList = (
-  section: ListType = "popular",
-  params?: MovieListParams
-) =>
-  tmdbFetcher<MovieListResponse>(
-    movieListEndpoint({
-      section,
-      query: params?.query,
-      with_genres: params?.with_genres,
-    }),
-    params
-  );
 
 export const getMovieListServer = (
   section: ListType = "popular",
