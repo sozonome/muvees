@@ -9,11 +9,10 @@ const tmdbAPI = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const requestPath = `/${(path as string[]).join("/")}`;
 
-  res.setHeader(
-    "Cache-Control",
-    "s-maxage=600, stale-while-revalidate=2678400"
-  );
-  res.json(await tmdbServerFetcher(requestPath, params));
+  const data = await tmdbServerFetcher(requestPath, params);
+
+  res.setHeader("Cache-Control", "s-maxage=86400, stale-while-revalidate=600");
+  res.json(data);
 };
 
 export default tmdbAPI;
