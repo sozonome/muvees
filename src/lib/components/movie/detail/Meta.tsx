@@ -23,21 +23,16 @@ const MovieDetailMeta = ({ data }: MovieDetailMetaProps) => {
       extras={
         <Flex wrap="wrap" gridGap={2}>
           {data.genres.map((genre) => (
-            <Link
-              href={`/movies/genre/${genre.id}?page=1`}
+            <Badge
+              cursor="pointer"
+              variant={colorMode === "light" ? "solid" : "outline"}
+              colorScheme="gray"
               key={`${genre.name}-${genre.id}`}
-              passHref
+              as={Link}
+              href={`/movies/genre/${genre.id}?page=1`}
             >
-              <Badge
-                cursor="pointer"
-                variant={colorMode === "light" ? "solid" : "outline"}
-                colorScheme="gray"
-                key={`${genre.name}-${genre.id}`}
-                as="a"
-              >
-                {genre.name}
-              </Badge>
-            </Link>
+              {genre.name}
+            </Badge>
           ))}
         </Flex>
       }

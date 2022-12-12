@@ -47,11 +47,15 @@ const MovieDetailAdditionalInfo = ({
                 </Button>
               </ChakraLink>
             )}
-            <Link href={`/movie/${id}/images`} passHref>
-              <Button as="a" size="sm" leftIcon={<GrGallery />}>
-                gallery
-              </Button>
-            </Link>
+
+            <Button
+              as={Link}
+              href={`/movie/${id}/images`}
+              size="sm"
+              leftIcon={<GrGallery />}
+            >
+              gallery
+            </Button>
           </Flex>
         )}
       </Skeleton>

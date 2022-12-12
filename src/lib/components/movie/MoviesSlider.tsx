@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { ChipButton } from "lib/components/shared/ChipButton";
@@ -14,12 +15,10 @@ type MovieListTypeButtonProps = {
 };
 
 const MovieListTypeButton = ({ listType }: MovieListTypeButtonProps) => {
-  const router = useRouter();
-
-  const onClick = () => router.push(`/movies/${listType}?page=1`);
-
   return (
-    <ChipButton onClick={onClick}>{listType.replaceAll("_", " ")}</ChipButton>
+    <ChipButton as={Link} href={`/movies/${listType}?page=1`}>
+      {listType.replaceAll("_", " ")}
+    </ChipButton>
   );
 };
 
