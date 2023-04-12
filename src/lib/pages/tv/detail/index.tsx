@@ -7,8 +7,8 @@ import {
   Spinner,
   useColorMode,
 } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 
 import DetailMeta from "lib/components/shared/DetailMeta";
 import { useTvShowDetail } from "lib/services/tmdb/tv/detail";

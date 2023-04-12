@@ -1,6 +1,6 @@
 import { Button, Grid } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
 
 import MovieDetailAdditionalInfo from "lib/components/movie/detail/AdditionalInfo";
