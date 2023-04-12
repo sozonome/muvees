@@ -1,6 +1,6 @@
 import { Box, Button, Heading } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { NextSeo } from "next-seo";
 import { useEffect, useState } from "react";
 
 import MoviesContainer from "lib/components/movie/MoviesContainer";
