@@ -4,6 +4,7 @@
   "private": true,
   "author": "sozonome",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
     "lint": "next lint",
     "lint:fix": "eslint src --fix && pnpm format",
