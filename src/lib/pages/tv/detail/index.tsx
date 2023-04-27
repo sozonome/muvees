@@ -1,36 +1,15 @@
-import {
-  Badge,
-  Button,
-  Flex,
-  Grid,
-  Heading,
-  Spinner,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Badge, Button, Flex, Grid, useColorMode } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 
 import DetailMeta from "lib/components/shared/DetailMeta";
-import { useTvShowDetail } from "lib/services/tmdb/tv/detail";
 import { handleRouteBack } from "lib/utils/handleRouteBack";
 
 import type { TvShowDetailPageProps } from "./types";
 
-const TvShowDetailPage = ({
-  data: fallbackData,
-  id,
-}: TvShowDetailPageProps) => {
+const TvShowDetailPage = ({ data }: TvShowDetailPageProps) => {
   const router = useRouter();
   const { colorMode } = useColorMode();
-  const { data, isLoading } = useTvShowDetail(id, fallbackData);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
-
-  if (!data) {
-    return <Heading>No Data</Heading>;
-  }
 
   return (
     <Grid paddingX={8} gridGap={[8, 16]}>

@@ -21,13 +21,13 @@ export const getStaticProps: GetStaticProps<
 
   try {
     const id = Number(params.id);
-    const detailFallbackData = await getMovieDetailServer(id);
-    const creditFallbackData = await getMovieCreditsServer(id);
+    const detailData = await getMovieDetailServer(id);
+    const creditsData = await getMovieCreditsServer(id);
 
     return {
       props: {
-        detailFallbackData,
-        creditFallbackData,
+        detailData,
+        creditsData,
       },
       revalidate: 86400,
     };

@@ -25,7 +25,7 @@ import { IMAGE_URL } from "lib/components/shared/PosterImage";
 import type { MovieCreditsResponse } from "lib/services/tmdb/movie/credits/types";
 
 type CastsWrapperProps = {
-  isLoadingCredits: boolean;
+  isLoadingCredits?: boolean;
   credits?: MovieCreditsResponse;
 };
 

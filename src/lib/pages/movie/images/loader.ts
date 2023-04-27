@@ -20,11 +20,11 @@ export const getStaticProps: GetStaticProps<
 
   const id = Number(params.id);
 
-  const fallbackData = await getMovieImagesServer(id);
+  const data = await getMovieImagesServer(id);
 
   return {
     props: {
-      fallbackData,
+      data,
     },
     revalidate: 86400,
   };

@@ -5,5 +5,5 @@ export type PersonDetailPageParams = {
 };
 
 export type PersonDetailPageProps = {
-  fallbackData?: PersonDetailResponse;
+  data?: PersonDetailResponse;
 };
