@@ -17,13 +17,17 @@ export const getStaticProps: GetStaticProps<TvShowDetailPageProps> = async (
     };
   }
 
-  const id = params.id as string;
-  const data = await getTvShowDetail(id);
+  try {
+    const id = params.id as string;
+    const data = await getTvShowDetail(id);
 
-  return {
-    props: {
-      data,
-      id,
-    },
-  };
+    return {
+      props: {
+        data,
+        id,
+      },
+    };
+  } catch {
+    return { notFound: true };
+  }
 };

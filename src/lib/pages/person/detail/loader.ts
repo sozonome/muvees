@@ -20,11 +20,11 @@ export const getStaticProps: GetStaticProps<
 
   try {
     const id = Number(params.id);
-    const fallbackData = await getPersonDetailServer(id);
+    const data = await getPersonDetailServer(id);
 
     return {
       props: {
-        fallbackData,
+        data,
       },
       revalidate: 86400,
     };

@@ -6,14 +6,18 @@ import { getTVShowByListType } from "lib/services/tmdb/tv/list";
 
 // eslint-disable-next-line import/prefer-default-export
 export const getStaticProps: GetStaticProps<HomePageProps> = async () => {
-  const popularMovieFallbackData = await getMovieListServer("popular");
-  const popularTvShowFallbackData = await getTVShowByListType("popular");
+  try {
+    const popularMovieData = await getMovieListServer("popular");
+    const popularTvShowData = await getTVShowByListType("popular");
 
-  return {
-    props: {
-      popularMovieFallbackData,
-      popularTvShowFallbackData,
-    },
-    revalidate: 43200,
-  };
+    return {
+      props: {
+        popularMovieData,
+        popularTvShowData,
+      },
+      revalidate: 43200,
+    };
+  } catch {
+    return { notFound: true };
+  }
 };
