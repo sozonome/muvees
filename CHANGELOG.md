@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/sozonome/muvees/compare/v1.3.1...v1.3.2) (2023-04-27)
+
+
+### Improvements
+
+* **theme:** adjust gray color palette ([bfe5f41](https://github.com/sozonome/muvees/commit/bfe5f417f1e76c3920503d4312159159beafbd6d))
+* use server data instead of refetch in client ([#67](https://github.com/sozonome/muvees/issues/67)) ([a529abe](https://github.com/sozonome/muvees/commit/a529abe32d1710a6c0927427e775bcb6087b1288))
+
 ### [1.3.1](https://github.com/sozonome/muvees/compare/v1.3.0...v1.3.1) (2022-10-25)
 
 
