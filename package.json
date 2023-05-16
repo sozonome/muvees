@@ -42,7 +42,6 @@
     "@types/lodash": "^4.14.192",
     "@types/node": "^18.15.11",
     "@types/react": "^18.0.35",
-    "@types/umami": "^0.1.1",
     "commitizen": "^4.3.0",
     "commitlint": "^17.5.1",
     "cross-env": "^7.0.3",
