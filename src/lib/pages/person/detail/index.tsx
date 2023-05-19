@@ -21,11 +21,13 @@ const PersonDetailPage = ({ data }: PersonDetailPageProps) => {
     <Grid marginX={8} gap={8}>
       <Button onClick={router.back}>back</Button>
 
-      <Box display={{ base: "grid", md: "flex" }} gap={{ base: 8, md: 16 }}>
+      <Box
+        display={{ base: "grid", md: "flex" }}
+        alignItems="start"
+        gap={{ base: 8, md: 16 }}
+      >
         {data && (
           <AspectRatio
-            maxHeight={["100%"]}
-            maxWidth={["100%"]}
             minWidth={{ md: 300 }}
             marginX={[8, "25%", 0]}
             ratio={3.6 / 5}
