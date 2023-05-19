@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/sozonome/muvees/compare/v1.3.2...v1.3.3) (2023-05-19)
+
+
+### Improvements
+
+* **analytics:** adjust trackers ([17018cb](https://github.com/sozonome/muvees/commit/17018cb5a053f802bc4e928747ac6b663e4b802e))
+* **pages:** adjust person detail image ratio ([46ff6f5](https://github.com/sozonome/muvees/commit/46ff6f5f6b02221ad25bec3d08f4b6b153828181))
+
 ### [1.3.2](https://github.com/sozonome/muvees/compare/v1.3.1...v1.3.2) (2023-04-27)
 
 
