@@ -1,4 +1,4 @@
-import { Text } from "@chakra-ui/react";
+import { Text } from '@chakra-ui/react';
 
 type PosterLabelProps = {
   label: string;
@@ -17,7 +17,7 @@ const PosterLabel = ({ label }: PosterLabelProps) => {
       transform="translate(-50%, -50%)"
       visibility="hidden"
       color="white"
-      _groupHover={{ visibility: "visible" }}
+      _groupHover={{ visibility: 'visible' }}
     >
       {label}
     </Text>

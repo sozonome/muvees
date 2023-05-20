@@ -1,10 +1,10 @@
-import type { GetStaticProps } from "next";
+import type { GetStaticProps } from 'next';
 
-import { getMovieImagesServer } from "lib/services/tmdb/movie/images";
+import { getMovieImagesServer } from 'lib/services/tmdb/movie/images';
 
-import type { MovieImagesPageParams, MovieImagesPageProps } from "./types";
+import type { MovieImagesPageParams, MovieImagesPageProps } from './types';
 
-export { getStaticPaths } from "lib/utils/defaultGetStaticPaths";
+export { getStaticPaths } from 'lib/utils/defaultGetStaticPaths';
 
 export const getStaticProps: GetStaticProps<
   MovieImagesPageProps,

@@ -1,10 +1,10 @@
-import type { GetStaticProps } from "next";
+import type { GetStaticProps } from 'next';
 
-import { getTvShowDetail } from "lib/services/tmdb/tv/detail";
+import { getTvShowDetail } from 'lib/services/tmdb/tv/detail';
 
-import type { TvShowDetailPageProps } from "./types";
+import type { TvShowDetailPageProps } from './types';
 
-export { getStaticPaths } from "lib/utils/defaultGetStaticPaths";
+export { getStaticPaths } from 'lib/utils/defaultGetStaticPaths';
 
 export const getStaticProps: GetStaticProps<TvShowDetailPageProps> = async (
   ctx

@@ -1,24 +1,24 @@
-import { Flex, Heading, IconButton, Grid } from "@chakra-ui/react";
-import Link from "next/link";
-import { GoSearch } from "react-icons/go";
+import { Flex, Heading, IconButton, Grid } from '@chakra-ui/react';
+import Link from 'next/link';
+import { GoSearch } from 'react-icons/go';
 
-import { trackEvent } from "lib/utils/trackEvent";
+import { trackEvent } from 'lib/utils/trackEvent';
 
-import AppMenu from "./AppMenu";
-import ThemeToggle from "./ThemeToggle";
+import AppMenu from './AppMenu';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const handleClickSearch = () => {
     trackEvent({
       eventName: `Nav Link: Search`,
-      eventData: { type: "navigate" },
+      eventData: { type: 'navigate' },
     });
   };
 
   return (
     <Flex as="header" width="full" align="center" padding="8">
       <Link href="/">
-        <Heading as="h1" fontSize={["md", "xl"]}>
+        <Heading as="h1" fontSize={['md', 'xl']}>
           muvees
         </Heading>
       </Link>

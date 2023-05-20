@@ -1,7 +1,7 @@
-import GridContainer from "lib/components/shared/GridContainer";
-import PosterCard from "lib/components/shared/PosterCard";
-import { MediaType } from "lib/services/tmdb/search/multi/types";
-import type { TVShowItem } from "lib/services/tmdb/tv/list/types";
+import GridContainer from 'lib/components/shared/GridContainer';
+import PosterCard from 'lib/components/shared/PosterCard';
+import { MediaType } from 'lib/services/tmdb/search/multi/types';
+import type { TVShowItem } from 'lib/services/tmdb/tv/list/types';
 
 type TvShowListContainerProps = {
   isLoading: boolean;

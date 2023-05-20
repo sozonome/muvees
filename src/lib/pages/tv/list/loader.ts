@@ -1,11 +1,11 @@
-import type { GetStaticProps } from "next";
+import type { GetStaticProps } from 'next';
 
-import type { TVShowListType } from "lib/services/tmdb/tv/list/types";
-import { TVShowList } from "lib/services/tmdb/tv/list/types";
+import type { TVShowListType } from 'lib/services/tmdb/tv/list/types';
+import { TVShowList } from 'lib/services/tmdb/tv/list/types';
 
-import type { TVShowListPageProps, TVShowListPageParams } from "./types";
+import type { TVShowListPageProps, TVShowListPageParams } from './types';
 
-export { getStaticPaths } from "lib/utils/defaultGetStaticPaths";
+export { getStaticPaths } from 'lib/utils/defaultGetStaticPaths';
 
 export const getStaticProps: GetStaticProps<
   TVShowListPageProps,

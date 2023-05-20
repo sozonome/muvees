@@ -1,11 +1,11 @@
-import type { GetStaticProps } from "next";
+import type { GetStaticProps } from 'next';
 
-import { getMovieCreditsServer } from "lib/services/tmdb/movie/credits";
-import { getMovieDetailServer } from "lib/services/tmdb/movie/detail";
+import { getMovieCreditsServer } from 'lib/services/tmdb/movie/credits';
+import { getMovieDetailServer } from 'lib/services/tmdb/movie/detail';
 
-import type { MovieDetailPageParams, MovieDetailPageProps } from "./types";
+import type { MovieDetailPageParams, MovieDetailPageProps } from './types';
 
-export { getStaticPaths } from "lib/utils/defaultGetStaticPaths";
+export { getStaticPaths } from 'lib/utils/defaultGetStaticPaths';
 
 export const getStaticProps: GetStaticProps<
   MovieDetailPageProps,

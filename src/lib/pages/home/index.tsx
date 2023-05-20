@@ -1,9 +1,9 @@
-import { Grid } from "@chakra-ui/react";
+import { Grid } from '@chakra-ui/react';
 
-import MoviesSlider from "lib/components/movie/MoviesSlider";
-import TvShowSlider from "lib/components/tv/TvShowSlider";
+import MoviesSlider from 'lib/components/movie/MoviesSlider';
+import TvShowSlider from 'lib/components/tv/TvShowSlider';
 
-import type { HomePageProps } from "./types";
+import type { HomePageProps } from './types';
 
 const Home = ({ popularMovieData, popularTvShowData }: HomePageProps) => {
   return (

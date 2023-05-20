@@ -1,4 +1,4 @@
-import type { PersonType } from "lib/services/tmdb/person/detail/types";
+import type { PersonType } from 'lib/services/tmdb/person/detail/types';
 
 type CreditCastType = PersonType & {
   cast_id: number;

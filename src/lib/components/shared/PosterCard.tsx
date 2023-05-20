@@ -1,16 +1,16 @@
-import { AspectRatio, Box } from "@chakra-ui/react";
-import Link from "next/link";
+import { AspectRatio, Box } from '@chakra-ui/react';
+import Link from 'next/link';
 
-import MotionBox from "lib/components/MotionBox";
-import PosterImage from "lib/components/shared/PosterImage";
-import PosterLabel from "lib/components/shared/PosterLabel";
-import type { MediaType } from "lib/services/tmdb/search/multi/types";
-import { trackEvent } from "lib/utils/trackEvent";
+import MotionBox from 'lib/components/MotionBox';
+import PosterImage from 'lib/components/shared/PosterImage';
+import PosterLabel from 'lib/components/shared/PosterLabel';
+import type { MediaType } from 'lib/services/tmdb/search/multi/types';
+import { trackEvent } from 'lib/utils/trackEvent';
 
 const pathMap: Record<MediaType, string> = {
-  movie: "/movie",
-  tv: "/tv/show",
-  person: "/person",
+  movie: '/movie',
+  tv: '/tv/show',
+  person: '/person',
 };
 
 type PosterCardProps = {
@@ -18,7 +18,7 @@ type PosterCardProps = {
   name?: string;
   imageUrl?: string;
   mediaType: MediaType;
-  layout: "flex" | "grid";
+  layout: 'flex' | 'grid';
   isLastItem?: boolean;
 };
 
@@ -33,7 +33,7 @@ const PosterCard = ({
   const handleClick = () => {
     trackEvent({
       eventName: `${mediaType}: ${name} - ${id}`,
-      eventData: { type: "navigate" },
+      eventData: { type: 'navigate' },
     });
   };
 
@@ -47,13 +47,13 @@ const PosterCard = ({
         whileHover={{ scale: 1.05 }}
         role="group"
         paddingRight={isLastItem ? [8, 6] : undefined}
-        {...(layout === "flex" && { flex: "0 0 auto" })}
+        {...(layout === 'flex' && { flex: '0 0 auto' })}
       >
-        {layout === "grid" ? (
+        {layout === 'grid' ? (
           <AspectRatio
             borderRadius={24}
             ratio={3.6 / 5}
-            _groupHover={{ backgroundColor: "black" }}
+            _groupHover={{ backgroundColor: 'black' }}
           >
             <PosterImage src={imageUrl} layout={layout} />
           </AspectRatio>
@@ -61,12 +61,12 @@ const PosterCard = ({
           <Box
             as="button"
             borderRadius={24}
-            _groupHover={{ backgroundColor: "black" }}
+            _groupHover={{ backgroundColor: 'black' }}
           >
             <PosterImage src={imageUrl} layout={layout} />
           </Box>
         )}
-        <PosterLabel label={name ?? ""} />
+        <PosterLabel label={name ?? ''} />
       </MotionBox>
     </Link>
   );

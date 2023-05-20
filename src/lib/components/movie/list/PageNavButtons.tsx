@@ -1,15 +1,15 @@
-import { Skeleton, Grid, Button, Text } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { Skeleton, Grid, Button, Text } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
-import type { MovieListResponse } from "lib/services/tmdb/movie/list/types";
+import type { MovieListResponse } from 'lib/services/tmdb/movie/list/types';
 
-import type { MovieListModeKey } from "./types";
+import type { MovieListModeKey } from './types';
 
 export type PageNavButtonProps = {
   isLoading: boolean;
   page?: number;
   totalPages: number;
-  results?: MovieListResponse["results"];
+  results?: MovieListResponse['results'];
   listMode: MovieListModeKey;
 };
 
@@ -25,16 +25,16 @@ const PageNavButtons = ({
     query: { section, genre, query },
   } = router;
 
-  const handleChangePage = (type: "next" | "prev") => () => {
-    const changePageNum = type === "next" ? page + 1 : page - 1;
+  const handleChangePage = (type: 'next' | 'prev') => () => {
+    const changePageNum = type === 'next' ? page + 1 : page - 1;
 
     const nextRoute = () => {
       switch (listMode) {
-        case "section":
+        case 'section':
           return `/movies/${section}?page=${changePageNum}`;
-        case "search":
+        case 'search':
           return `/movies/search?query=${query}&page=${changePageNum}`;
-        case "discover":
+        case 'discover':
           return `/movies/genre/${genre}?page=${changePageNum}`;
         default:
           return `/movies/${section}?page=${changePageNum}`;
@@ -58,13 +58,13 @@ const PageNavButtons = ({
             Page: <b>{page ?? 0}</b> / {totalPages}
           </Text>
 
-          <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>
-            <Button disabled={page === 1} onClick={handleChangePage("prev")}>
+          <Grid templateColumns={['repeat(2, 1fr)']} gap={4}>
+            <Button disabled={page === 1} onClick={handleChangePage('prev')}>
               prev
             </Button>
             <Button
               disabled={page === totalPages}
-              onClick={handleChangePage("next")}
+              onClick={handleChangePage('next')}
             >
               next
             </Button>

@@ -1,7 +1,7 @@
-import GridContainer from "lib/components/shared/GridContainer";
-import PosterCard from "lib/components/shared/PosterCard";
-import type { MovieListItemType } from "lib/services/tmdb/movie/list/types";
-import { MediaType } from "lib/services/tmdb/search/multi/types";
+import GridContainer from 'lib/components/shared/GridContainer';
+import PosterCard from 'lib/components/shared/PosterCard';
+import type { MovieListItemType } from 'lib/services/tmdb/movie/list/types';
+import { MediaType } from 'lib/services/tmdb/search/multi/types';
 
 type MoviesContainerProps = {
   isLoading: boolean;

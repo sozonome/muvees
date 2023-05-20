@@ -1,6 +1,6 @@
-import { Button, Grid, Heading } from "@chakra-ui/react";
-import Image from "next/image";
-import Link from "next/link";
+import { Button, Grid, Heading } from '@chakra-ui/react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const Error = () => {
   return (

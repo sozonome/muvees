@@ -5,14 +5,14 @@ import {
   Grid,
   Heading,
   Text,
-} from "@chakra-ui/react";
-import { useRouter } from "next/router";
+} from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
-import { BionifiedParagraph } from "lib/components/BionifiedParagraph";
-import PosterImage from "lib/components/shared/PosterImage";
-import { countAge } from "lib/utils/countAge";
+import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
+import PosterImage from 'lib/components/shared/PosterImage';
+import { countAge } from 'lib/utils/countAge';
 
-import type { PersonDetailPageProps } from "./types";
+import type { PersonDetailPageProps } from './types';
 
 const PersonDetailPage = ({ data }: PersonDetailPageProps) => {
   const router = useRouter();
@@ -22,14 +22,14 @@ const PersonDetailPage = ({ data }: PersonDetailPageProps) => {
       <Button onClick={router.back}>back</Button>
 
       <Box
-        display={{ base: "grid", md: "flex" }}
+        display={{ base: 'grid', md: 'flex' }}
         alignItems="start"
         gap={{ base: 8, md: 16 }}
       >
         {data && (
           <AspectRatio
             minWidth={{ md: 300 }}
-            marginX={[8, "25%", 0]}
+            marginX={[8, '25%', 0]}
             ratio={3.6 / 5}
           >
             <PosterImage
@@ -42,7 +42,7 @@ const PersonDetailPage = ({ data }: PersonDetailPageProps) => {
         <Box>
           {data && (
             <Heading
-              textAlign={["center", "center", "inherit"]}
+              textAlign={['center', 'center', 'inherit']}
               size="lg"
               letterSpacing={2}
               textTransform="uppercase"
@@ -67,7 +67,7 @@ const PersonDetailPage = ({ data }: PersonDetailPageProps) => {
                     {data.deathday} (
                     {data.birthday
                       ? countAge(data.birthday, data.deathday)
-                      : ""}{" "}
+                      : ''}{' '}
                     years)
                   </Text>
                 ) : (
@@ -77,7 +77,7 @@ const PersonDetailPage = ({ data }: PersonDetailPageProps) => {
                 )}
               </Box>
               <BionifiedParagraph
-                fontSize={{ base: "sm", md: "md" }}
+                fontSize={{ base: 'sm', md: 'md' }}
                 lineHeight={1.75}
               >
                 {data.biography}

@@ -1,10 +1,10 @@
-import type { TmdbAPIListResponse } from "lib/services/tmdb/types";
+import type { TmdbAPIListResponse } from 'lib/services/tmdb/types';
 
 export enum TVShowList {
-  airing_today = "airing_today",
-  on_the_air = "on_the_air",
-  popular = "popular",
-  top_rated = "top_rated",
+  airing_today = 'airing_today',
+  on_the_air = 'on_the_air',
+  popular = 'popular',
+  top_rated = 'top_rated',
 }
 
 export type TVShowListType = keyof typeof TVShowList;

@@ -1,14 +1,14 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-import { ChipButton } from "lib/components/shared/ChipButton";
-import PosterCard from "lib/components/shared/PosterCard";
-import SliderContainer from "lib/components/shared/SliderContainer";
-import { MediaType } from "lib/services/tmdb/search/multi/types";
+import { ChipButton } from 'lib/components/shared/ChipButton';
+import PosterCard from 'lib/components/shared/PosterCard';
+import SliderContainer from 'lib/components/shared/SliderContainer';
+import { MediaType } from 'lib/services/tmdb/search/multi/types';
 import type {
   TVShowItem,
   TVShowListType,
-} from "lib/services/tmdb/tv/list/types";
+} from 'lib/services/tmdb/tv/list/types';
 
 type TvShowListTypeButtonProps = {
   listType: TVShowListType;
@@ -17,15 +17,15 @@ type TvShowListTypeButtonProps = {
 const TvShowListTypeButton = ({ listType }: TvShowListTypeButtonProps) => {
   return (
     <ChipButton as={Link} href={`/tv/${listType}?page=1`}>
-      {listType.replaceAll("_", " ")}
+      {listType.replaceAll('_', ' ')}
     </ChipButton>
   );
 };
 
 const tvShowListTypes: Array<TVShowListType> = [
-  "on_the_air",
-  "airing_today",
-  "top_rated",
+  'on_the_air',
+  'airing_today',
+  'top_rated',
 ];
 
 type TvShowSliderProps = {

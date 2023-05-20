@@ -12,7 +12,7 @@ type TrackEventArgs = {
  * https://umami.is/docs/tracker-functions
  */
 export const trackEvent = ({ eventName, eventData }: TrackEventArgs) => {
-  if (window.umami && typeof window.umami.track === "function") {
+  if (window.umami && typeof window.umami.track === 'function') {
     window.umami.track(eventName, eventData);
   }
 };

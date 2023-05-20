@@ -16,13 +16,13 @@ import {
   Skeleton,
   Text,
   useDisclosure,
-} from "@chakra-ui/react";
-import Link from "next/link";
-import type { ChangeEvent } from "react";
-import { useState, useMemo } from "react";
+} from '@chakra-ui/react';
+import Link from 'next/link';
+import type { ChangeEvent } from 'react';
+import { useState, useMemo } from 'react';
 
-import { IMAGE_URL } from "lib/components/shared/PosterImage";
-import type { MovieCreditsResponse } from "lib/services/tmdb/movie/credits/types";
+import { IMAGE_URL } from 'lib/components/shared/PosterImage';
+import type { MovieCreditsResponse } from 'lib/services/tmdb/movie/credits/types';
 
 type CastsWrapperProps = {
   isLoadingCredits?: boolean;
@@ -32,7 +32,7 @@ type CastsWrapperProps = {
 const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [keyword, setKeyword] = useState<string>("");
+  const [keyword, setKeyword] = useState<string>('');
 
   const handleChangeKeyword = (event: ChangeEvent<HTMLInputElement>) =>
     setKeyword(event.target.value);
@@ -112,7 +112,7 @@ const CastsWrapper = ({ isLoadingCredits, credits }: CastsWrapperProps) => {
               <ModalCloseButton />
 
               <ModalBody>
-                <Grid gap={4} templateColumns={["repeat(1, 1fr)"]}>
+                <Grid gap={4} templateColumns={['repeat(1, 1fr)']}>
                   {casts}
                 </Grid>
               </ModalBody>

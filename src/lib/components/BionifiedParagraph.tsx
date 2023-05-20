@@ -1,9 +1,9 @@
-import type { TextProps } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
+import type { TextProps } from '@chakra-ui/react';
+import { Text } from '@chakra-ui/react';
 
 const BionifiedWord = ({
   children: word,
-}: Pick<BionifiedParagraphProps, "children">) => {
+}: Pick<BionifiedParagraphProps, 'children'>) => {
   if (!word) {
     return null;
   }
@@ -18,7 +18,7 @@ const BionifiedWord = ({
 
   return (
     <>
-      {" "}
+      {' '}
       <b>{word?.slice(0, boldedCharNum)}</b>
       <span>{word?.slice(boldedCharNum)}</span>
     </>
@@ -35,7 +35,7 @@ export const BionifiedParagraph = ({
 }: BionifiedParagraphProps) => {
   return (
     <Text {...props}>
-      {children?.split(" ").map((word, idx) => (
+      {children?.split(' ').map((word, idx) => (
         // eslint-disable-next-line react/no-array-index-key
         <BionifiedWord key={`${word}-${idx}`}>{word}</BionifiedWord>
       ))}

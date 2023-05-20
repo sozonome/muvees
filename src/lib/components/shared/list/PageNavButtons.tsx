@@ -1,4 +1,4 @@
-import { Skeleton, Grid, Button, Text } from "@chakra-ui/react";
+import { Skeleton, Grid, Button, Text } from '@chakra-ui/react';
 
 export type PageNavButtonProps = {
   isLoading: boolean;
@@ -29,7 +29,7 @@ const PageNavButtons = ({
             Page: <b>{page ?? 0}</b> / {totalPages}
           </Text>
 
-          <Grid templateColumns={["repeat(2, 1fr)"]} gap={4}>
+          <Grid templateColumns={['repeat(2, 1fr)']} gap={4}>
             <Button disabled={page === 1} onClick={onClickPrev}>
               prev
             </Button>

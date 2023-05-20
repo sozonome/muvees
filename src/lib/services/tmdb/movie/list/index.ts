@@ -1,11 +1,11 @@
-import { tmdbServerFetcher, useTmdbSWR } from "lib/services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from 'lib/services/tmdb/utils';
 
 import type {
   ListType,
   MovieListParams,
   MovieListResponse,
   TMovieListParams,
-} from "./types";
+} from './types';
 
 const SEARCH_RESOURCE_PATH = `/search/movie`;
 const DISCOVER_RESOURCE_PATH = `/discover/movie`;
@@ -25,7 +25,7 @@ const movieListEndpoint = ({
 };
 
 export const getMovieListServer = (
-  section: ListType = "popular",
+  section: ListType = 'popular',
   params?: MovieListParams
 ) =>
   tmdbServerFetcher<MovieListResponse>(
@@ -38,7 +38,7 @@ export const getMovieListServer = (
   );
 
 export const useMovieList = (
-  section: ListType = "popular",
+  section: ListType = 'popular',
   params?: MovieListParams,
   fallbackData?: MovieListResponse,
   isReady?: boolean

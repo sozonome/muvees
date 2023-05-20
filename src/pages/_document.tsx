@@ -1,11 +1,11 @@
-import { ColorModeScript } from "@chakra-ui/react";
-import type { DocumentContext } from "next/document";
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import { ColorModeScript } from '@chakra-ui/react';
+import type { DocumentContext } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-import { UMAMI_SRC, UMAMI_WEBSITE_ID } from "lib/constants/umami";
-import customTheme from "lib/styles/theme";
+import { UMAMI_SRC, UMAMI_WEBSITE_ID } from 'lib/constants/umami';
+import customTheme from 'lib/styles/theme';
 
-export const APP_NAME = "muvees";
+export const APP_NAME = 'muvees';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {

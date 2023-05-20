@@ -1,14 +1,14 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { DefaultSeo } from "next-seo";
-import NextNprogress from "nextjs-progressbar";
-import "@fontsource/outfit/latin.css";
+import { ChakraProvider } from '@chakra-ui/react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { DefaultSeo } from 'next-seo';
+import NextNprogress from 'nextjs-progressbar';
+import '@fontsource/outfit/latin.css';
 
-import defaultSEOConfig from "../../next-seo.config";
-import Layout from "lib/layout";
-import customTheme from "lib/styles/theme";
-import "lib/styles/globals.css";
+import defaultSEOConfig from '../../next-seo.config';
+import Layout from 'lib/layout';
+import customTheme from 'lib/styles/theme';
+import 'lib/styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

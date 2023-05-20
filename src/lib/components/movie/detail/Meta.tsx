@@ -1,9 +1,9 @@
-import { Badge, Flex, useColorMode } from "@chakra-ui/react";
-import Link from "next/link";
+import { Badge, Flex, useColorMode } from '@chakra-ui/react';
+import Link from 'next/link';
 
-import DetailMeta from "lib/components/shared/DetailMeta";
+import DetailMeta from 'lib/components/shared/DetailMeta';
 
-import type { MovieDetailSectionProps } from "./types";
+import type { MovieDetailSectionProps } from './types';
 
 type MovieDetailMetaProps = MovieDetailSectionProps;
 
@@ -25,7 +25,7 @@ const MovieDetailMeta = ({ data }: MovieDetailMetaProps) => {
           {data.genres.map((genre) => (
             <Badge
               cursor="pointer"
-              variant={colorMode === "light" ? "solid" : "outline"}
+              variant={colorMode === 'light' ? 'solid' : 'outline'}
               colorScheme="gray"
               key={`${genre.name}-${genre.id}`}
               as={Link}

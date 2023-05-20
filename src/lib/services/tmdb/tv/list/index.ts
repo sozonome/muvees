@@ -1,11 +1,11 @@
-import { tmdbServerFetcher, useTmdbSWR } from "lib/services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from 'lib/services/tmdb/utils';
 
 import type {
   SearchTVShowParams,
   TVShowListParams,
   TVShowListResponse,
   TVShowListType,
-} from "./types";
+} from './types';
 
 export const getTVShowByListType = (
   listType: TVShowListType,
@@ -29,7 +29,7 @@ export const useTVShowByList = ({
     fallbackData,
   });
 
-const TV_SHOW_SEARCH_RESOURCE_PATH = "/search/tv";
+const TV_SHOW_SEARCH_RESOURCE_PATH = '/search/tv';
 
 export const getTVShowSearchResultList = (params: SearchTVShowParams) =>
   tmdbServerFetcher<TVShowListResponse>(TV_SHOW_SEARCH_RESOURCE_PATH, params);

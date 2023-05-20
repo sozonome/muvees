@@ -1,6 +1,6 @@
-import { tmdbServerFetcher, useTmdbSWR } from "lib/services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from 'lib/services/tmdb/utils';
 
-import type { TvShowDetail } from "./types";
+import type { TvShowDetail } from './types';
 
 export const getTvShowDetail = (id: string) =>
   tmdbServerFetcher<TvShowDetail>(`/tv/${id}`);

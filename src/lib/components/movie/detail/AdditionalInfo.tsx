@@ -6,15 +6,15 @@ import {
   Link as ChakraLink,
   Skeleton,
   Text,
-} from "@chakra-ui/react";
-import Link from "next/link";
-import { BiLinkExternal } from "react-icons/bi";
-import { FaImdb } from "react-icons/fa";
-import { GrGallery } from "react-icons/gr";
+} from '@chakra-ui/react';
+import Link from 'next/link';
+import { BiLinkExternal } from 'react-icons/bi';
+import { FaImdb } from 'react-icons/fa';
+import { GrGallery } from 'react-icons/gr';
 
-import { convertToPrice } from "lib/utils/convertToPrice";
+import { convertToPrice } from 'lib/utils/convertToPrice';
 
-import type { MovieDetailSectionProps } from "./types";
+import type { MovieDetailSectionProps } from './types';
 
 type MovieDetailAdditionalInfoProps = MovieDetailSectionProps & {
   id: number;
@@ -70,15 +70,15 @@ const MovieDetailAdditionalInfo = ({
           fontSize="sm"
         >
           <Text>
-            Revenue:{" "}
+            Revenue:{' '}
             <Text as="span" fontWeight="bold" letterSpacing={0}>
               {convertToPrice(data.revenue)}
             </Text>
           </Text>
           <Text>
-            Rating: <b>{data.vote_average}</b>{" "}
+            Rating: <b>{data.vote_average}</b>{' '}
             <Text as="span" fontSize="xs">
-              {" "}
+              {' '}
               ({data.vote_count} voted)
             </Text>
           </Text>

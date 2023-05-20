@@ -1,4 +1,4 @@
-import type { MovieListItemType } from "lib/services/tmdb/movie/list/types";
+import type { MovieListItemType } from 'lib/services/tmdb/movie/list/types';
 
 type GenreType = {
   id: number;
@@ -22,7 +22,7 @@ type LanguageType = {
   name: string;
 };
 
-export type MovieDetailResponse = Omit<MovieListItemType, "genre_ids"> & {
+export type MovieDetailResponse = Omit<MovieListItemType, 'genre_ids'> & {
   belongs_to_collection?: Record<string, unknown>;
   budget: number;
   genres: Array<GenreType>;
@@ -36,11 +36,11 @@ export type MovieDetailResponse = Omit<MovieListItemType, "genre_ids"> & {
   runtime?: number;
   spoken_languages: Array<LanguageType>;
   status:
-    | "Rumored"
-    | "Planned"
-    | "In Production"
-    | "Post Production"
-    | "Released"
-    | "Canceled";
+    | 'Rumored'
+    | 'Planned'
+    | 'In Production'
+    | 'Post Production'
+    | 'Released'
+    | 'Canceled';
   tagline?: string;
 };

@@ -1,6 +1,6 @@
-import type { TmdbAPIListResponse } from "lib/services/tmdb/types";
+import type { TmdbAPIListResponse } from 'lib/services/tmdb/types';
 
-export type ListType = "now_playing" | "popular" | "top_rated" | "upcoming";
+export type ListType = 'now_playing' | 'popular' | 'top_rated' | 'upcoming';
 
 export type MovieListParams = {
   language?: string;
@@ -11,7 +11,7 @@ export type MovieListParams = {
 
 export type TMovieListParams = Pick<
   MovieListParams,
-  "query" | "with_genres"
+  'query' | 'with_genres'
 > & {
   section: ListType;
 };

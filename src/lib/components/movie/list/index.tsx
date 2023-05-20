@@ -1,19 +1,19 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { NextSeo } from "next-seo";
-import { useEffect, useState } from "react";
+import { Box, Button, Heading } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
+import { useEffect, useState } from 'react';
 
-import MoviesContainer from "lib/components/movie/MoviesContainer";
-import SearchBox from "lib/components/movie/SearchBox";
-import { useMovieList } from "lib/services/tmdb/movie/list";
+import MoviesContainer from 'lib/components/movie/MoviesContainer';
+import SearchBox from 'lib/components/movie/SearchBox';
+import { useMovieList } from 'lib/services/tmdb/movie/list';
 import type {
   ListType,
   MovieListParams,
-} from "lib/services/tmdb/movie/list/types";
+} from 'lib/services/tmdb/movie/list/types';
 
-import type { PageNavButtonProps } from "./PageNavButtons";
-import PageNavButtons from "./PageNavButtons";
-import type { MovieListModeKey } from "./types";
+import type { PageNavButtonProps } from './PageNavButtons';
+import PageNavButtons from './PageNavButtons';
+import type { MovieListModeKey } from './types';
 
 type MovieListContainerProps = {
   listMode: MovieListModeKey;
@@ -34,18 +34,18 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   useEffect(() => {
     if (page || query || genre) {
       switch (listMode) {
-        case "section":
+        case 'section':
           setQueries({
             page,
           });
           break;
-        case "search":
+        case 'search':
           setQueries({
             page,
             query: query as string,
           });
           break;
-        case "discover":
+        case 'discover':
           setQueries({
             page,
             with_genres: genre as string,
@@ -59,10 +59,10 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   }, [page, query, genre]);
 
   const { data, isLoading } = useMovieList(
-    listMode === "section" ? (section as ListType) : undefined,
+    listMode === 'section' ? (section as ListType) : undefined,
     queries,
     undefined,
-    listMode === "search" ? shouldFetch : undefined
+    listMode === 'search' ? shouldFetch : undefined
   );
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
       window.scroll({
         top: 0,
         left: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     } catch {
       window.scrollTo(0, 0);
@@ -85,8 +85,8 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
 
   useEffect(() => {
     if (
-      (listMode === "search" && query) ||
-      (listMode === "discover" && genre)
+      (listMode === 'search' && query) ||
+      (listMode === 'discover' && genre)
     ) {
       setShouldFetch(true);
     } else {
@@ -104,25 +104,25 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
 
   const generatePageHeadTitle = () => {
     switch (listMode) {
-      case "section":
+      case 'section':
         return section as string;
-      case "search":
+      case 'search':
         return `search: "${decodeURI(query as string)}"`;
       default:
-        return "";
+        return '';
     }
   };
 
   const renderMovieList = () => {
-    if (listMode === "search" && !shouldFetch) {
+    if (listMode === 'search' && !shouldFetch) {
       return null;
     }
 
     return (
       <>
-        {listMode !== "search" && (
+        {listMode !== 'search' && (
           <Heading textTransform="capitalize">
-            {section && (section as string).replace("_", " ")}
+            {section && (section as string).replace('_', ' ')}
           </Heading>
         )}
         <PageNavButtons {...pageNavButtonProps} />
@@ -135,11 +135,11 @@ const MovieListContainer = ({ listMode }: MovieListContainerProps) => {
   return (
     <Box mb={8} w="full" paddingX={8}>
       {data && <NextSeo title={generatePageHeadTitle()} />}
-      <Button borderRadius={24} width="full" onClick={() => router.push("/")}>
+      <Button borderRadius={24} width="full" onClick={() => router.push('/')}>
         back
       </Button>
 
-      {listMode === "search" && <SearchBox />}
+      {listMode === 'search' && <SearchBox />}
 
       <Box marginY={8}>{renderMovieList()}</Box>
     </Box>

@@ -1,7 +1,7 @@
 import type {
   TVShowListResponse,
   TVShowListType,
-} from "lib/services/tmdb/tv/list/types";
+} from 'lib/services/tmdb/tv/list/types';
 
 export type TVShowListPageParams = {
   listType: string;

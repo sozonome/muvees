@@ -1,9 +1,9 @@
-import { Button, Grid, Heading } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { Button, Grid, Heading } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
-import ImageSection from "lib/components/movie/image/ImageSection";
+import ImageSection from 'lib/components/movie/image/ImageSection';
 
-import type { MovieImagesPageProps } from "./types";
+import type { MovieImagesPageProps } from './types';
 
 const MovieImagesPage = ({ data }: MovieImagesPageProps) => {
   const router = useRouter();

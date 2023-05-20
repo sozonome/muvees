@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, HStack, Spacer } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, HStack, Spacer } from '@chakra-ui/react';
 
 type SliderContainerProps = {
   sectionTitle?: string;
@@ -20,7 +20,7 @@ const SliderContainer = ({
           <Heading
             textTransform="uppercase"
             letterSpacing={2}
-            fontSize={{ base: "md", sm: "lg" }}
+            fontSize={{ base: 'md', sm: 'lg' }}
             fontWeight="400"
           >
             {sectionTitle}
@@ -28,7 +28,7 @@ const SliderContainer = ({
 
           <Button
             marginLeft="auto"
-            size={{ base: "xs", sm: "sm" }}
+            size={{ base: 'xs', sm: 'sm' }}
             onClick={onClickSeeMore}
           >
             see more

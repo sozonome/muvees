@@ -1,13 +1,13 @@
-import { Grid, Input, Skeleton, Text } from "@chakra-ui/react";
-import debounce from "lodash/debounce";
-import { useRouter } from "next/router";
-import * as React from "react";
+import { Grid, Input, Skeleton, Text } from '@chakra-ui/react';
+import debounce from 'lodash/debounce';
+import { useRouter } from 'next/router';
+import * as React from 'react';
 
-import type { PageNavButtonProps } from "lib/components/shared/list/PageNavButtons";
-import PageNavButtons from "lib/components/shared/list/PageNavButtons";
-import PosterCard from "lib/components/shared/PosterCard";
-import { BASE_URL } from "lib/constants/baseUrl";
-import { useMultiSearchResult } from "lib/services/tmdb/search/multi";
+import type { PageNavButtonProps } from 'lib/components/shared/list/PageNavButtons';
+import PageNavButtons from 'lib/components/shared/list/PageNavButtons';
+import PosterCard from 'lib/components/shared/PosterCard';
+import { BASE_URL } from 'lib/constants/baseUrl';
+import { useMultiSearchResult } from 'lib/services/tmdb/search/multi';
 
 const MultiSearchPage = () => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const MultiSearchPage = () => {
     debounce((e: React.ChangeEvent<HTMLInputElement>) => {
       const queryParam = e.target.value
         ? `?query=${e.target.value}&page=1`
-        : "";
+        : '';
 
       router.push(`/search${queryParam}`);
     }, 500),
@@ -41,8 +41,8 @@ const MultiSearchPage = () => {
   const handleChangePage = React.useCallback(
     (updatedPage: number) => {
       const queryParams = new URL(BASE_URL + asPath).searchParams;
-      queryParams.set("page", updatedPage.toString());
-      router.push(`${asPath.split("?")[0]}?${queryParams.toString()}`);
+      queryParams.set('page', updatedPage.toString());
+      router.push(`${asPath.split('?')[0]}?${queryParams.toString()}`);
     },
     [asPath, router]
   );
@@ -82,9 +82,9 @@ const MultiSearchPage = () => {
         <Skeleton marginY={8} isLoaded={!isLoading}>
           <Grid
             templateColumns={[
-              "repeat(2, 1fr)",
-              "repeat(3, 1fr)",
-              "repeat(4, 1fr)",
+              'repeat(2, 1fr)',
+              'repeat(3, 1fr)',
+              'repeat(4, 1fr)',
             ]}
             columnGap={8}
             rowGap={12}
@@ -94,7 +94,7 @@ const MultiSearchPage = () => {
                 mediaType={item.media_type}
                 id={item.id}
                 name={item.title ?? item.name}
-                imageUrl={item.poster_path ?? item.profile_path ?? ""}
+                imageUrl={item.poster_path ?? item.profile_path ?? ''}
                 key={`${item.media_type}-${item.id}`}
                 layout="grid"
               />

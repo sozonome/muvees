@@ -1,10 +1,10 @@
-import type { GetStaticProps } from "next";
+import type { GetStaticProps } from 'next';
 
-import { getPersonDetailServer } from "lib/services/tmdb/person/detail";
+import { getPersonDetailServer } from 'lib/services/tmdb/person/detail';
 
-import type { PersonDetailPageParams, PersonDetailPageProps } from "./types";
+import type { PersonDetailPageParams, PersonDetailPageProps } from './types';
 
-export { getStaticPaths } from "lib/utils/defaultGetStaticPaths";
+export { getStaticPaths } from 'lib/utils/defaultGetStaticPaths';
 
 export const getStaticProps: GetStaticProps<
   PersonDetailPageProps,

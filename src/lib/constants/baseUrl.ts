@@ -1,1 +1,1 @@
-export const BASE_URL = "https://muvees.sznm.dev";
+export const BASE_URL = 'https://muvees.sznm.dev';

@@ -1,8 +1,8 @@
-import { tmdbServerFetcher, useTmdbSWR } from "lib/services/tmdb/utils";
+import { tmdbServerFetcher, useTmdbSWR } from 'lib/services/tmdb/utils';
 
-import type { MultiSearchParams, MultiSearchResponse } from "./types";
+import type { MultiSearchParams, MultiSearchResponse } from './types';
 
-const MULTI_SEARCH_RESOURCE_PATH = "/search/multi";
+const MULTI_SEARCH_RESOURCE_PATH = '/search/multi';
 
 export const getMultiSearchResult = (params: MultiSearchParams) =>
   tmdbServerFetcher<MultiSearchResponse>(MULTI_SEARCH_RESOURCE_PATH, params);

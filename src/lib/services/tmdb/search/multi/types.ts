@@ -44,12 +44,12 @@ export interface MultiSearchResult {
 }
 
 export enum MediaType {
-  Movie = "movie",
-  Person = "person",
-  Tv = "tv",
+  Movie = 'movie',
+  Person = 'person',
+  Tv = 'tv',
 }
 
 export enum OriginalLanguage {
-  En = "en",
-  It = "it",
+  En = 'en',
+  It = 'it',
 }

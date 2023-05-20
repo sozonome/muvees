@@ -1,4 +1,4 @@
-import TvShowDetailPage from "lib/pages/tv/detail";
+import TvShowDetailPage from 'lib/pages/tv/detail';
 
-export { getStaticProps, getStaticPaths } from "lib/pages/tv/detail/loader";
+export { getStaticProps, getStaticPaths } from 'lib/pages/tv/detail/loader';
 export default TvShowDetailPage;

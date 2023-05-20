@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import useSWR from "swr";
+import useSWR from 'swr';
 
-import { fetcher } from "lib/utils/fetcher";
+import { fetcher } from 'lib/utils/fetcher';
 
-import { TMDB_API_KEY, TMDB_API_URL } from "./constants";
+import { TMDB_API_KEY, TMDB_API_URL } from './constants';
 
 export const tmdbServerFetcher = <ResType>(path: string, params?: any) =>
   fetcher<ResType>(`${TMDB_API_URL}${path}`, {

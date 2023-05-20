@@ -15,11 +15,11 @@ import {
   useColorMode,
   useDisclosure,
   useMediaQuery,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { BiMenu } from "react-icons/bi";
+} from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { BiMenu } from 'react-icons/bi';
 
-import { APP_NAME } from "pages/_document";
+import { APP_NAME } from 'pages/_document';
 
 type AppsType = {
   name: string;
@@ -34,7 +34,7 @@ const AppMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode } = useColorMode();
 
-  const [isBiggerThanMobile] = useMediaQuery("(min-width: 480px)");
+  const [isBiggerThanMobile] = useMediaQuery('(min-width: 480px)');
   const [apps, setApps] = useState<Array<AppsType>>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -58,7 +58,7 @@ const AppMenu = () => {
         onClick={onOpen}
       />
       <Drawer
-        placement={isBiggerThanMobile ? "right" : "top"}
+        placement={isBiggerThanMobile ? 'right' : 'top'}
         isOpen={isOpen}
         onClose={onClose}
       >
@@ -74,7 +74,7 @@ const AppMenu = () => {
             {apps
               .filter((app) => app.name !== APP_NAME)
               .map(({ name, icon, url, description }) => (
-                <Link key={name} href={url} _hover={{ textDecoration: "none" }}>
+                <Link key={name} href={url} _hover={{ textDecoration: 'none' }}>
                   <Flex
                     marginY={4}
                     alignItems="center"
@@ -82,7 +82,7 @@ const AppMenu = () => {
                     borderRadius={12}
                     _hover={{
                       backgroundColor:
-                        colorMode === "light" ? "gray.200" : "gray.600",
+                        colorMode === 'light' ? 'gray.200' : 'gray.600',
                     }}
                   >
                     <Image src={icon} width={12} alt={name} />

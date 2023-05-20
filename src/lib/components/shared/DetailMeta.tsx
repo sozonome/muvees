@@ -7,10 +7,10 @@ import {
   Heading,
   Text,
   useColorMode,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
-import { BionifiedParagraph } from "lib/components/BionifiedParagraph";
-import PosterImage from "lib/components/shared/PosterImage";
+import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
+import PosterImage from 'lib/components/shared/PosterImage';
 
 type DetailData = {
   name: string;
@@ -31,23 +31,23 @@ const DetailMeta = ({ data, extras }: DetailMetaProps) => {
 
   return (
     <Box
-      display={{ base: "grid", md: "flex" }}
+      display={{ base: 'grid', md: 'flex' }}
       alignItems="center"
       gap={{ base: 8, md: 16 }}
     >
       <AspectRatio
         ratio={3.6 / 5}
         minWidth={{ base: undefined, md: 300 }}
-        maxHeight={["100%"]}
-        maxWidth={["100%"]}
-        marginX={[8, "25%", 0]}
+        maxHeight={['100%']}
+        maxWidth={['100%']}
+        marginX={[8, '25%', 0]}
       >
         <PosterImage src={data.posterPath} />
       </AspectRatio>
 
       <Grid gap={4}>
         <Heading
-          textAlign={["center", "center", "inherit"]}
+          textAlign={['center', 'center', 'inherit']}
           size="lg"
           letterSpacing={2}
           textTransform="uppercase"
@@ -58,7 +58,7 @@ const DetailMeta = ({ data, extras }: DetailMetaProps) => {
         </Heading>
 
         <Text
-          textAlign={["center", "center", "inherit"]}
+          textAlign={['center', 'center', 'inherit']}
           fontSize="0.7rem"
           fontWeight="light"
           letterSpacing={2}
@@ -70,7 +70,7 @@ const DetailMeta = ({ data, extras }: DetailMetaProps) => {
         </Text>
 
         <Flex gridColumnGap={2} alignItems="center">
-          <Badge variant={colorMode === "light" ? "solid" : "outline"}>
+          <Badge variant={colorMode === 'light' ? 'solid' : 'outline'}>
             {data.status}
           </Badge>
 

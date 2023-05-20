@@ -1,11 +1,11 @@
-import { Flex, Grid, Link, Text } from "@chakra-ui/react";
-import Image from "next/image";
+import { Flex, Grid, Link, Text } from '@chakra-ui/react';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
     <Flex as="footer" width="full" align="center" padding="8">
       <Text fontSize="sm">
-        2020 -{" "}
+        2020 -{' '}
         <Link fontWeight="bold" href="https://sznm.dev" isExternal>
           sznm.dev
         </Link>
