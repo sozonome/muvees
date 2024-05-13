@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.4](https://github.com/sozonome/muvees/compare/v1.3.3...v1.3.4) (2024-05-13)
+
+
+### Improvements
+
+* increase cache duration for movie detail ([1053076](https://github.com/sozonome/muvees/commit/105307683ab222b4c50eb6f0dba608eeab022f8f))
+* set person page to be client side ([5ec134c](https://github.com/sozonome/muvees/commit/5ec134cdd99c85643fd747c72cd7ce6a6954ba52))
+
 ### [1.3.3](https://github.com/sozonome/muvees/compare/v1.3.2...v1.3.3) (2023-05-19)
 
 
