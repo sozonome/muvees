@@ -59,11 +59,11 @@ const PageNavButtons = ({
           </Text>
 
           <Grid templateColumns={['repeat(2, 1fr)']} gap={4}>
-            <Button disabled={page === 1} onClick={handleChangePage('prev')}>
+            <Button isDisabled={page === 1} onClick={handleChangePage('prev')}>
               prev
             </Button>
             <Button
-              disabled={page === totalPages}
+              isDisabled={page === totalPages}
               onClick={handleChangePage('next')}
             >
               next

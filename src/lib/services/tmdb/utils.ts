@@ -13,7 +13,7 @@ export const tmdbServerFetcher = <ResType>(path: string, params?: any) =>
 
 export const tmdbFetcher = <ResType>([path, params]: [
   path: string,
-  params?: any
+  params?: any,
 ]) => fetcher<ResType>(`/api/tmdb${path}`, params);
 
 export type UseTmdbSWRArgs<ResType> = {

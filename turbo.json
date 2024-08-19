@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**", "public/**"],
       "env": ["TMDB_API_URL", "TMDB_API_KEY", "NEXT_PUBLIC_PROJECTS_LIST_URL"]
