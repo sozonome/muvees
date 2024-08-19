@@ -1,7 +1,7 @@
-import type { AxiosRequestConfig } from 'axios';
-import axios from 'axios';
+import type { Options } from 'ky';
+import ky from 'ky';
 
 export const fetcher = <ResType>(
   url: string,
-  params?: AxiosRequestConfig['params']
-) => axios.get<ResType>(url, { params }).then((res) => res.data);
+  searchParams?: Options['searchParams']
+) => ky.get<ResType>(url, { searchParams }).json();
