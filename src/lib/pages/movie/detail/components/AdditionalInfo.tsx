@@ -72,14 +72,14 @@ const MovieDetailAdditionalInfo = ({
           <Text>
             Revenue:{' '}
             <Text as="span" fontWeight="bold" letterSpacing={0}>
-              {convertToPrice(data.revenue)}
+              {convertToPrice(data?.revenue ?? 0)}
             </Text>
           </Text>
           <Text>
-            Rating: <b>{data.vote_average}</b>{' '}
+            Rating: <b>{data?.vote_average}</b>{' '}
             <Text as="span" fontSize="xs">
               {' '}
-              ({data.vote_count} voted)
+              ({data?.vote_count} voted)
             </Text>
           </Text>
         </Grid>

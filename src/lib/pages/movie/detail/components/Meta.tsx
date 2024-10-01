@@ -13,16 +13,16 @@ const MovieDetailMeta = ({ data }: MovieDetailMetaProps) => {
   return (
     <DetailMeta
       data={{
-        name: data.title,
-        tagline: data.tagline,
-        status: data.status,
-        releasedDate: data.release_date,
-        posterPath: data.poster_path,
-        overview: data.overview,
+        name: data?.title,
+        tagline: data?.tagline,
+        status: data?.status,
+        releasedDate: data?.release_date,
+        posterPath: data?.poster_path,
+        overview: data?.overview,
       }}
       extras={
         <Flex wrap="wrap" gridGap={2}>
-          {data.genres.map((genre) => (
+          {data?.genres.map((genre) => (
             <Badge
               cursor="pointer"
               variant={colorMode === 'light' ? 'solid' : 'outline'}

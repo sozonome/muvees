@@ -13,11 +13,11 @@ import { BionifiedParagraph } from 'lib/components/BionifiedParagraph';
 import PosterImage from 'lib/components/shared/PosterImage';
 
 type DetailData = {
-  name: string;
+  name?: string;
   overview?: string;
-  status: string;
+  status?: string;
   tagline?: string;
-  releasedDate: Date | string;
+  releasedDate?: Date | string;
   posterPath?: string;
 };
 
@@ -75,7 +75,7 @@ const DetailMeta = ({ data, extras }: DetailMetaProps) => {
           </Badge>
 
           <Text textTransform="uppercase" letterSpacing={1} fontSize="xs">
-            {new Date(data.releasedDate).getFullYear()}
+            {new Date(data.releasedDate ?? '').getFullYear()}
           </Text>
         </Flex>
 

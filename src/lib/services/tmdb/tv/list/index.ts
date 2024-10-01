@@ -18,7 +18,7 @@ type UseTVShowByListArgs = {
   fallbackData?: TVShowListResponse;
 };
 
-export const useTVShowByList = ({
+export const useTVShowList = ({
   listType,
   params,
   fallbackData,
